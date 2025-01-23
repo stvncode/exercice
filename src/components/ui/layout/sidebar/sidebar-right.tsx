@@ -1,37 +1,96 @@
-import * as React from "react"
-
-import { DatePicker } from "@/components/ui/layout/date-picker"
-import { NavUser } from "@/components/ui/layout/nav/nav-user"
-import { Selectors } from "@/components/ui/layout/selectors"
+import { useGlobalStore } from "@/store/globalStore"
+import {
+  DndContext,
+  DragEndEvent,
+  DragOverEvent,
+  DragOverlay,
+  DragStartEvent,
+  closestCenter,
+} from "@dnd-kit/core"
+import { arrayMove } from "@dnd-kit/sortable"
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
   SidebarSeparator,
 } from "chronoxis"
-
-// This is sample data.
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  selectors: [
-    {
-      name: "Favorites",
-      items: ["Holidays", "Birthdays"],
-    },
-    {
-      name: "Other",
-      items: ["Travel", "Reminders", "Deadlines"],
-    },
-  ],
-}
+import * as React from "react"
+import { DatePicker } from "../date-picker"
+import { NavUser } from "../nav/nav-user"
+import { DraggableSelectors } from "./draggable-selectors"
 
 export function SidebarRight({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
+  const [activeId, setActiveId] = React.useState<string | null>(null)
+  const { moveToOther, moveToFavorite, setFavorites, setOthers } =
+    useGlobalStore()
+  const favorites = useGlobalStore((state) => state.favorites)
+  const others = useGlobalStore((state) => state.others)
+
+  const handleDragStart = (event: DragStartEvent) => {
+    setActiveId(event.active.id as string)
+  }
+
+  const handleDragOver = (event: DragOverEvent) => {
+    const { active, over } = event
+    if (!over) return
+
+    const sourceId = active.id as string
+    const overId = over.id as string
+
+    // Don't do anything if hovering over the container
+    if (overId === "favorites" || overId === "others") return
+
+    const sourceLists = {
+      favorites,
+      others,
+    }
+
+    const activeList = Object.entries(sourceLists).find(([, list]) =>
+      list.includes(sourceId)
+    )?.[0]
+
+    const overList = Object.entries(sourceLists).find(([, list]) =>
+      list.includes(overId)
+    )?.[0]
+
+    if (!activeList || !overList || activeList === overList) return
+
+    if (activeList === "favorites" && overList === "others") {
+      const fromIndex = favorites.indexOf(sourceId)
+      moveToOther(fromIndex)
+    } else if (activeList === "others" && overList === "favorites") {
+      const fromIndex = others.indexOf(sourceId)
+      moveToFavorite(fromIndex)
+    }
+  }
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event
+    if (!over) return
+
+    const sourceId = active.id as string
+    const destinationId = over.id as string
+
+    if (favorites.includes(sourceId)) {
+      const oldIndex = favorites.indexOf(sourceId)
+      const newIndex = favorites.indexOf(destinationId)
+      if (newIndex !== -1) {
+        const newFavorites = arrayMove(favorites, oldIndex, newIndex)
+        setFavorites(newFavorites)
+      }
+    } else if (others.includes(sourceId)) {
+      const oldIndex = others.indexOf(sourceId)
+      const newIndex = others.indexOf(destinationId)
+      if (newIndex !== -1) {
+        const newOthers = arrayMove(others, oldIndex, newIndex)
+        setOthers(newOthers)
+      }
+    }
+    setActiveId(null)
+  }
+
   return (
     <Sidebar
       collapsible="none"
@@ -39,12 +98,26 @@ export function SidebarRight({
       {...props}
     >
       <SidebarHeader className="h-16 border-b border-sidebar-border">
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarHeader>
       <SidebarContent>
         <DatePicker />
         <SidebarSeparator className="mx-0" />
-        <Selectors selectors={data.selectors} />
+        <DndContext
+          onDragStart={handleDragStart}
+          onDragOver={handleDragOver}
+          onDragEnd={handleDragEnd}
+          collisionDetection={closestCenter}
+        >
+          <DraggableSelectors />
+          <DragOverlay>
+            {activeId ? (
+              <div className="flex items-center gap-2 p-2 bg-white shadow-lg rounded-md">
+                {activeId}
+              </div>
+            ) : null}
+          </DragOverlay>
+        </DndContext>
       </SidebarContent>
     </Sidebar>
   )

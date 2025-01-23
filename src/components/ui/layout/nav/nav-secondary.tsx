@@ -6,6 +6,7 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
+  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "chronoxis"
@@ -34,6 +35,10 @@ export function NavSecondary({
                   <span>Settings</span>
                 </Flex>
               </SidebarMenuButton>
+              <SidebarMenuAction className="font-medium text-muted-foreground">
+                <span className="text-lg mt-0.5">⌘</span>
+                <span className="text-sm ml-1">S</span>
+              </SidebarMenuAction>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
@@ -46,6 +51,10 @@ export function NavSecondary({
                   <span>Help</span>
                 </Flex>
               </SidebarMenuButton>
+              <SidebarMenuAction className="font-medium text-muted-foreground">
+                <span className="text-lg mt-0.5">⌘</span>
+                <span className="text-sm ml-1">H</span>
+              </SidebarMenuAction>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>

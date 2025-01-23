@@ -13,12 +13,25 @@ import {
   Label,
 } from "chronoxis"
 import { Copy } from "lucide-react"
+import { useEffect } from "react"
 
 export const HelpModal = ({
   openState: [open, setOpen],
 }: {
   openState: [boolean, SetState<boolean>]
 }) => {
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "h" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        setOpen((open) => !open)
+      }
+    }
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="sm:max-w-md">

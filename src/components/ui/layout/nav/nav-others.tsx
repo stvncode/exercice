@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  Flex,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
@@ -15,6 +16,7 @@ import {
   useSidebar,
 } from "chronoxis"
 import { ReactNode } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 
 export function NavOthers({
   others,
@@ -26,6 +28,8 @@ export function NavOthers({
   }[]
 }) {
   const { isMobile } = useSidebar()
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   return (
     <SidebarGroup>
@@ -33,11 +37,15 @@ export function NavOthers({
       <SidebarMenu>
         {others.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
-              <a href={item.url} title={item.name}>
+            <SidebarMenuButton
+              asChild
+              isActive={pathname === item.url}
+              onClick={() => navigate(item.url)}
+            >
+              <Flex align="center" className="gap-2 cursor-pointer">
                 <span>{item.emoji}</span>
                 <span>{item.name}</span>
-              </a>
+              </Flex>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

@@ -1,29 +1,67 @@
-import { type LucideIcon } from "lucide-react"
+import { Home, Inbox, Search } from "lucide-react"
 
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "chronoxis"
+import {
+  Flex,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "chronoxis"
+import { useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+import { SearchCommand } from "../../modals/SearchCommand"
 
-export function NavMain({
-  items,
-}: {
-  items: {
-    title: string
-    url: string
-    icon: LucideIcon
-    isActive?: boolean
-  }[]
-}) {
+export const NavMain = () => {
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+
+  const [searchOpen, setSearchOpen] = useState(false)
+
   return (
-    <SidebarMenu>
-      {items.map((item) => (
-        <SidebarMenuItem key={item.title}>
-          <SidebarMenuButton asChild isActive={item.isActive}>
-            <a href={item.url}>
-              <item.icon />
-              <span>{item.title}</span>
-            </a>
+    <>
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton asChild isActive={false}>
+            <Flex
+              align="center"
+              className="gap-2 cursor-pointer"
+              onClick={() => setSearchOpen(true)}
+            >
+              <Search />
+              <span>Search</span>
+            </Flex>
+          </SidebarMenuButton>
+          <SidebarMenuAction className="font-medium text-muted-foreground">
+            <span className="text-lg mt-0.5">⌘</span>
+            <span className="text-sm ml-1">K</span>
+          </SidebarMenuAction>
+        </SidebarMenuItem>
+        <SidebarMenuItem>
+          <SidebarMenuButton asChild isActive={pathname === "/"}>
+            <Flex
+              align="center"
+              className="gap-2 cursor-pointer"
+              onClick={() => navigate("/")}
+            >
+              <Home />
+              <span>Home</span>
+            </Flex>
           </SidebarMenuButton>
         </SidebarMenuItem>
-      ))}
-    </SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton asChild isActive={pathname === "/inbox"}>
+            <Flex
+              align="center"
+              className="gap-2 cursor-pointer"
+              onClick={() => navigate("/inbox")}
+            >
+              <Inbox />
+              <span>Inbox</span>
+            </Flex>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      </SidebarMenu>
+      <SearchCommand openState={[searchOpen, setSearchOpen]} />
+    </>
   )
 }

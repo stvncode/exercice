@@ -3,13 +3,14 @@ import { SidebarProvider } from "chronoxis"
 import { match } from "ts-pattern"
 import { SonnerToaster } from "./components/ui/sonner"
 import { Layout } from "./features/layout/Layout"
+import { useAccount } from "./store/globalStore"
 
 export const App = () => {
-  const isAuthenticated = true
+  const { username } = useAccount()
 
   return (
     <SidebarProvider defaultOpen={true}>
-      {match(isAuthenticated)
+      {match(Boolean(username))
         .with(true, () => <Layout />)
         .otherwise(() => (
           <Login />

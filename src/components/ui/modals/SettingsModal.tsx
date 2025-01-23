@@ -35,6 +35,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
 } from "chronoxis"
+import { useEffect } from "react"
 
 const data = {
   nav: [
@@ -58,6 +59,18 @@ export const SettingsModal = ({
 }: {
   openState: [boolean, SetState<boolean>]
 }) => {
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "s" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        setOpen((open) => !open)
+      }
+    }
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="overflow-hidden p-0 md:max-h-[500px] md:max-w-[700px] lg:max-w-[800px]">

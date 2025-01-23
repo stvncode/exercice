@@ -88,6 +88,9 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        sans: ["Geist Mono", "monospace"],
+      },
       keyframes: {
         "pulse-fade-scale": {
           "0%, 100%": {

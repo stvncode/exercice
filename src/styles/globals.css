@@ -61,7 +61,18 @@
       --chart-5: 340 75% 55%;
     }
   }
-  
+ 
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("/fonts/GeistMono-[wght].woff2") format("woff2") tech("variations");
+    font-weight: 100 900;
+    font-display: swap;
+  }
+
+  [cmdk-list] {
+    max-height: 400px;
+    transition: height 100ms ease;
+  }
 
 @layer base {
   * {

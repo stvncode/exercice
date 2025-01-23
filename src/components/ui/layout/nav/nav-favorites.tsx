@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  Flex,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
@@ -14,18 +15,13 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "chronoxis"
-import { ReactNode } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+import { SidebarItem } from "../sidebar/types"
 
-export function NavFavorites({
-  favorites,
-}: {
-  favorites: {
-    name: string
-    url: string
-    emoji: string | ReactNode
-  }[]
-}) {
+export function NavFavorites({ favorites }: { favorites: SidebarItem[] }) {
   const { isMobile } = useSidebar()
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
@@ -33,11 +29,15 @@ export function NavFavorites({
       <SidebarMenu>
         {favorites.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
-              <a href={item.url} title={item.name}>
+            <SidebarMenuButton
+              asChild
+              isActive={pathname === item.url}
+              onClick={() => navigate(item.url)}
+            >
+              <Flex align="center" className="gap-2 cursor-pointer">
                 <span>{item.emoji}</span>
                 <span>{item.name}</span>
-              </a>
+              </Flex>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
