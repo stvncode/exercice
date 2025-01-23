@@ -1,17 +1,12 @@
-import { Plus } from "lucide-react"
 import * as React from "react"
 
-import { Calendars } from "@/components/ui/layout/calendars"
 import { DatePicker } from "@/components/ui/layout/date-picker"
-import { NavUser } from "@/components/ui/layout/nav-user"
+import { NavUser } from "@/components/ui/layout/nav/nav-user"
+import { Selectors } from "@/components/ui/layout/selectors"
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
   SidebarSeparator,
 } from "chronoxis"
 
@@ -22,11 +17,7 @@ const data = {
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
-  calendars: [
-    {
-      name: "My Calendars",
-      items: ["Personal", "Work", "Family"],
-    },
+  selectors: [
     {
       name: "Favorites",
       items: ["Holidays", "Birthdays"],
@@ -53,18 +44,8 @@ export function SidebarRight({
       <SidebarContent>
         <DatePicker />
         <SidebarSeparator className="mx-0" />
-        <Calendars calendars={data.calendars} />
+        <Selectors selectors={data.selectors} />
       </SidebarContent>
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton>
-              <Plus />
-              <span>New Calendar</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
     </Sidebar>
   )
 }

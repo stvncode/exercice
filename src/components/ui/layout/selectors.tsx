@@ -14,19 +14,19 @@ import {
   SidebarSeparator,
 } from "chronoxis"
 
-export function Calendars({
-  calendars,
+export function Selectors({
+  selectors,
 }: {
-  calendars: {
+  selectors: {
     name: string
     items: string[]
   }[]
 }) {
   return (
     <>
-      {calendars.map((calendar, index) => (
-        <React.Fragment key={calendar.name}>
-          <SidebarGroup key={calendar.name} className="py-0">
+      {selectors.map((selector, index) => (
+        <React.Fragment key={selector.name}>
+          <SidebarGroup key={selector.name} className="py-0">
             <Collapsible
               defaultOpen={index === 0}
               className="group/collapsible"
@@ -36,14 +36,14 @@ export function Calendars({
                 className="group/label w-full text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
               >
                 <CollapsibleTrigger>
-                  {calendar.name}{" "}
+                  {selector.name}{" "}
                   <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
                 </CollapsibleTrigger>
               </SidebarGroupLabel>
               <CollapsibleContent>
                 <SidebarGroupContent>
                   <SidebarMenu>
-                    {calendar.items.map((item, index) => (
+                    {selector.items.map((item, index) => (
                       <SidebarMenuItem key={item}>
                         <SidebarMenuButton>
                           <div

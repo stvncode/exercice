@@ -1,10 +1,4 @@
-import {
-  ArrowUpRight,
-  Link,
-  MoreHorizontal,
-  StarOff,
-  Trash2,
-} from "lucide-react"
+import { ArrowUpRight, Link, MoreHorizontal, StarOff } from "lucide-react"
 
 import {
   DropdownMenu,
@@ -20,6 +14,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "chronoxis"
+import { ReactNode } from "react"
 
 export function NavFavorites({
   favorites,
@@ -27,7 +22,7 @@ export function NavFavorites({
   favorites: {
     name: string
     url: string
-    emoji: string
+    emoji: string | ReactNode
   }[]
 }) {
   const { isMobile } = useSidebar()
@@ -57,33 +52,22 @@ export function NavFavorites({
                 align={isMobile ? "end" : "start"}
               >
                 <DropdownMenuItem>
-                  <StarOff className="text-muted-foreground" />
-                  <span>Remove from Favorites</span>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Link className="text-muted-foreground" />
+                  <Link size={14} className="text-muted-foreground" />
                   <span>Copy Link</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <ArrowUpRight className="text-muted-foreground" />
+                  <ArrowUpRight size={14} className="text-muted-foreground" />
                   <span>Open in New Tab</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Trash2 className="text-muted-foreground" />
-                  <span>Delete</span>
+                  <StarOff size={14} className="text-muted-foreground" />
+                  <span>Remove from Favorites</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>
         ))}
-        <SidebarMenuItem>
-          <SidebarMenuButton className="text-sidebar-foreground/70">
-            <MoreHorizontal />
-            <span>More</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>
   )

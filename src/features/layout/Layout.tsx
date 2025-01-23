@@ -1,5 +1,5 @@
-import { SidebarLeft } from "@/components/ui/layout/sidebar-left"
-import { SidebarRight } from "@/components/ui/layout/sidebar-right"
+import { SidebarLeft } from "@/components/ui/layout/sidebar/sidebar-left"
+import { SidebarRight } from "@/components/ui/layout/sidebar/sidebar-right"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,6 +9,7 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from "chronoxis"
+import { Outlet } from "react-router-dom"
 
 export const Layout = () => {
   return (
@@ -30,10 +31,7 @@ export const Layout = () => {
             </Breadcrumb>
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="mx-auto h-24 w-full max-w-3xl rounded-xl bg-muted/50" />
-          <div className="mx-auto h-[100vh] w-full max-w-3xl rounded-xl bg-muted/50" />
-        </div>
+        <Outlet />
       </SidebarInset>
       <SidebarRight />
     </>
