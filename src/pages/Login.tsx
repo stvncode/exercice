@@ -141,7 +141,7 @@ export const Login = () => {
                     <FormItem>
                       <FormLabel required>Username</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="Username" {...field} />
                       </FormControl>
                       <FormDescription>
                         This is your public display name.
@@ -157,7 +157,7 @@ export const Login = () => {
                     <FormItem>
                       <FormLabel required>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="Email" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

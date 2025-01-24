@@ -1,5 +1,6 @@
 import { ArrowUpRight, Link, MoreHorizontal, StarOff } from "lucide-react"
 
+import { useGlobalStore } from "@/store/globalStore"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,8 +21,9 @@ import { SidebarItem } from "../sidebar/types"
 
 export function NavFavorites({ favorites }: { favorites: SidebarItem[] }) {
   const { isMobile } = useSidebar()
-  const { pathname } = useLocation()
+  const location = useLocation()
   const navigate = useNavigate()
+  const { moveToOther, favorites: currentFavoritesList } = useGlobalStore()
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
@@ -31,7 +33,7 @@ export function NavFavorites({ favorites }: { favorites: SidebarItem[] }) {
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton
               asChild
-              isActive={pathname === item.url}
+              isActive={location.pathname === item.url}
               onClick={() => navigate(item.url)}
             >
               <Flex align="center" className="gap-2 cursor-pointer">
@@ -51,7 +53,13 @@ export function NavFavorites({ favorites }: { favorites: SidebarItem[] }) {
                 side={isMobile ? "bottom" : "right"}
                 align={isMobile ? "end" : "start"}
               >
-                <DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() =>
+                    navigator.clipboard.writeText(
+                      import.meta.env.VITE_URL + item.url
+                    )
+                  }
+                >
                   <Link size={14} className="text-muted-foreground" />
                   <span>Copy Link</span>
                 </DropdownMenuItem>
@@ -60,7 +68,14 @@ export function NavFavorites({ favorites }: { favorites: SidebarItem[] }) {
                   <span>Open in New Tab</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => {
+                    const globalIndex = currentFavoritesList.indexOf(item.name)
+                    if (globalIndex !== -1) {
+                      moveToOther(globalIndex)
+                    }
+                  }}
+                >
                   <StarOff size={14} className="text-muted-foreground" />
                   <span>Remove from Favorites</span>
                 </DropdownMenuItem>

@@ -20,6 +20,7 @@ export const SidebarLeft = ({
   const favoriteItems = sidebarItems
     .filter((item) => favorites.includes(item.name))
     .sort((a, b) => a.name.localeCompare(b.name))
+
   const otherItems = sidebarItems
     .filter((item) => others.includes(item.name))
     .sort((a, b) => a.name.localeCompare(b.name))

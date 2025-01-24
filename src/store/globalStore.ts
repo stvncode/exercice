@@ -12,14 +12,18 @@ interface Account {
 }
 
 interface GlobalState {
+  // Account
   account: Account
+  // Sidebar
   favorites: string[]
   others: string[]
 }
 
 interface GlobalStateFunction extends GlobalState {
+  // Account
   setAccount: (account: Account) => void
   logout: () => void
+  // Sidebar
   moveFavorite: (from: number, to: number) => void
   moveOther: (from: number, to: number) => void
   moveToOther: (fromIndex: number) => void

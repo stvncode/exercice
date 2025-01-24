@@ -1,4 +1,4 @@
-import { Home, Inbox, Search } from "lucide-react"
+import { Home, Inbox, LayoutDashboard, Search } from "lucide-react"
 
 import {
   Flex,
@@ -45,6 +45,18 @@ export const NavMain = () => {
             >
               <Home />
               <span>Home</span>
+            </Flex>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+        <SidebarMenuItem>
+          <SidebarMenuButton asChild isActive={pathname === "/dashboard"}>
+            <Flex
+              align="center"
+              className="gap-2 cursor-pointer"
+              onClick={() => navigate("/dashboard")}
+            >
+              <LayoutDashboard />
+              <span>Dashboard</span>
             </Flex>
           </SidebarMenuButton>
         </SidebarMenuItem>

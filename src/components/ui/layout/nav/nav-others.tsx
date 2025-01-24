@@ -1,5 +1,6 @@
-import { ArrowUpRight, Link, MoreHorizontal, StarOff } from "lucide-react"
+import { ArrowUpRight, Link, MoreHorizontal, Star } from "lucide-react"
 
+import { useGlobalStore } from "@/store/globalStore"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +17,7 @@ import {
   useSidebar,
 } from "chronoxis"
 import { ReactNode } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom"
 
 export function NavOthers({
   others,
@@ -30,6 +31,9 @@ export function NavOthers({
   const { isMobile } = useSidebar()
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const { moveToFavorite } = useGlobalStore()
+
+  const currentOthersList = useGlobalStore((state) => state.others)
 
   return (
     <SidebarGroup>
@@ -59,18 +63,42 @@ export function NavOthers({
                 side={isMobile ? "bottom" : "right"}
                 align={isMobile ? "end" : "start"}
               >
-                <DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() =>
+                    navigator.clipboard.writeText(
+                      import.meta.env.VITE_URL + item.url
+                    )
+                  }
+                >
                   <Link size={14} className="text-muted-foreground" />
                   <span>Copy Link</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <ArrowUpRight size={14} className="text-muted-foreground" />
-                  <span>Open in New Tab</span>
+                  <RouterLink
+                    to={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Flex align="center" className="gap-2">
+                      <ArrowUpRight
+                        size={16}
+                        className="text-muted-foreground -ml-0.5"
+                      />
+                      <span>Open in New Tab</span>
+                    </Flex>
+                  </RouterLink>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <StarOff size={14} className="text-muted-foreground" />
-                  <span>Remove from Favorites</span>
+                <DropdownMenuItem
+                  onClick={() => {
+                    const globalIndex = currentOthersList.indexOf(item.name)
+                    if (globalIndex !== -1) {
+                      moveToFavorite(globalIndex)
+                    }
+                  }}
+                >
+                  <Star size={14} className="text-muted-foreground" />
+                  <span>Move to Favorites</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

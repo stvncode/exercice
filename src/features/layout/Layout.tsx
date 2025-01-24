@@ -1,5 +1,7 @@
+import { sidebarItems } from "@/components/ui/layout/sidebar/data"
 import { SidebarLeft } from "@/components/ui/layout/sidebar/sidebar-left"
 import { SidebarRight } from "@/components/ui/layout/sidebar/sidebar-right"
+import { A, O, pipe } from "@mobily/ts-belt"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,9 +11,26 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from "chronoxis"
-import { Outlet } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom"
+import { match } from "ts-pattern"
 
 export const Layout = () => {
+  const { pathname } = useLocation()
+
+  const title = match(pathname)
+    .with("/", () => "Home")
+    .with("/dashboard", () => "Dashboard")
+    .with("/inbox", () => "Inbox")
+    .otherwise(() =>
+      pipe(
+        sidebarItems,
+        A.filter((item) => pathname.includes(item.url)),
+        A.head,
+        O.map((item) => item.name),
+        O.getWithDefault("Home" as string)
+      )
+    )
+
   return (
     <>
       <SidebarLeft />
@@ -24,7 +43,7 @@ export const Layout = () => {
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbPage className="line-clamp-1">
-                    Breadcrumb
+                    {title}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>

@@ -1,13 +1,17 @@
 import { App } from "@/App"
 import {
+  Dashboard,
   Framer,
   Home,
   Inbox,
   Playwright,
   React,
   ReactHookForm,
+  ReactIntermediate,
+  ReactJunior,
   ReactQuery,
   ReactRouterDom,
+  ReactSenior,
   ShadcnUI,
   TailwindCSS,
   TSBelt,
@@ -16,7 +20,7 @@ import {
   Zustand,
 } from "@/pages"
 import Error404 from "@/pages/404"
-import { createBrowserRouter, RouteObject } from "react-router-dom"
+import { createBrowserRouter, Outlet, RouteObject } from "react-router-dom"
 
 const baseRoutes: RouteObject[] = [
   {
@@ -24,12 +28,34 @@ const baseRoutes: RouteObject[] = [
     element: <Home />,
   },
   {
+    path: "/dashboard",
+    element: <Dashboard />,
+  },
+  {
     path: "/inbox",
     element: <Inbox />,
   },
   {
     path: "/react",
-    element: <React />,
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <React />,
+      },
+      {
+        path: "/react/junior",
+        element: <ReactJunior />,
+      },
+      {
+        path: "/react/intermediate",
+        element: <ReactIntermediate />,
+      },
+      {
+        path: "/react/senior",
+        element: <ReactSenior />,
+      },
+    ],
   },
   {
     path: "/react-router-dom",

@@ -1,13 +1,10 @@
-import { useGlobalStore } from "@/store/globalStore"
+import { questionMap } from "@/lib/questions/questions"
 import {
-  DndContext,
-  DragEndEvent,
-  DragOverEvent,
-  DragOverlay,
-  DragStartEvent,
-  closestCenter,
-} from "@dnd-kit/core"
-import { arrayMove } from "@dnd-kit/sortable"
+  CourseStore,
+  useReactStore,
+  useTailwindStore,
+  useTypeScriptStore,
+} from "@/store/questionStore"
 import {
   Sidebar,
   SidebarContent,
@@ -16,80 +13,27 @@ import {
 } from "chronoxis"
 import * as React from "react"
 import { DatePicker } from "../date-picker"
+import { NavDrag } from "../nav/nav-drag"
+import { QuestionsNav } from "../nav/nav-questions"
 import { NavUser } from "../nav/nav-user"
-import { DraggableSelectors } from "./draggable-selectors"
+
+const storeMap: Record<string, () => CourseStore> = {
+  react: useReactStore,
+  typescript: useTypeScriptStore,
+  tailwind: useTailwindStore,
+  // Add other stores
+}
 
 export function SidebarRight({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
-  const [activeId, setActiveId] = React.useState<string | null>(null)
-  const { moveToOther, moveToFavorite, setFavorites, setOthers } =
-    useGlobalStore()
-  const favorites = useGlobalStore((state) => state.favorites)
-  const others = useGlobalStore((state) => state.others)
-
-  const handleDragStart = (event: DragStartEvent) => {
-    setActiveId(event.active.id as string)
-  }
-
-  const handleDragOver = (event: DragOverEvent) => {
-    const { active, over } = event
-    if (!over) return
-
-    const sourceId = active.id as string
-    const overId = over.id as string
-
-    // Don't do anything if hovering over the container
-    if (overId === "favorites" || overId === "others") return
-
-    const sourceLists = {
-      favorites,
-      others,
-    }
-
-    const activeList = Object.entries(sourceLists).find(([, list]) =>
-      list.includes(sourceId)
-    )?.[0]
-
-    const overList = Object.entries(sourceLists).find(([, list]) =>
-      list.includes(overId)
-    )?.[0]
-
-    if (!activeList || !overList || activeList === overList) return
-
-    if (activeList === "favorites" && overList === "others") {
-      const fromIndex = favorites.indexOf(sourceId)
-      moveToOther(fromIndex)
-    } else if (activeList === "others" && overList === "favorites") {
-      const fromIndex = others.indexOf(sourceId)
-      moveToFavorite(fromIndex)
-    }
-  }
-
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event
-    if (!over) return
-
-    const sourceId = active.id as string
-    const destinationId = over.id as string
-
-    if (favorites.includes(sourceId)) {
-      const oldIndex = favorites.indexOf(sourceId)
-      const newIndex = favorites.indexOf(destinationId)
-      if (newIndex !== -1) {
-        const newFavorites = arrayMove(favorites, oldIndex, newIndex)
-        setFavorites(newFavorites)
-      }
-    } else if (others.includes(sourceId)) {
-      const oldIndex = others.indexOf(sourceId)
-      const newIndex = others.indexOf(destinationId)
-      if (newIndex !== -1) {
-        const newOthers = arrayMove(others, oldIndex, newIndex)
-        setOthers(newOthers)
-      }
-    }
-    setActiveId(null)
-  }
+  const pathParts = location.pathname.split("/")
+  const isQuestionRoute = ["junior", "intermediate", "senior"].includes(
+    pathParts[2]
+  )
+  const coursePath = pathParts[1]
+  const courseStore = storeMap[coursePath]
+  const questions = questionMap[`${coursePath}_${pathParts[2]}`]
 
   return (
     <Sidebar
@@ -103,21 +47,11 @@ export function SidebarRight({
       <SidebarContent>
         <DatePicker />
         <SidebarSeparator className="mx-0" />
-        <DndContext
-          onDragStart={handleDragStart}
-          onDragOver={handleDragOver}
-          onDragEnd={handleDragEnd}
-          collisionDetection={closestCenter}
-        >
-          <DraggableSelectors />
-          <DragOverlay>
-            {activeId ? (
-              <div className="flex items-center gap-2 p-2 bg-white shadow-lg rounded-md">
-                {activeId}
-              </div>
-            ) : null}
-          </DragOverlay>
-        </DndContext>
+        {isQuestionRoute && questions ? (
+          <QuestionsNav questions={questions} courseStore={courseStore} />
+        ) : (
+          <NavDrag />
+        )}
       </SidebarContent>
     </Sidebar>
   )
