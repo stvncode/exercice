@@ -20,7 +20,9 @@ export const DashboardCard = ({
     </CardHeader>
     <CardContent>
       <div className="text-2xl font-bold">{total}</div>
-      {change && <p className="text-xs text-muted-foreground">{change}</p>}
+      {change && (
+        <p className="text-xs mt-1.5 text-muted-foreground">{change}</p>
+      )}
     </CardContent>
   </Card>
 )

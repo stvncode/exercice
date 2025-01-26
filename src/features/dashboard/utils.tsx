@@ -1,11 +1,12 @@
 import { CourseStore } from "@/store/questionStore"
+import { format } from "date-fns"
 import { DateRange } from "react-day-picker"
 
 export const getSuccessAndFailures = (
   stores: CourseStore[],
   dateRange?: DateRange
-) => {
-  return stores.reduce(
+) =>
+  stores.reduce(
     (acc: { success: number; failures: number }, store) => {
       Object.entries(store.progress)
         .filter(([date]) => {
@@ -18,13 +19,30 @@ export const getSuccessAndFailures = (
         .forEach(([, levelData]) => {
           ;(["junior", "intermediate", "senior"] as const).forEach((level) => {
             Object.values(levelData[level]?.answers || {}).forEach(
-              ({ isCorrect }) => {
-                console.log(isCorrect)
-                return isCorrect ? acc.success++ : acc.failures++
-              }
+              ({ isCorrect }) => (isCorrect ? acc.success++ : acc.failures++)
             )
           })
         })
+      return acc
+    },
+    { success: 0, failures: 0 }
+  )
+
+export const getSuccessAndFailuresPerDay = (
+  stores: CourseStore[],
+  date: Date
+) => {
+  const dateStr = format(date, "yyyy-MM-dd")
+  return stores.reduce(
+    (acc: { success: number; failures: number }, store) => {
+      const dayData = store.progress[dateStr]
+      if (dayData) {
+        ;(["junior", "intermediate", "senior"] as const).forEach((level) => {
+          Object.values(dayData[level]?.answers || {}).forEach(
+            ({ isCorrect }) => (isCorrect ? acc.success++ : acc.failures++)
+          )
+        })
+      }
       return acc
     },
     { success: 0, failures: 0 }

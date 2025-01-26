@@ -4,13 +4,40 @@ import { DashboardOverview } from "@/features/dashboard/DashboardOverview"
 import { DashboardWork } from "@/features/dashboard/DashboardWork"
 import { getSuccessAndFailures } from "@/features/dashboard/utils"
 import { useDateRangeStore } from "@/store/dateRangeStore"
-import { useReactStore } from "@/store/questionStore"
+import {
+  useFramerStore,
+  usePlaywrightStore,
+  useReactHookFormStore,
+  useReactQueryStore,
+  useReactRouterDomStore,
+  useReactStore,
+  useShadcnUIStore,
+  useTailwindStore,
+  useTSBeltStore,
+  useTypeScriptStore,
+  useVitestStore,
+  useZodStore,
+  useZustandStore,
+} from "@/store/questionStore"
 import { Card, CardContent, CardHeader, CardTitle } from "chronoxis"
 import { BookOpen, CheckCircle2, Flame, XCircle } from "lucide-react"
 
-//TODO: Add Other stores
 export const Dashboard = () => {
-  const stores = [useReactStore()]
+  const stores = [
+    useReactStore(),
+    useReactHookFormStore(),
+    useReactQueryStore(),
+    useReactRouterDomStore(),
+    useShadcnUIStore(),
+    useTailwindStore(),
+    useTypeScriptStore(),
+    useVitestStore(),
+    useFramerStore(),
+    usePlaywrightStore(),
+    useTSBeltStore(),
+    useZodStore(),
+    useZustandStore(),
+  ]
   const levels = ["junior", "intermediate", "senior"] as const
   const dateRange = useDateRangeStore((state) => state.dateRange)
 
@@ -83,7 +110,7 @@ export const Dashboard = () => {
             <CardTitle>Progress Overview</CardTitle>
           </CardHeader>
           <CardContent className="pl-2">
-            <DashboardOverview success={success} failures={failures} />
+            <DashboardOverview stores={stores} />
           </CardContent>
         </Card>
         <Card className="col-span-3">

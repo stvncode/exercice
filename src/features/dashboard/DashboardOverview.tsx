@@ -1,5 +1,5 @@
 import { useDateRangeStore } from "@/store/dateRangeStore"
-import { useReactStore } from "@/store/questionStore"
+import { CourseStore } from "@/store/questionStore"
 import { ChartConfig, ChartContainer, ChartTooltip, Flex } from "chronoxis"
 import { eachDayOfInterval, format } from "date-fns"
 import { useMemo } from "react"
@@ -11,6 +11,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts"
+import { getSuccessAndFailuresPerDay } from "./utils"
 
 const chartConfig = {
   desktop: {
@@ -23,15 +24,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export const DashboardOverview = ({
-  success,
-  failures,
-}: {
-  success: number
-  failures: number
-}) => {
-  const stores = [useReactStore()]
-  const levels = ["junior", "intermediate", "senior"] as const
+export const DashboardOverview = ({ stores }: { stores: CourseStore[] }) => {
   const dateRange = useDateRangeStore((state) => state.dateRange)
 
   const data = useMemo(() => {
@@ -43,27 +36,17 @@ export const DashboardOverview = ({
     })
 
     return dates.map((date) => {
-      const dateStr = format(date, "yyyy-MM-dd")
-
-      const total = stores.reduce((acc: number, store) => {
-        if (!store.progress[dateStr]) return acc
-        return (
-          acc +
-          levels.reduce(
-            (levelSum: number, level) =>
-              levelSum +
-              Object.keys(store.progress[dateStr][level]?.answers || {}).length,
-            0
-          )
-        )
-      }, 0)
+      const { success, failures } = getSuccessAndFailuresPerDay(stores, date)
+      const total = success + failures
 
       return {
         name: format(date, "MMM dd"),
+        date,
         total,
+        success,
+        failures,
       }
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stores, dateRange])
 
   if (!data.length || data.every((day) => day.total === 0)) {
@@ -85,28 +68,16 @@ export const DashboardOverview = ({
             stroke="#888888"
             fontSize={12}
             tickFormatter={(value) => `${value} Q`}
-            dataKey={"total"}
+            dataKey="total"
           />
-
           <CartesianGrid strokeDasharray="3" />
-
           <ChartTooltip
             cursor={false}
             content={({ active, payload }) => {
-              console.log("active", active)
-              console.log("payload", payload)
-              if (
-                !active ||
-                !payload ||
-                payload.length === 0 ||
-                payload[0].value === 0
-              ) {
-                return null // Do not render tooltip if no valid data
-              }
+              if (!active || !payload?.length || payload[0].value === 0)
+                return null
 
-              const { value } = payload[0]
-              console.log("value", value)
-
+              const { success, failures } = payload[0].payload
               return (
                 <Flex
                   direction="column"

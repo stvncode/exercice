@@ -111,5 +111,15 @@ export const createCourseStore = (courseName: string) =>
 
 // Stores
 export const useReactStore = createCourseStore("react")
-export const useTypeScriptStore = createCourseStore("typescript")
+export const useReactHookFormStore = createCourseStore("react-hook-form")
+export const useReactQueryStore = createCourseStore("react-query")
+export const useReactRouterDomStore = createCourseStore("react-router-dom")
+export const useShadcnUIStore = createCourseStore("shadcn-ui")
 export const useTailwindStore = createCourseStore("tailwind")
+export const useTypeScriptStore = createCourseStore("typescript")
+export const useVitestStore = createCourseStore("vitest")
+export const useFramerStore = createCourseStore("framer")
+export const usePlaywrightStore = createCourseStore("playwright")
+export const useTSBeltStore = createCourseStore("ts-belt")
+export const useZodStore = createCourseStore("zod")
+export const useZustandStore = createCourseStore("zustand")

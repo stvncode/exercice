@@ -1,35 +1,48 @@
-import { sidebarItems } from "@/components/ui/layout/sidebar/data"
 import { SidebarLeft } from "@/components/ui/layout/sidebar/sidebar-left"
 import { SidebarRight } from "@/components/ui/layout/sidebar/sidebar-right"
-import { A, O, pipe } from "@mobily/ts-belt"
 import {
   Breadcrumb,
   BreadcrumbItem,
+  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
+  BreadcrumbSeparator,
   Separator,
   SidebarInset,
   SidebarTrigger,
 } from "chronoxis"
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet, useLocation, useNavigate } from "react-router-dom"
+import { Fragment } from "react/jsx-runtime"
 import { match } from "ts-pattern"
 
 export const Layout = () => {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
 
-  const title = match(pathname)
-    .with("/", () => "Home")
-    .with("/dashboard", () => "Dashboard")
-    .with("/inbox", () => "Inbox")
-    .otherwise(() =>
-      pipe(
-        sidebarItems,
-        A.filter((item) => pathname.includes(item.url)),
-        A.head,
-        O.map((item) => item.name),
-        O.getWithDefault("Home" as string)
-      )
-    )
+  const breadcrumbs = match(pathname)
+    .with("/", () => [{ name: "Home", path: "/" }])
+    .with("/dashboard", () => [
+      { name: "Home", path: "/" },
+      { name: "Dashboard", path: "/dashboard" },
+    ])
+    .with("/inbox", () => [
+      { name: "Home", path: "/" },
+      { name: "Inbox", path: "/inbox" },
+    ])
+    .otherwise(() => {
+      const [category, level] = pathname.split("/").filter(Boolean)
+
+      return level
+        ? [
+            { name: "Home", path: "/" },
+            { name: category, path: `/${category}` },
+            { name: level, path: `/${category}/${level}` },
+          ]
+        : [
+            { name: "Home", path: "/" },
+            { name: category, path: `/${category}` },
+          ]
+    })
 
   return (
     <>
@@ -41,11 +54,20 @@ export const Layout = () => {
             <Separator orientation="vertical" className="mr-1 h-4" />
             <Breadcrumb>
               <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbPage className="line-clamp-1">
-                    {title}
-                  </BreadcrumbPage>
-                </BreadcrumbItem>
+                {breadcrumbs.map((crumb, index) => (
+                  <Fragment key={crumb.path}>
+                    <BreadcrumbItem>
+                      {index === breadcrumbs.length - 1 ? (
+                        <BreadcrumbPage>{crumb.name}</BreadcrumbPage>
+                      ) : (
+                        <BreadcrumbLink onClick={() => navigate(crumb.path)}>
+                          {crumb.name}
+                        </BreadcrumbLink>
+                      )}
+                    </BreadcrumbItem>
+                    {index < breadcrumbs.length - 1 && <BreadcrumbSeparator />}
+                  </Fragment>
+                ))}
               </BreadcrumbList>
             </Breadcrumb>
           </div>

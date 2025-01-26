@@ -1,0 +1,1 @@
+export { TypeScript } from "./TypeScript"

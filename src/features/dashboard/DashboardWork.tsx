@@ -1,9 +1,38 @@
 import { useDateRangeStore } from "@/store/dateRangeStore"
-import { useReactStore } from "@/store/questionStore"
+import {
+  useFramerStore,
+  usePlaywrightStore,
+  useReactHookFormStore,
+  useReactQueryStore,
+  useReactRouterDomStore,
+  useReactStore,
+  useShadcnUIStore,
+  useTailwindStore,
+  useTSBeltStore,
+  useTypeScriptStore,
+  useVitestStore,
+  useZodStore,
+  useZustandStore,
+} from "@/store/questionStore"
 import { Avatar, AvatarFallback } from "chronoxis"
 
 export const DashboardWork = () => {
-  const stores = [{ store: useReactStore(), name: "React" }]
+  const stores = [
+    { store: useReactStore(), name: "React" },
+    { store: useReactRouterDomStore(), name: "React Router Dom" },
+    { store: useReactHookFormStore(), name: "React Hook Form" },
+    { store: useReactQueryStore(), name: "React Query" },
+    { store: useShadcnUIStore(), name: "Shadcn UI" },
+    { store: useTailwindStore(), name: "Tailwind CSS" },
+    { store: useTypeScriptStore(), name: "TypeScript" },
+    { store: useVitestStore(), name: "Vitest" },
+    { store: useFramerStore(), name: "Framer" },
+    { store: usePlaywrightStore(), name: "Playwright" },
+    { store: useTSBeltStore(), name: "TS Belt" },
+    { store: useZodStore(), name: "Zod" },
+    { store: useZustandStore(), name: "Zustand" },
+  ]
+
   const dateRange = useDateRangeStore((state) => state.dateRange)
   const levels = ["junior", "intermediate", "senior"] as const
 

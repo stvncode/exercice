@@ -1,9 +1,19 @@
 import { questionMap } from "@/lib/questions/questions"
 import {
   CourseStore,
+  useFramerStore,
+  usePlaywrightStore,
+  useReactHookFormStore,
+  useReactQueryStore,
+  useReactRouterDomStore,
   useReactStore,
+  useShadcnUIStore,
   useTailwindStore,
+  useTSBeltStore,
   useTypeScriptStore,
+  useVitestStore,
+  useZodStore,
+  useZustandStore,
 } from "@/store/questionStore"
 import {
   Sidebar,
@@ -19,9 +29,18 @@ import { NavUser } from "../nav/nav-user"
 
 const storeMap: Record<string, () => CourseStore> = {
   react: useReactStore,
+  "react-hook-form": useReactHookFormStore,
+  "react-query": useReactQueryStore,
+  "react-router-dom": useReactRouterDomStore,
+  "shadcn-ui": useShadcnUIStore,
+  "tailwind-css": useTailwindStore,
   typescript: useTypeScriptStore,
-  tailwind: useTailwindStore,
-  // Add other stores
+  vitest: useVitestStore,
+  framer: useFramerStore,
+  playwright: usePlaywrightStore,
+  "ts-belt": useTSBeltStore,
+  zod: useZodStore,
+  zustand: useZustandStore,
 }
 
 export function SidebarRight({
@@ -33,7 +52,12 @@ export function SidebarRight({
   )
   const coursePath = pathParts[1]
   const courseStore = storeMap[coursePath]
-  const questions = questionMap[`${coursePath}_${pathParts[2]}`]
+  const questions =
+    questionMap[`${coursePath.replace(/-/g, "_")}_${pathParts[2]}`]
+
+  console.log("questions", questions)
+  console.log("courseStore", courseStore)
+  console.log()
 
   return (
     <Sidebar

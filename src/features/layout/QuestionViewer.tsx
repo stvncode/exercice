@@ -4,6 +4,8 @@ import { Button, Progress } from "chronoxis"
 import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, Trophy, XCircle } from "lucide-react"
 import { useEffect, useState } from "react"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"
 
 export interface Question {
   id: number
@@ -107,15 +109,19 @@ export const QuestionViewer = ({
           <h2 className="text-xl font-semibold">
             Question {currentQuestion + 1}
           </h2>
-          <p>{questions[currentQuestion].title}</p>
+          <p className="pb-4">{questions[currentQuestion].title}</p>
           {questions[currentQuestion].code && (
-            <pre className="p-4 bg-gray-900 text-gray-100 rounded-lg overflow-x-auto">
-              <code>{questions[currentQuestion].code}</code>
-            </pre>
+            <SyntaxHighlighter
+              language="javascript"
+              style={vscDarkPlus}
+              className="rounded-lg"
+            >
+              {questions[currentQuestion].code.trim()}
+            </SyntaxHighlighter>
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
           {questions[currentQuestion].options.map((option, index) => (
             <Button
               key={index}

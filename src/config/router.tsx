@@ -6,11 +6,16 @@ import {
   Inbox,
   Playwright,
   React,
+  ReactExercices,
   ReactHookForm,
   ReactIntermediate,
   ReactJunior,
   ReactQuery,
   ReactRouterDom,
+  ReactRouterDomExercices,
+  ReactRouterDomIntermediate,
+  ReactRouterDomJunior,
+  ReactRouterDomSenior,
   ReactSenior,
   ShadcnUI,
   TailwindCSS,
@@ -55,19 +60,67 @@ const baseRoutes: RouteObject[] = [
         path: "/react/senior",
         element: <ReactSenior />,
       },
+      {
+        path: "/react/exercises",
+        element: <ReactExercices />,
+      },
     ],
   },
   {
-    path: "/react-router-dom",
-    element: <ReactRouterDom />,
+    path: "/react-hook-form",
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <ReactHookForm />,
+      },
+      {
+        path: "/react-hook-form/junior",
+        element: <ReactHookForm />,
+      },
+      {
+        path: "/react-hook-form/intermediate",
+        element: <ReactHookForm />,
+      },
+      {
+        path: "/react-hook-form/senior",
+        element: <ReactHookForm />,
+      },
+      {
+        path: "/react-hook-form/exercises",
+        element: <ReactHookForm />,
+      },
+    ],
   },
   {
     path: "/react-query",
     element: <ReactQuery />,
   },
   {
-    path: "/react-hook-form",
-    element: <ReactHookForm />,
+    path: "/react-router-dom",
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <ReactRouterDom />,
+      },
+      {
+        path: "/react-router-dom/junior",
+        element: <ReactRouterDomJunior />,
+      },
+      {
+        path: "/react-router-dom/intermediate",
+        element: <ReactRouterDomIntermediate />,
+      },
+      {
+        path: "/react-router-dom/senior",
+        element: <ReactRouterDomSenior />,
+      },
+      {
+        path: "/react-router-dom/exercises",
+        element: <ReactRouterDomExercices />,
+      },
+    ],
   },
   {
     path: "/shadcn-ui",

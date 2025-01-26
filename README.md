@@ -1,1 +1,5 @@
-- Add every store to the dashboard and for the storeMap in the sidebar right
+- Check Exercices and Questions
+- Router
+- Files
+- Settings
+- Inbox
