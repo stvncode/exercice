@@ -24,13 +24,6 @@ export const Home = () => {
               account.username
             }! Welcome to your React Learning Journey`}
             delay={50}
-          />
-        </div>
-
-        <div className="max-w-2xl text-lg text-gray-600">
-          <TypeWriter
-            text="Master React ecosystem through hands-on exercises and real-world examples. From basics to advanced patterns, explore components, hooks, state management, and more."
-            delay={30}
             onComplete={() => setGreetingDone(true)}
           />
         </div>
@@ -42,6 +35,18 @@ export const Home = () => {
             transition={{ duration: 1.6, ease: "easeOut" }}
             className="space-y-12 flex flex-col items-center w-full"
           >
+            <motion.div
+              className="flex flex-col items-center text-center max-w-2xl space-y-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
+            >
+              <p className="text-gray-600">
+                Master React ecosystem through hands-on exercises and real-world
+                examples. From basics to advanced patterns, explore components,
+                hooks, state management, and more.
+              </p>
+            </motion.div>
             <motion.div
               className="rounded-lg border py-12 p-8 bg-gray-50 w-full max-w-5xl"
               initial={{ opacity: 0, y: 20 }}

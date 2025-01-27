@@ -2,5 +2,8 @@
 - Settings
 - Inbox
 
-- Fix height on dashboard work
 - Add usefull links (docs, book etc)
+- Exercice are only react
+- Redo shadcn questions
+- edit login
+- react router question

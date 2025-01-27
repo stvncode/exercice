@@ -62,7 +62,7 @@ export const playwrightSeniorQuestions = [
     id: 5,
     title:
       "How would you run tests in Playwright across different devices and viewports?",
-    code: `const context = await browser.newContext({ ...devices['iPhone 11'] })`,
+    code: null,
     options: [
       "Use browserContext.setViewportSize()",
       "Use browserContext.newPage() with a device setting",
@@ -77,7 +77,7 @@ export const playwrightSeniorQuestions = [
     id: 6,
     title:
       "How do you handle tracing and debugging in Playwright for complex tests?",
-    code: `await context.tracing.start({ screenshots: true, snapshots: true })`,
+    code: null,
     options: [
       "Use page.waitForSelector() to debug element visibility",
       "Use context.tracing.start() to record traces and snapshots for debugging",
@@ -91,7 +91,7 @@ export const playwrightSeniorQuestions = [
   {
     id: 7,
     title: "How can you mock API responses in Playwright to test edge cases?",
-    code: `await page.route('**/api/**', (route, request) => route.fulfill({ body: JSON.stringify({ mock: true }) }))`,
+    code: null,
     options: [
       "Use page.route() to intercept and mock network requests",
       "Use page.setRequestInterception()",
@@ -106,7 +106,7 @@ export const playwrightSeniorQuestions = [
     id: 8,
     title:
       "What strategy would you use to handle pop-ups or dialogs in Playwright?",
-    code: `page.on('dialog', dialog => dialog.accept())`,
+    code: null,
     options: [
       "Use page.waitForDialog()",
       "Use page.on('dialog') to handle pop-ups",
@@ -120,7 +120,7 @@ export const playwrightSeniorQuestions = [
   {
     id: 9,
     title: "How do you implement visual regression testing in Playwright?",
-    code: `await page.screenshot({ path: 'comparison.png' })`,
+    code: null,
     options: [
       "Use context.screenshot() for full-page screenshots",
       "Use page.screenshot() for element-level screenshots",

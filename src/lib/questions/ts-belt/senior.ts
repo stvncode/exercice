@@ -47,7 +47,7 @@ export const tsBeltSeniorQuestions = [
     title:
       "Which of the following ts-belt methods allows you to execute side effects for `Option` or `Result` without modifying the value?",
     code: null,
-    options: ["map()", "flatMap()", "forEach()", "getOrElse()"],
+    options: ["map()", "flatMap()", "forEach()", "getWithDefault()"],
     correctAnswer: 2,
     explanation:
       "The `forEach()` method allows you to execute side effects on the value inside an `Option` or `Result` without modifying the value itself.",
@@ -61,7 +61,7 @@ export const tsBeltSeniorQuestions = [
       "Using `toOption()`",
       "Using `mapErr()`",
       "Using `flatten()`",
-      "Using `getOrElse()`",
+      "Using `getWithDefault()`",
     ],
     correctAnswer: 0,
     explanation:
@@ -73,7 +73,7 @@ export const tsBeltSeniorQuestions = [
       "How do you handle a fallback value when using `Option` with a custom error message?",
     code: null,
     options: [
-      "Using `getOrElse()` with a default value",
+      "Using `getWithDefault()` with a default value",
       "Using `unwrapOrElse()`",
       "Using `alt()`",
       "Using `mapErr()`",
@@ -128,10 +128,10 @@ export const tsBeltSeniorQuestions = [
   {
     id: 10,
     title:
-      "What will happen if you call `getOrElse()` on an `Option` containing `undefined`?",
+      "What will happen if you call `getWithDefault()` on an `Option` containing `undefined`?",
     code: `
   import { Option } from '@mobility/ts-belt';
-  const result = Option.some(undefined).getOrElse('default');
+  const result = Option.some(undefined).getWithDefault('default');
   `,
     options: [
       "It will return `undefined`",
@@ -141,6 +141,6 @@ export const tsBeltSeniorQuestions = [
     ],
     correctAnswer: 1,
     explanation:
-      "Calling `getOrElse()` on an `Option.some(undefined)` will return the fallback value since `undefined` is considered a value, but `Option` is designed to allow a fallback in case of a missing value.",
+      "Calling `getWithDefault()` on an `Option.some(undefined)` will return the fallback value since `undefined` is considered a value, but `Option` is designed to allow a fallback in case of a missing value.",
   },
 ]

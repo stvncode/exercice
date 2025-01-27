@@ -3,19 +3,7 @@ export const reactHookFormSeniorQuestions = [
     id: 1,
     title:
       "How can you integrate React Hook Form with a custom input component?",
-    code: `
-  const CustomInput = ({ value, onChange }) => (
-    <input value={value} onChange={onChange} />
-  );
-
-  const { control } = useForm();
-
-  <Controller
-    name="custom"
-    control={control}
-    render={({ field }) => <CustomInput {...field} />}
-  />;
-  `,
+    code: null,
     options: [
       "Using the `Controller` component",
       "Directly passing the `register` function to the custom component",
@@ -44,15 +32,7 @@ export const reactHookFormSeniorQuestions = [
   {
     id: 3,
     title: "What is the `resolver` function in React Hook Form?",
-    code: `
-  const { register, handleSubmit } = useForm({
-    resolver: yupResolver(schema)
-  });
-
-  <form onSubmit={handleSubmit(onSubmit)}>
-    <input {...register("email")} />
-  </form>;
-  `,
+    code: null,
     options: [
       "A function to connect validation libraries like Yup or Zod",
       "A method to resolve form dependencies",
@@ -66,13 +46,7 @@ export const reactHookFormSeniorQuestions = [
   {
     id: 4,
     title: "How can you validate dynamic fields with React Hook Form?",
-    code: `
-  const { register, setValue } = useForm();
-
-  const fields = [{ name: "field1" }, { name: "field2" }];
-
-  fields.forEach(field => setValue(field.name, ""));
-  `,
+    code: null,
     options: [
       "Use `setValue` to initialize and validate dynamic fields",
       "Define validation rules globally in `useForm`",
@@ -86,15 +60,7 @@ export const reactHookFormSeniorQuestions = [
   {
     id: 5,
     title: "How do you handle file uploads in React Hook Form?",
-    code: `
-  <input
-    type="file"
-    {...register("file", {
-      required: "File is required",
-      validate: (file) => file.size < 500000 || "File size must be less than 500KB"
-    })}
-  />;
-  `,
+    code: null,
     options: [
       "Using `register` with validation rules for the file input",
       "Using the `Controller` component",
@@ -122,10 +88,7 @@ export const reactHookFormSeniorQuestions = [
   {
     id: 7,
     title: "How can you handle complex nested forms?",
-    code: `
-  <input {...register("user.address.street")} />
-  <input {...register("user.address.city")} />
-  `,
+    code: null,
     options: [
       "Use dot notation in `register` for nested fields",
       "Use the `Controller` component for each nested field",
@@ -139,11 +102,7 @@ export const reactHookFormSeniorQuestions = [
   {
     id: 8,
     title: "How do you submit a form programmatically?",
-    code: `
-  const { handleSubmit } = useForm();
-
-  handleSubmit(onSubmit)();
-  `,
+    code: null,
     options: [
       "Call `handleSubmit` directly with the submission callback",
       "Trigger an event on the form element",
@@ -157,13 +116,7 @@ export const reactHookFormSeniorQuestions = [
   {
     id: 9,
     title: "What is the benefit of `useFieldArray`?",
-    code: `
-  const { fields, append, remove } = useFieldArray({ name: "users" });
-
-  fields.map((field, index) => (
-    <input key={field.id} {...register(\`users.\${index}.name\`)} />
-  ));
-  `,
+    code: null,
     options: [
       "Manages dynamic arrays of fields efficiently",
       "Handles validation for nested objects",
@@ -177,22 +130,7 @@ export const reactHookFormSeniorQuestions = [
   {
     id: 10,
     title: "How can you debounce validation with React Hook Form?",
-    code: `
-  const { register, trigger } = useForm();
-
-  const debounce = (fn, delay) => {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => fn(...args), delay);
-    };
-  };
-
-  <input
-    {...register("search")}
-    onChange={debounce(() => trigger("search"), 300)}
-  />;
-  `,
+    code: null,
     options: [
       "Use a custom debounce function with `trigger`",
       "Use the `useDebounce` hook",

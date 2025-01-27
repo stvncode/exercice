@@ -17,7 +17,7 @@ export const playwrightJuniorQuestions = [
     id: 2,
     title:
       "Which of the following methods is used to navigate to a URL in Playwright?",
-    code: `await page.goto('<URL>')`,
+    code: null,
     options: [
       "page.navigate('<URL>')",
       "page.load('<URL>')",
@@ -59,7 +59,7 @@ export const playwrightJuniorQuestions = [
   {
     id: 5,
     title: "How can you capture a screenshot of the page in Playwright?",
-    code: `await page.screenshot({ path: 'screenshot.png' })`,
+    code: null,
     options: [
       "await page.screenshot('screenshot.png')",
       "await page.captureScreenshot()",
@@ -73,7 +73,7 @@ export const playwrightJuniorQuestions = [
   {
     id: 6,
     title: "How do you get the text content of an element in Playwright?",
-    code: `const text = await page.innerText('selector')`,
+    code: null,
     options: [
       "await page.getText('selector')",
       "await page.getContent('selector')",
@@ -95,12 +95,13 @@ export const playwrightJuniorQuestions = [
   },
   {
     id: 8,
-    title: "How do you launch a browser instance in Playwright?",
-    code: `const browser = await playwright.chromium.launch()`,
+    title: "How do you launch a Chrome instance in Playwright?",
+    code: null,
     options: [
       "const browser = await playwright.launch()",
       "const browser = await playwright.chromium.launch()",
       "const browser = playwright.launch()",
+      "const browser = playwright.firefox.launch()",
     ],
     correctAnswer: 1,
     explanation:
@@ -109,7 +110,7 @@ export const playwrightJuniorQuestions = [
   {
     id: 9,
     title: "How do you interact with an input field in Playwright?",
-    code: `await page.fill('input[name="username"]', 'user123')`,
+    code: null,
     options: [
       "await page.select('input[name=username]')",
       "await page.fill('input[name=username]', 'user123')",
@@ -124,7 +125,7 @@ export const playwrightJuniorQuestions = [
     id: 10,
     title:
       "How do you check if an element is visible on the page in Playwright?",
-    code: `await expect(page.locator('selector')).toBeVisible()`,
+    code: null,
     options: [
       "await expect(page.locator('selector')).toBeVisible()",
       "await page.locator('selector').isVisible()",

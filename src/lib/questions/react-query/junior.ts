@@ -41,12 +41,12 @@ export const reactQueryJuniorQuestions = [
     title: "What does `useQuery` require as its first argument?",
     code: null,
     options: [
-      "Query key",
       "Mutation function",
+      "Query key",
       "Query function",
       "Callback function",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "`useQuery` requires a query key, which uniquely identifies the query and helps with caching and refetching.",
   },
@@ -54,16 +54,7 @@ export const reactQueryJuniorQuestions = [
     id: 5,
     title:
       "Which of the following is the correct way to define a query function in React Query?",
-    code: `
-    import { useQuery } from "react-query";
-
-    const fetchData = () => { fetch("/api/data") };
-    
-    export default function Component() {
-      const { data, error } = useQuery("dataQuery", fetchData);
-      return <div>{data}</div>;
-    }
-    `,
+    code: null,
     options: [
       "Query function must return a promise",
       "Query function must return an array",

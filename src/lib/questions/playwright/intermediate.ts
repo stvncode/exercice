@@ -16,7 +16,7 @@ export const playwrightIntermediateQuestions = [
   {
     id: 2,
     title: "What is the correct way to wait for an element to become visible?",
-    code: `await expect(page.locator('selector')).toBeVisible()`,
+    code: null,
     options: [
       "await page.locator('selector').toBeVisible()",
       "await expect(page.locator('selector')).toBeVisible()",
@@ -45,7 +45,7 @@ export const playwrightIntermediateQuestions = [
   {
     id: 4,
     title: "How can you interact with a dropdown select element in Playwright?",
-    code: `await page.selectOption('select[name="dropdown"]', 'optionValue')`,
+    code: null,
     options: [
       "await page.selectOption('select[name=dropdown]', 'optionValue')",
       "await page.select('select[name=dropdown]', 'optionValue')",
@@ -73,7 +73,7 @@ export const playwrightIntermediateQuestions = [
   {
     id: 6,
     title: "How do you interact with an iframe in Playwright?",
-    code: `const iframe = await page.frame({ name: 'frameName' })`,
+    code: null,
     options: [
       "const iframe = page.frame('frameName')",
       "const iframe = await page.frame({ name: 'frameName' })",
@@ -88,7 +88,7 @@ export const playwrightIntermediateQuestions = [
     id: 7,
     title:
       "How can you ensure a specific element is hidden before performing actions?",
-    code: `await expect(page.locator('selector')).not.toBeVisible()`,
+    code: null,
     options: [
       "await expect(page.locator('selector')).toBeHidden()",
       "await page.locator('selector').not.toBeVisible()",
@@ -116,7 +116,7 @@ export const playwrightIntermediateQuestions = [
   {
     id: 9,
     title: "What is the correct way to run Playwright tests in headless mode?",
-    code: `const browser = await playwright.chromium.launch({ headless: true })`,
+    code: null,
     options: [
       "const browser = await playwright.launch({ headless: true })",
       "const browser = await playwright.chromium.launch({ headless: false })",
@@ -130,7 +130,7 @@ export const playwrightIntermediateQuestions = [
   {
     id: 10,
     title: "How can you check if an element contains specific text?",
-    code: `await expect(page.locator('selector')).toHaveText('expectedText')`,
+    code: null,
     options: [
       "await expect(page.locator('selector')).toHaveText('expectedText')",
       "await page.locator('selector').containsText('expectedText')",

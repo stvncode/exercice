@@ -2,13 +2,7 @@ export const vitestSeniorQuestions = [
   {
     id: 1,
     title: "How can you mock a module and its named exports using Vitest?",
-    code: `// How do you mock a module and its named exports in Vitest?
-    import { fetchData, getUser } from './api';
-    vi.mock('./api', () => ({
-      fetchData: vi.fn().mockResolvedValue('Mocked Data'),
-      getUser: vi.fn().mockResolvedValue({ name: 'John Doe' }),
-    }));
-    `,
+    code: null,
     options: [
       "vi.mock('./api', () => ({}))",
       "vi.mock('./api', { fetchData: vi.fn() })",
@@ -22,12 +16,7 @@ export const vitestSeniorQuestions = [
   {
     id: 2,
     title: "How can you mock a module's default export with Vitest?",
-    code: `// How do you mock the default export of a module in Vitest?
-    import fetchData from './api';
-    vi.mock('./api', () => ({
-      default: vi.fn().mockResolvedValue('Mocked Data'),
-    }));
-    `,
+    code: null,
     options: [
       "vi.mock('./api', () => ({ default: vi.fn() }))",
       "vi.mock('./api', () => ({ default: vi.fn().mockResolvedValue() }))",
@@ -41,11 +30,7 @@ export const vitestSeniorQuestions = [
   {
     id: 3,
     title: "How can you mock a function that throws an error in Vitest?",
-    code: `// How do you mock a function that throws an error in Vitest?
-    const mockFunction = vi.fn(() => {
-      throw new Error('Something went wrong');
-    });
-    `,
+    code: null,
     options: [
       "vi.fn(() => { throw new Error() })",
       "vi.fn().mockImplementation(() => { throw new Error() })",
@@ -59,11 +44,7 @@ export const vitestSeniorQuestions = [
   {
     id: 4,
     title: "How can you test code that depends on timers in Vitest?",
-    code: `// How do you test code that depends on timers in Vitest?
-    vi.useFakeTimers();
-    setTimeout(() => { console.log('Done'); }, 1000);
-    vi.advanceTimersByTime(1000);
-    `,
+    code: null,
     options: [
       "vi.useFakeTimers() and vi.advanceTimersByTime()",
       "vi.useFakeTimers() and vi.timerDone()",
@@ -78,11 +59,7 @@ export const vitestSeniorQuestions = [
     id: 5,
     title:
       "How can you ensure that a mocked function is called with specific arguments in Vitest?",
-    code: `// How do you ensure a mocked function is called with specific arguments?
-    const mockFunction = vi.fn();
-    mockFunction('test', 42);
-    expect(mockFunction).toHaveBeenCalledWith('test', 42);
-    `,
+    code: null,
     options: [
       "expect(mockFunction).toHaveBeenCalledWith('test', 42)",
       "expect(mockFunction).toBeCalledWith('test', 42)",
@@ -96,9 +73,7 @@ export const vitestSeniorQuestions = [
   {
     id: 6,
     title: "How can you handle mock function return values in Vitest?",
-    code: `// How can you mock return values with Vitest?
-    const mockFunction = vi.fn().mockReturnValueOnce('First').mockReturnValueOnce('Second');
-    `,
+    code: null,
     options: [
       "mockReturnValueOnce()",
       "mockReturnValue()",
@@ -112,9 +87,7 @@ export const vitestSeniorQuestions = [
   {
     id: 7,
     title: "How do you mock a resolved promise in Vitest?",
-    code: `// How do you mock a resolved promise in Vitest?
-    const mockFunction = vi.fn().mockResolvedValue('Resolved Value');
-    `,
+    code: null,
     options: [
       "vi.fn().mockResolvedValue()",
       "vi.fn().mockResolvedValueOnce()",
@@ -128,10 +101,7 @@ export const vitestSeniorQuestions = [
   {
     id: 8,
     title: "How do you ensure a test waits for a promise to resolve?",
-    code: `// How do you wait for a promise to resolve in a test?
-    const fetchData = () => Promise.resolve('Data');
-    expect(fetchData()).resolves.toBe('Data');
-    `,
+    code: null,
     options: [
       "expect(fetchData()).resolves.toBe('Data')",
       "expect(fetchData()).toResolveWith('Data')",
@@ -145,12 +115,7 @@ export const vitestSeniorQuestions = [
   {
     id: 9,
     title: "How do you test multiple asynchronous operations in Vitest?",
-    code: `// How do you test multiple asynchronous operations in Vitest?
-    async function fetchData() { return 'Data'; }
-    async function fetchUser() { return { name: 'John' }; }
-    const data = await fetchData();
-    const user = await fetchUser();
-    `,
+    code: null,
     options: [
       "await expect(fetchData()).resolves.toBe('Data')",
       "expect(Promise.all([fetchData(), fetchUser()])).resolves.toEqual([ 'Data', { name: 'John' } ])",
@@ -164,14 +129,7 @@ export const vitestSeniorQuestions = [
   {
     id: 10,
     title: "How can you test code with both callbacks and promises?",
-    code: `// How do you handle testing code that uses both callbacks and promises?
-    function fetchData(callback) {
-      setTimeout(() => {
-        callback('Data');
-      }, 100);
-    }
-    const data = await fetchData();
-    `,
+    code: null,
     options: [
       "Use async/await and callbacks together",
       "Use done() callback and await the promise",

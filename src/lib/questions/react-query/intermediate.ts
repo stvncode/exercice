@@ -5,12 +5,12 @@ export const reactQueryIntermediateQuestions = [
       "How do you prevent React Query from refetching data when the component remounts?",
     code: null,
     options: [
-      "Set the `staleTime` to Infinity",
       "Set `cacheTime` to 0",
+      "Set the `staleTime` to Infinity",
       "Set `refetchOnWindowFocus` to false",
       "Use `useMemo` hook",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "Setting `staleTime` to Infinity will make the data never considered stale, preventing a refetch when the component remounts.",
   },
@@ -20,12 +20,12 @@ export const reactQueryIntermediateQuestions = [
       "What is the purpose of `onSuccess` and `onError` callbacks in `useMutation`?",
     code: null,
     options: [
-      "To handle side effects like updating local state or UI after mutation",
       "To refetch queries after mutation",
       "To execute additional queries after mutation",
       "To manage loading and error states",
+      "To handle side effects like updating local state or UI after mutation",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "`onSuccess` and `onError` allow you to run functions after a mutation succeeds or fails, for example, to update the UI or trigger other queries.",
   },
@@ -35,12 +35,12 @@ export const reactQueryIntermediateQuestions = [
       "What is the difference between `useQuery` and `useMutation` in React Query?",
     code: null,
     options: [
-      "`useQuery` is used for data fetching, and `useMutation` is used for updating data",
       "`useQuery` is used for caching data, and `useMutation` for caching data updates",
       "`useQuery` is for HTTP requests, and `useMutation` is for caching responses",
+      "`useQuery` is used for data fetching, and `useMutation` is used for updating data",
       "`useQuery` automatically updates the UI, while `useMutation` does not",
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
       "`useQuery` is used for fetching data, while `useMutation` is used for updating or creating data (e.g., via POST, PUT, DELETE).",
   },
@@ -64,12 +64,12 @@ export const reactQueryIntermediateQuestions = [
       "What happens when the `refetchInterval` option is set in `useQuery`?",
     code: null,
     options: [
-      "It triggers a refetch of the data every specified number of milliseconds",
       "It sets the cache timeout for the query",
+      "It triggers a refetch of the data every specified number of milliseconds",
       "It prevents the query from refetching when a component remounts",
       "It increases the query's cacheTime",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "`refetchInterval` will automatically refetch the data every X milliseconds, ideal for use cases such as real-time data.",
   },
@@ -93,12 +93,12 @@ export const reactQueryIntermediateQuestions = [
     title: "How do you handle optimistic updates with React Query?",
     code: null,
     options: [
-      "By using the `onMutate` callback and updating the cache before the mutation resolves",
       "By using the `useMutation` hook with `onSuccess`",
       "By using the `useQuery` hook with `refetch`",
+      "By using the `onMutate` callback and updating the cache before the mutation resolves",
       "By using a global state for optimistic updates",
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
       "Optimistic updates in React Query are handled using `onMutate`, where you can immediately update the cache before the mutation resolves.",
   },
@@ -107,12 +107,12 @@ export const reactQueryIntermediateQuestions = [
     title: "How do you handle dependent queries in React Query?",
     code: null,
     options: [
-      "By using the `enabled` option in `useQuery` to disable the query until a condition is met",
       "By using the `useDependentQuery` hook",
+      "By using the `enabled` option in `useQuery` to disable the query until a condition is met",
       "By chaining queries using the `useAsync` hook",
       "By combining queries in a single `useQuery`",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "To handle dependent queries in React Query, use the `enabled` option in `useQuery` to control when a query should be executed based on conditions.",
   },
@@ -121,12 +121,12 @@ export const reactQueryIntermediateQuestions = [
     title: "What does `onSettled` do in a `useMutation`?",
     code: null,
     options: [
-      "It runs after the mutation succeeds or fails, regardless of the outcome",
       "It only runs when the mutation fails",
+      "It runs after the mutation succeeds or fails, regardless of the outcome",
       "It runs only after the mutation is successful",
       "It runs before the mutation is triggered",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "`onSettled` is a callback in `useMutation` that runs after a mutation has either succeeded or failed, allowing you to perform actions like invalidating queries.",
   },

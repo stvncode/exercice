@@ -20,12 +20,12 @@ export const framerSeniorQuestions = [
       "What is the difference between `variants` and `animate` props in Framer Motion?",
     code: null,
     options: [
-      "`variants` defines reusable states of a component, while `animate` triggers the animation of a component to a specific state",
       "`variants` controls the speed of the animation, while `animate` defines the animation path",
       "`variants` is used to control a single animation, while `animate` is for complex animations",
       "`variants` defines multiple keyframes, while `animate` is used to handle transitions",
+      "`variants` defines reusable states of a component, while `animate` triggers the animation of a component to a specific state",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "`variants` define reusable states, and `animate` triggers the animation to those states.",
   },
@@ -50,12 +50,12 @@ export const framerSeniorQuestions = [
       "How do you synchronize animations with multiple child components using Framer Motion?",
     code: null,
     options: [
-      "Use `staggerChildren` in the parent component's `transition` prop",
       "Trigger animations manually with `useAnimation()` in each child component",
+      "Use `staggerChildren` in the parent component's `transition` prop",
       "Use `motion.div` with `animate` in each child component",
       "Use `delayChildren` to stagger each child's animation",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "The `staggerChildren` property in the parent component's `transition` prop allows you to synchronize animations for child components.",
   },
@@ -65,12 +65,12 @@ export const framerSeniorQuestions = [
       "How do you animate a component's layout changes smoothly when it resizes or moves?",
     code: null,
     options: [
-      "Use the `layout` prop on the component",
       "Use the `transition` prop with `type: 'spring'`",
       "Animate the `position` property",
+      "Use the `layout` prop on the component",
       "Wrap the component in `motion.div` and use `whileInView`",
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
       "The `layout` prop ensures that layout changes, such as resizing and repositioning, are animated smoothly.",
   },
@@ -124,12 +124,12 @@ export const framerSeniorQuestions = [
       "How can you create complex, chained animations with multiple steps in Framer Motion?",
     code: null,
     options: [
-      "By using `animate` with `variants` to define each animation step and `transition` to control the timing",
       "By manually controlling each animation step using `useAnimation()`",
       "By triggering multiple `motion.div` components sequentially with `useEffect`",
+      "By using `animate` with `variants` to define each animation step and `transition` to control the timing",
       "By using `whileInView` to trigger different animation steps",
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
       "You can create complex, chained animations by using `variants` and defining each animation step within the `animate` prop, controlling the sequence with `transition`.",
   },
@@ -137,27 +137,14 @@ export const framerSeniorQuestions = [
     id: 10,
     title:
       "How do you implement drag functionality with constraints in Framer Motion?",
-    code: `
-    import { motion } from 'framer-motion';
-
-    export default function App() {
-      return (
-        <motion.div
-          drag
-          dragConstraints={{ top: 0, left: 0, right: 300, bottom: 300 }}
-        >
-          Drag me
-        </motion.div>
-      );
-    }
-    `,
+    code: null,
     options: [
-      "By using `dragConstraints` to set the drag boundaries for the component",
       "By using `drag` with `initial` values to control the drag movement",
+      "By using `dragConstraints` to set the drag boundaries for the component",
       "By setting `drag` as true and applying `whileDrag` animations",
       "By using `drag` and `motion.div` together without any constraints",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "The `dragConstraints` property allows you to set boundaries for the drag functionality, restricting the movement of the component within a defined area.",
   },

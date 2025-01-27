@@ -2,16 +2,7 @@ export const reactHookFormIntermediateQuestions = [
   {
     id: 1,
     title: "How can you validate a field asynchronously in React Hook Form?",
-    code: `
-  <input
-    {...register("username", {
-      validate: async (value) => {
-        const isAvailable = await checkUsernameAvailability(value);
-        return isAvailable || "Username is already taken";
-      }
-    })}
-  />;
-  `,
+    code: null,
     options: [
       "Using the `validate` function in `register`",
       "Using the `useAsyncValidation` hook",
@@ -25,14 +16,7 @@ export const reactHookFormIntermediateQuestions = [
   {
     id: 2,
     title: "How can you conditionally display fields based on form values?",
-    code: `
-  const { watch, register } = useForm();
-
-  const isSubscribed = watch("subscribe");
-
-  <input type="checkbox" {...register("subscribe")} />;
-  {isSubscribed && <input {...register("email")} />}
-  `,
+    code: null,
     options: [
       "Using `useWatch` or `watch` to monitor form values",
       "By wrapping the fields in a conditional render function",
@@ -60,10 +44,7 @@ export const reactHookFormIntermediateQuestions = [
   {
     id: 4,
     title: "How do you handle nested form values in React Hook Form?",
-    code: `
-  <input {...register("user.name")} />
-  <input {...register("user.email")} />
-  `,
+    code: null,
     options: [
       "Use dot notation in `register`",
       "Use an array for nested values",
@@ -77,15 +58,7 @@ export const reactHookFormIntermediateQuestions = [
   {
     id: 5,
     title: "What is the purpose of `shouldUnregister` in React Hook Form?",
-    code: `
-  const { register, handleSubmit } = useForm({
-    shouldUnregister: true
-  });
-
-  <form>
-    {isVisible && <input {...register("field")} />}
-  </form>;
-  `,
+    code: null,
     options: [
       "Determines if fields are removed from the form state when unmounted",
       "Keeps fields mounted even when unmounted from the DOM",
@@ -113,16 +86,7 @@ export const reactHookFormIntermediateQuestions = [
   {
     id: 7,
     title: "How do you handle dynamic fields with React Hook Form?",
-    code: `
-  const { register, handleSubmit } = useForm();
-  const [fields, setFields] = useState([{ name: "field1" }]);
-
-  <form>
-    {fields.map((field, index) => (
-      <input key={index} {...register(field.name)} />
-    ))}
-  </form>;
-  `,
+    code: null,
     options: [
       "Map over dynamic fields and register them individually",
       "Use the `useDynamicFields` hook",
@@ -136,11 +100,7 @@ export const reactHookFormIntermediateQuestions = [
   {
     id: 8,
     title: "What is `defaultValues` in React Hook Form?",
-    code: `
-  const { register, handleSubmit } = useForm({
-    defaultValues: { name: "John", age: 30 }
-  });
-  `,
+    code: null,
     options: [
       "Sets the initial values of form fields",
       "Applies validation rules globally",
@@ -154,11 +114,7 @@ export const reactHookFormIntermediateQuestions = [
   {
     id: 9,
     title: "How can you trigger validation manually?",
-    code: `
-  const { trigger } = useForm();
-
-  <button onClick={() => trigger("email")}>Validate Email</button>;
-  `,
+    code: null,
     options: [
       "Using the `trigger` function",
       "Calling `validate` directly on inputs",
@@ -172,11 +128,7 @@ export const reactHookFormIntermediateQuestions = [
   {
     id: 10,
     title: "How can you programmatically set form values?",
-    code: `
-  const { setValue } = useForm();
-
-  <button onClick={() => setValue("name", "John")}>Set Name</button>;
-  `,
+    code: null,
     options: [
       "Using `setValue` from `useForm`",
       "Directly modifying the input value",

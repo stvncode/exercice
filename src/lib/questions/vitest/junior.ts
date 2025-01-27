@@ -18,9 +18,8 @@ export const vitestJuniorQuestions = [
   {
     id: 2,
     title: "How can you check if a function was called?",
-    code: `// How would you check if a function was called?
-    const mockFunction = vi.fn();
-    mockFunction();
+    code: `const mockFunction = vi.fn();
+mockFunction();
     `,
     options: [
       "expect(mockFunction).toHaveBeenCalled()",
@@ -35,10 +34,7 @@ export const vitestJuniorQuestions = [
   {
     id: 3,
     title: "Which function is used to spy on an existing function?",
-    code: `// Which function is used to spy on an existing function?
-    const originalFunction = () => {};
-    vi.spyOn(object, 'method');
-    `,
+    code: null,
     options: ["vi.mock()", "vi.fn()", "vi.spyOn()", "vi.watch()"],
     correctAnswer: 2,
     explanation:
@@ -47,11 +43,7 @@ export const vitestJuniorQuestions = [
   {
     id: 4,
     title: "What does `beforeEach()` do in Vitest?",
-    code: `// What does beforeEach() do in Vitest?
-    beforeEach(() => {
-      // setup logic
-    });
-    `,
+    code: null,
     options: [
       "Executes code before each test",
       "Executes code after each test",
@@ -65,9 +57,7 @@ export const vitestJuniorQuestions = [
   {
     id: 5,
     title: "How do you run tests in Vitest?",
-    code: `// What command is used to run tests in Vitest?
-    vi test();
-    `,
+    code: null,
     options: ["npx vitest run", "npm run test", "npx vitest test", "npm test"],
     correctAnswer: 0,
     explanation: "To run tests in Vitest, use the `npx vitest run` command.",
@@ -75,9 +65,7 @@ export const vitestJuniorQuestions = [
   {
     id: 6,
     title: "What is the purpose of `toEqual()` in Vitest?",
-    code: `// What is the purpose of toEqual() in Vitest?
-    expect([1, 2, 3]).toEqual([1, 2, 3]);
-    `,
+    code: null,
     options: [
       "Checks if two values are strictly equal",
       "Checks if two values are loosely equal",
@@ -91,10 +79,7 @@ export const vitestJuniorQuestions = [
   {
     id: 7,
     title: "How can you mock a function in Vitest?",
-    code: `// How do you mock a function in Vitest?
-    const mockFunction = vi.fn();
-    mockFunction();
-    `,
+    code: null,
     options: ["vi.mock()", "vi.fn()", "vi.spyOn()", "vi.mocked()"],
     correctAnswer: 1,
     explanation:
@@ -103,11 +88,7 @@ export const vitestJuniorQuestions = [
   {
     id: 8,
     title: "How do you test asynchronous code with Vitest?",
-    code: `// How do you test an async function with Vitest?
-    async function fetchData() {
-      return "data";
-    }
-    `,
+    code: null,
     options: [
       "Use async/await and expect().resolves",
       "Use expect().toBe() for async code",
@@ -121,10 +102,7 @@ export const vitestJuniorQuestions = [
   {
     id: 9,
     title: "What is `vi.fn()` used for?",
-    code: `// What is vi.fn() used for in Vitest?
-    const mockFunction = vi.fn();
-    mockFunction();
-    `,
+    code: null,
     options: [
       "Create a mock function",
       "Spy on an existing function",
@@ -138,12 +116,7 @@ export const vitestJuniorQuestions = [
   {
     id: 10,
     title: "What does `toHaveBeenCalledTimes()` do?",
-    code: `// What does toHaveBeenCalledTimes() do in Vitest?
-    const mockFunction = vi.fn();
-    mockFunction();
-    mockFunction();
-    expect(mockFunction).toHaveBeenCalledTimes(2);
-    `,
+    code: null,
     options: [
       "Checks if the function was called the specified number of times",
       "Checks if the function was called at least once",

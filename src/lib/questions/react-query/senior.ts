@@ -4,12 +4,12 @@ export const reactQuerySeniorQuestions = [
     title: "How would you implement background refetching with React Query?",
     code: null,
     options: [
-      "By using the `refetchOnWindowFocus` and `refetchInterval` options",
       "By using the `onSuccess` callback",
       "By using a manual `setInterval` inside `useQuery`",
       "By using the `enabled` option with dynamic conditions",
+      "By using the `refetchOnWindowFocus` and `refetchInterval` options",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "`refetchOnWindowFocus` and `refetchInterval` are the recommended ways to implement background refetching to keep data fresh.",
   },
@@ -18,12 +18,12 @@ export const reactQuerySeniorQuestions = [
     title: "What is the purpose of `QueryClient` in React Query?",
     code: null,
     options: [
-      "It manages the cache and background data synchronization",
       "It manages the global state for queries",
       "It handles the retry behavior for failed queries",
       "It manages the error boundaries of queries",
+      "It manages the cache and background data synchronization",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "`QueryClient` is responsible for managing the cache, background synchronization, and other internal aspects like retries for queries and mutations.",
   },
@@ -33,12 +33,12 @@ export const reactQuerySeniorQuestions = [
       "How would you globally configure retry behavior for all queries in React Query?",
     code: null,
     options: [
-      "By using the `QueryClient` configuration to set `retry` globally",
       "By using the `useQuery` hook's `retry` option for each query",
+      "By using the `QueryClient` configuration to set `retry` globally",
       "By setting `retry` in the `ReactQueryConfigProvider`",
       "By using `useMutation` with a retry option",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "You can set global retry behavior by passing the `retry` option when initializing the `QueryClient`. This ensures retry behavior is consistent for all queries.",
   },
@@ -47,12 +47,12 @@ export const reactQuerySeniorQuestions = [
     title: "What does the `onSuccess` callback of a mutation allow you to do?",
     code: null,
     options: [
-      "Execute code after the mutation has successfully completed, such as invalidating queries",
       "Handle side effects before the mutation executes",
+      "Execute code after the mutation has successfully completed, such as invalidating queries",
       "Automatically refetch data after the mutation",
       "Update the mutation state when it fails",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "`onSuccess` allows you to perform actions like invalidating or updating the cache after a mutation has successfully completed.",
   },
@@ -106,12 +106,12 @@ export const reactQuerySeniorQuestions = [
       "How do you implement a custom cache key for dynamic queries in React Query?",
     code: null,
     options: [
-      "By passing a dynamic key array as the query key in `useQuery`",
       "By using the `setQueryData` method to manually configure keys",
+      "By passing a dynamic key array as the query key in `useQuery`",
       "By using `useQuery`'s `queryKey` option",
       "By manually managing query keys with `queryClient`",
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
       "You can pass a dynamic array as the query key to `useQuery` to ensure that React Query handles the data for each unique set of parameters.",
   },
@@ -136,12 +136,12 @@ export const reactQuerySeniorQuestions = [
       "What does the `getNextPageParam` function do in `useInfiniteQuery`?",
     code: null,
     options: [
-      "It defines how to get the next page's parameters, typically from the response",
       "It defines when to stop fetching new pages",
       "It fetches the initial data for pagination",
+      "It defines how to get the next page's parameters, typically from the response",
       "It controls when to invalidate the current query",
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
       "`getNextPageParam` is used to define how to retrieve the next page's parameters from the query's response, enabling infinite scrolling.",
   },

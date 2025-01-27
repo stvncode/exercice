@@ -162,22 +162,22 @@ export const tsBeltExercises = [
   },
   {
     id: 7,
-    title: "Use `getOrElse` to provide a fallback value in Option",
+    title: "Use `getWithDefault` to provide a fallback value in Option",
     objective:
-      "Use `getOrElse` to provide a default value when the `Option` is `none`.",
+      "Use `getWithDefault` to provide a default value when the `Option` is `none`.",
     codeStarter: `
   import { Option, none } from '@mobility/ts-belt';
   
   const fallback = 'No username';
   const username = none;
-  const result = username.getOrElse(fallback);
+  const result = username.getWithDefault(fallback);
   `,
     solution: `
   import { Option, none } from '@mobility/ts-belt';
   
   const fallback = 'No username';
   const username = none;
-  const result = username.getOrElse(fallback);
+  const result = username.getWithDefault(fallback);
   // result is 'No username'
   `,
   },

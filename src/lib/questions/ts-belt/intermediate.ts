@@ -41,7 +41,7 @@ export const tsBeltIntermediateQuestions = [
     title:
       "Which method is used to merge two `Option` values into a single `Option`?",
     code: null,
-    options: ["combine()", "merge()", "getOrElse()", "alt()"],
+    options: ["combine()", "merge()", "getWithDefault()", "alt()"],
     correctAnswer: 3,
     explanation:
       "The `alt()` method is used to combine two `Option` values, returning the first `some(value)` or `none` if both are `none`.",
@@ -78,15 +78,15 @@ export const tsBeltIntermediateQuestions = [
   {
     id: 7,
     title:
-      "What will be the output of the following code snippet?\n`Option.some(5).map(x => x * 2).getOrElse(0)`",
+      "What will be the output of the following code snippet?\n`Option.some(5).map(x => x * 2).getWithDefault(0)`",
     code: `
   import { Option } from '@mobility/ts-belt';
-  const result = Option.some(5).map(x => x * 2).getOrElse(0);
+  const result = Option.some(5).map(x => x * 2).getWithDefault(0);
   `,
     options: ["10", "5", "0", "some(10)"],
     correctAnswer: 0,
     explanation:
-      "The `map()` method will transform the value inside the `Option` to `10`, and `getOrElse(0)` will return `10` because the `Option` is `some(10)`.",
+      "The `map()` method will transform the value inside the `Option` to `10`, and `getWithDefault(0)` will return `10` because the `Option` is `some(10)`.",
   },
   {
     id: 8,
@@ -109,12 +109,12 @@ export const tsBeltIntermediateQuestions = [
     options: [
       "Using `unwrap()`",
       "Using `get()`",
-      "Using `getOrElse()`",
+      "Using `getWithDefault()`",
       "Using `value()`",
     ],
     correctAnswer: 2,
     explanation:
-      "The `getOrElse()` method returns the value inside the `Option` if it is `some(value)`, or a fallback value if it is `none`.",
+      "The `getWithDefault()` method returns the value inside the `Option` if it is `some(value)`, or a fallback value if it is `none`.",
   },
   {
     id: 10,

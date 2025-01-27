@@ -32,14 +32,15 @@ export const tsBeltJuniorQuestions = [
     id: 3,
     title: "Which method is used to map the value inside an `Option`?",
     code: null,
-    options: ["map()", "flatMap()", "getOrElse()", "filter()"],
+    options: ["map()", "flatMap()", "getWithDefault()", "filter()"],
     correctAnswer: 0,
     explanation:
       "The `map()` method is used to apply a function to the value inside an `Option` if it is `some(value)`.",
   },
   {
     id: 4,
-    title: "What is the result of calling `getOrElse()` on an `Option.none`?",
+    title:
+      "What is the result of calling `getWithDefault()` on an `Option.none`?",
     code: null,
     options: [
       "The value inside the `Option`",
@@ -49,7 +50,7 @@ export const tsBeltJuniorQuestions = [
     ],
     correctAnswer: 1,
     explanation:
-      "The `getOrElse()` method returns the fallback value when the `Option` is `none`.",
+      "The `getWithDefault()` method returns the fallback value when the `Option` is `none`.",
   },
   {
     id: 5,
@@ -79,7 +80,7 @@ export const tsBeltJuniorQuestions = [
     id: 7,
     title: "Which method on `Option` allows you to safely chain operations?",
     code: null,
-    options: ["flatMap()", "map()", "getOrElse()", "toString()"],
+    options: ["flatMap()", "map()", "getWithDefault()", "toString()"],
     correctAnswer: 0,
     explanation:
       "The `flatMap()` method allows you to chain operations that return an `Option`, flattening the result into a single `Option`.",
@@ -88,7 +89,7 @@ export const tsBeltJuniorQuestions = [
     id: 8,
     title: "How do you transform the error value in a `Result`?",
     code: null,
-    options: ["map()", "mapErr()", "flatMap()", "getOrElse()"],
+    options: ["map()", "mapErr()", "flatMap()", "getWithDefault()"],
     correctAnswer: 1,
     explanation:
       "The `mapErr()` method allows you to transform the error part of a `Result` while leaving the `Ok` part unchanged.",

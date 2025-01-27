@@ -2,10 +2,7 @@ export const vitestIntermediateQuestions = [
   {
     id: 1,
     title: "How do you mock an entire module in Vitest?",
-    code: `// How can you mock a whole module in Vitest?
-    import { fetchData } from './api';
-    vi.mock('./api');
-    `,
+    code: null,
     options: [
       "vi.mock('./api')",
       "vi.fn('./api')",
@@ -19,9 +16,7 @@ export const vitestIntermediateQuestions = [
   {
     id: 2,
     title: "What function do you use to clear all mocks between tests?",
-    code: `// Which function clears all mocks in Vitest?
-    vi.mockClear();
-    `,
+    code: null,
     options: [
       "vi.clearMocks()",
       "vi.restoreMocks()",
@@ -35,9 +30,7 @@ export const vitestIntermediateQuestions = [
   {
     id: 3,
     title: "How can you test if a function throws an error?",
-    code: `// How can you test if a function throws an error?
-    function throwError() { throw new Error("Something went wrong"); }
-    `,
+    code: null,
     options: [
       "expect(throwError).toThrow()",
       "expect(throwError).toThrowError()",
@@ -51,26 +44,21 @@ export const vitestIntermediateQuestions = [
   {
     id: 4,
     title: "How can you match a function’s argument in a spy?",
-    code: `// How can you match the argument passed to a function in Vitest?
-    const mockFunction = vi.fn();
-    mockFunction(42);
-    `,
+    code: null,
     options: [
-      "expect(mockFunction).toHaveBeenCalledWith(42)",
       "expect(mockFunction).toBeCalledWith(42)",
+      "expect(mockFunction).toHaveBeenCalledWith(42)",
       "expect(mockFunction).toHaveBeenCalledWithExactly(42)",
       "expect(mockFunction).toEqual(42)",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "`toHaveBeenCalledWith()` is used to match specific arguments that were passed to a mock function.",
   },
   {
     id: 5,
     title: "How can you delay a test to simulate async behavior?",
-    code: `// How do you simulate an async delay in a test?
-    vi.advanceTimersByTime(1000);
-    `,
+    code: null,
     options: [
       "vi.useFakeTimers()",
       "vi.advanceTimersByTime()",
@@ -84,9 +72,7 @@ export const vitestIntermediateQuestions = [
   {
     id: 6,
     title: "What is the purpose of `vi.resetAllMocks()`?",
-    code: `// What does vi.resetAllMocks() do in Vitest?
-    vi.resetAllMocks();
-    `,
+    code: null,
     options: [
       "Restores the original implementations of all mocks",
       "Clears all spy functions",
@@ -100,30 +86,21 @@ export const vitestIntermediateQuestions = [
   {
     id: 7,
     title: "How do you test for promises in Vitest?",
-    code: `// How do you test a promise in Vitest?
-    async function fetchData() {
-      return "Data";
-    }
-    `,
+    code: null,
     options: [
-      "expect(fetchData()).resolves.toBe('Data')",
       "expect(fetchData()).toBeResolvedWith('Data')",
       "expect(fetchData()).toBe('Data')",
       "expect(fetchData()).toThrowError()",
+      "expect(fetchData()).resolves.toBe('Data')",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "`expect(fetchData()).resolves.toBe('Data')` is used to test the resolution value of a promise.",
   },
   {
     id: 8,
     title: "How can you spy on a specific method of an object in Vitest?",
-    code: `// How do you spy on a method of an object?
-    const myObj = {
-      method: () => {}
-    };
-    vi.spyOn(myObj, 'method');
-    `,
+    code: null,
     options: [
       "vi.spyOn(myObj, 'method')",
       "vi.mock(myObj, 'method')",
@@ -137,27 +114,21 @@ export const vitestIntermediateQuestions = [
   {
     id: 9,
     title: "How can you create a mock function that returns specific values?",
-    code: `// How do you mock a function to return specific values?
-    const mockFunction = vi.fn().mockReturnValue('Hello');
-    `,
+    code: null,
     options: [
-      "vi.fn().mockReturnValue('Hello')",
       "vi.fn().mockResolvedValue('Hello')",
+      "vi.fn().mockReturnValue('Hello')",
       "vi.fn().mockImplementation(() => 'Hello')",
       "vi.fn().mockReturnValueOnce('Hello')",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "`vi.fn().mockReturnValue('Hello')` creates a mock function that always returns 'Hello' when called.",
   },
   {
     id: 10,
     title: "How can you test a function with multiple arguments in Vitest?",
-    code: `// How would you test a function with multiple arguments?
-    function add(a, b) {
-      return a + b;
-    }
-    `,
+    code: null,
     options: [
       "expect(add).toHaveBeenCalledWith(1, 2)",
       "expect(add).toHaveArguments(1, 2)",

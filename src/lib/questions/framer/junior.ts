@@ -135,20 +135,7 @@ export const framerJuniorQuestions = [
     id: 10,
     title:
       "How do you create a fade-out effect when a component leaves the screen in Framer Motion?",
-    code: `
-    import { motion } from 'framer-motion';
-
-    export default function App() {
-      return (
-        <motion.div
-          animate={{ opacity: 0 }}
-          transition={{ duration: 2 }}
-        >
-          Goodbye!
-        </motion.div>
-      );
-    }
-    `,
+    code: null,
     options: [
       "Use `animate={{ opacity: 0 }}`",
       "Use `initial={{ opacity: 0 }}`",

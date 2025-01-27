@@ -33,25 +33,7 @@ export const framerIntermediateQuestions = [
     id: 3,
     title:
       "How can you synchronize animations for multiple components in Framer Motion?",
-    code: `
-    import { motion, useAnimation } from 'framer-motion';
-
-    export default function App() {
-      const controls = useAnimation();
-
-      const startAnimation = () => {
-        controls.start({ opacity: 1, scale: 1 });
-      };
-
-      return (
-        <div>
-          <motion.div animate={controls}>Component 1</motion.div>
-          <motion.div animate={controls}>Component 2</motion.div>
-          <button onClick={startAnimation}>Start Animation</button>
-        </div>
-      );
-    }
-    `,
+    code: null,
     options: [
       "Use a shared animation control with `useAnimation()`",
       "Use `animate` with `scale` and `opacity` properties for each component",
@@ -148,22 +130,7 @@ export const framerIntermediateQuestions = [
     id: 10,
     title:
       "How do you trigger an animation when the component is scrolled into view using Framer Motion?",
-    code: `
-    import { motion, useInView } from 'framer-motion';
-
-    export default function App() {
-      const [isInView, setInView] = useInView();
-
-      return (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isInView ? 1 : 0 }}
-        >
-          Scroll into view to see me fade in!
-        </motion.div>
-      );
-    }
-    `,
+    code: null,
     options: [
       "By using the `useInView` hook to track when the element is in view",
       "By using `whileInView={{ opacity: 1 }}`",

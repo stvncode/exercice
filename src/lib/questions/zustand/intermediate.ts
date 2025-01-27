@@ -2,34 +2,21 @@ export const zustandIntermediateQuestions = [
   {
     id: 1,
     title: "How do you define a Zustand store with multiple actions?",
-    code: `
-      const useStore = create((set) => ({
-        count: 0,
-        increment: () => set((state) => ({ count: state.count + 1 })),
-        decrement: () => set((state) => ({ count: state.count - 1 })),
-      }));
-    `,
+    code: null,
     options: [
-      "By passing multiple functions to the `create` method.",
       "By defining multiple stores and combining them.",
+      "By passing multiple functions to the `create` method.",
       "By using `useReducer` inside the store.",
       "Zustand does not support multiple actions in a single store.",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "In Zustand, you can define multiple actions within a single store by passing them as functions in the store's definition.",
   },
   {
     id: 2,
     title: "How do you handle async actions in Zustand?",
-    code: `
-      const useStore = create((set) => ({
-        fetchData: async () => {
-          const data = await fetch('/api/data');
-          set({ data });
-        },
-      }));
-    `,
+    code: null,
     options: [
       "By using `setState` inside `async` functions.",
       "Zustand cannot handle async actions.",
@@ -70,12 +57,12 @@ export const zustandIntermediateQuestions = [
       "How can you optimize Zustand stores by minimizing unnecessary renders?",
     code: null,
     options: [
-      "By using selectors in `useStore` to access only the required part of the state.",
       "By wrapping the store in `React.memo`.",
       "By using the `useReducer` hook inside the store.",
       "By using `useEffect` to optimize re-renders.",
+      "By using selectors in `useStore` to access only the required part of the state.",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "To minimize unnecessary re-renders, you should use selectors in `useStore` to access only the specific parts of the state that the component depends on.",
   },
@@ -98,28 +85,19 @@ export const zustandIntermediateQuestions = [
     title: "What is the purpose of `subscribe` in Zustand?",
     code: null,
     options: [
-      "It allows you to subscribe to specific state changes.",
       "It is used to trigger actions in the store.",
       "It persists the store's state.",
+      "It allows you to subscribe to specific state changes.",
       "It allows you to access external data inside the store.",
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
       "The `subscribe` function allows you to subscribe to specific state changes and react to those changes in your component.",
   },
   {
     id: 8,
     title: "How do you use Zustand with TypeScript?",
-    code: `
-      interface State {
-        count: number;
-        increment: () => void;
-      }
-      const useStore = create<State>((set) => ({
-        count: 0,
-        increment: () => set((state) => ({ count: state.count + 1 })),
-      }));
-    `,
+    code: null,
     options: [
       "By creating type definitions for the store's state.",
       "By using `useState` inside the store.",
@@ -135,12 +113,12 @@ export const zustandIntermediateQuestions = [
     title: "What happens if you mutate the state directly in a Zustand store?",
     code: null,
     options: [
-      "The state will not trigger re-renders.",
       "The store will throw an error.",
+      "The state will not trigger re-renders.",
       "Zustand automatically handles mutations.",
       "The component will crash.",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "If you mutate the state directly, Zustand will not detect the change and the component will not re-render. Always use the `set` function to update the state.",
   },

@@ -114,7 +114,7 @@ export const zodIntermediateQuestions = [
   {
     id: 9,
     title: "Which of these is a valid use of `.literal()` in Zod?",
-    code: `const schema = z.literal("hello");`,
+    code: null,
     options: [
       "Defines a schema that accepts only the literal value 'hello'",
       "Defines a schema for any string",
