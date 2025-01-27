@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"
 
-export const ReactExercices = () => {
+export const TailwindCSSExercises = () => {
   const [showSolution, setShowSolution] = useState<Record<number, boolean>>({})
 
   const toggleSolution = (id: number) => {

@@ -1,5 +1,5 @@
 export { React } from "./React"
-export { ReactExercices } from "./ReactExercices"
+export { ReactExercises } from "./ReactExercises"
 export { ReactIntermediate } from "./ReactIntermediate"
 export { ReactJunior } from "./ReactJunior"
 export { ReactSenior } from "./ReactSenior"

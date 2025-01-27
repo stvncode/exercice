@@ -2,27 +2,68 @@ import { App } from "@/App"
 import {
   Dashboard,
   Framer,
+  FramerExercises,
+  FramerIntermediate,
+  FramerJunior,
+  FramerSenior,
   Home,
   Inbox,
   Playwright,
+  PlaywrightExercises,
+  PlaywrightIntermediate,
+  PlaywrightJunior,
+  PlaywrightSenior,
   React,
-  ReactExercices,
+  ReactExercises,
   ReactHookForm,
   ReactIntermediate,
   ReactJunior,
   ReactQuery,
+  ReactQueryExercises,
+  ReactQueryIntermediate,
+  ReactQueryJunior,
+  ReactQuerySenior,
   ReactRouterDom,
-  ReactRouterDomExercices,
+  ReactRouterDomExercises,
   ReactRouterDomIntermediate,
   ReactRouterDomJunior,
   ReactRouterDomSenior,
   ReactSenior,
   ShadcnUI,
+  ShadcnUIExercises,
+  ShadcnUIIntermediate,
+  ShadcnUIJunior,
+  ShadcnUISenior,
   TailwindCSS,
+  TailwindCSSExercises,
+  TailwindCSSIntermediate,
+  TailwindCSSJunior,
+  TailwindCSSSenior,
   TSBelt,
+  TSBeltExercises,
+  TSBeltIntermediate,
+  TSBeltJunior,
+  TSBeltSenior,
   TypeScript,
+  TypeScriptExercises,
+  TypeScriptIntermediate,
+  TypeScriptJunior,
+  TypeScriptSenior,
+  Vitest,
+  VitestExercises,
+  VitestIntermediate,
+  VitestJunior,
+  VitestSenior,
   Zod,
+  ZodExercises,
+  ZodIntermediate,
+  ZodJunior,
+  ZodSenior,
   Zustand,
+  ZustandExercises,
+  ZustandIntermediate,
+  ZustandJunior,
+  ZustandSenior,
 } from "@/pages"
 import Error404 from "@/pages/404"
 import { createBrowserRouter, Outlet, RouteObject } from "react-router-dom"
@@ -62,7 +103,7 @@ const baseRoutes: RouteObject[] = [
       },
       {
         path: "/react/exercises",
-        element: <ReactExercices />,
+        element: <ReactExercises />,
       },
     ],
   },
@@ -94,7 +135,29 @@ const baseRoutes: RouteObject[] = [
   },
   {
     path: "/react-query",
-    element: <ReactQuery />,
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <ReactQuery />,
+      },
+      {
+        path: "/react-query/junior",
+        element: <ReactQueryJunior />,
+      },
+      {
+        path: "/react-query/intermediate",
+        element: <ReactQueryIntermediate />,
+      },
+      {
+        path: "/react-query/senior",
+        element: <ReactQuerySenior />,
+      },
+      {
+        path: "/react-query/exercises",
+        element: <ReactQueryExercises />,
+      },
+    ],
   },
   {
     path: "/react-router-dom",
@@ -118,41 +181,243 @@ const baseRoutes: RouteObject[] = [
       },
       {
         path: "/react-router-dom/exercises",
-        element: <ReactRouterDomExercices />,
+        element: <ReactRouterDomExercises />,
       },
     ],
   },
   {
     path: "/shadcn-ui",
-    element: <ShadcnUI />,
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <ShadcnUI />,
+      },
+      {
+        path: "/shadcn-ui/junior",
+        element: <ShadcnUIJunior />,
+      },
+      {
+        path: "/shadcn-ui/intermediate",
+        element: <ShadcnUIIntermediate />,
+      },
+      {
+        path: "/shadcn-ui/senior",
+        element: <ShadcnUISenior />,
+      },
+      {
+        path: "/shadcn-ui/exercises",
+        element: <ShadcnUIExercises />,
+      },
+    ],
   },
   {
     path: "/tailwind-css",
-    element: <TailwindCSS />,
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <TailwindCSS />,
+      },
+      {
+        path: "/tailwind-css/junior",
+        element: <TailwindCSSJunior />,
+      },
+      {
+        path: "/tailwind-css/intermediate",
+        element: <TailwindCSSIntermediate />,
+      },
+      {
+        path: "/tailwind-css/senior",
+        element: <TailwindCSSSenior />,
+      },
+      {
+        path: "/tailwind-css/exercises",
+        element: <TailwindCSSExercises />,
+      },
+    ],
   },
   {
     path: "/typescript",
-    element: <TypeScript />,
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <TypeScript />,
+      },
+      {
+        path: "/typescript/junior",
+        element: <TypeScriptJunior />,
+      },
+      {
+        path: "/typescript/intermediate",
+        element: <TypeScriptIntermediate />,
+      },
+      {
+        path: "/typescript/senior",
+        element: <TypeScriptSenior />,
+      },
+      {
+        path: "/typescript/exercises",
+        element: <TypeScriptExercises />,
+      },
+    ],
+  },
+  {
+    path: "/vitest",
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <Vitest />,
+      },
+      {
+        path: "/vitest/junior",
+        element: <VitestJunior />,
+      },
+      {
+        path: "/vitest/intermediate",
+        element: <VitestIntermediate />,
+      },
+      {
+        path: "/vitest/senior",
+        element: <VitestSenior />,
+      },
+      {
+        path: "/vitest/exercises",
+        element: <VitestExercises />,
+      },
+    ],
   },
   {
     path: "/framer",
-    element: <Framer />,
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <Framer />,
+      },
+      {
+        path: "/framer/junior",
+        element: <FramerJunior />,
+      },
+      {
+        path: "/framer/intermediate",
+        element: <FramerIntermediate />,
+      },
+      {
+        path: "/framer/senior",
+        element: <FramerSenior />,
+      },
+      {
+        path: "/framer/exercises",
+        element: <FramerExercises />,
+      },
+    ],
   },
   {
     path: "/playwright",
-    element: <Playwright />,
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <Playwright />,
+      },
+      {
+        path: "/playwright/junior",
+        element: <PlaywrightJunior />,
+      },
+      {
+        path: "/playwright/intermediate",
+        element: <PlaywrightIntermediate />,
+      },
+      {
+        path: "/playwright/senior",
+        element: <PlaywrightSenior />,
+      },
+      {
+        path: "/playwright/exercises",
+        element: <PlaywrightExercises />,
+      },
+    ],
   },
   {
     path: "/ts-belt",
-    element: <TSBelt />,
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <TSBelt />,
+      },
+      {
+        path: "/ts-belt/junior",
+        element: <TSBeltJunior />,
+      },
+      {
+        path: "/ts-belt/intermediate",
+        element: <TSBeltIntermediate />,
+      },
+      {
+        path: "/ts-belt/senior",
+        element: <TSBeltSenior />,
+      },
+      {
+        path: "/ts-belt/exercises",
+        element: <TSBeltExercises />,
+      },
+    ],
   },
   {
     path: "/zod",
-    element: <Zod />,
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <Zod />,
+      },
+      {
+        path: "/zod/junior",
+        element: <ZodJunior />,
+      },
+      {
+        path: "/zod/intermediate",
+        element: <ZodIntermediate />,
+      },
+      {
+        path: "/zod/senior",
+        element: <ZodSenior />,
+      },
+      {
+        path: "/zod/exercises",
+        element: <ZodExercises />,
+      },
+    ],
   },
   {
     path: "/zustand",
-    element: <Zustand />,
+    element: <Outlet />,
+    children: [
+      {
+        index: true,
+        element: <Zustand />,
+      },
+      {
+        path: "/zustand/junior",
+        element: <ZustandJunior />,
+      },
+      {
+        path: "/zustand/intermediate",
+        element: <ZustandIntermediate />,
+      },
+      {
+        path: "/zustand/senior",
+        element: <ZustandSenior />,
+      },
+      {
+        path: "/zustand/exercises",
+        element: <ZustandExercises />,
+      },
+    ],
   },
 ]
 

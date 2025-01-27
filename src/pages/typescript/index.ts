@@ -1,1 +1,5 @@
 export { TypeScript } from "./TypeScript"
+export { TypeScriptExercises } from "./TypeScriptExercises"
+export { TypeScriptIntermediate } from "./TypeScriptIntermediate"
+export { TypeScriptJunior } from "./TypeScriptJunior"
+export { TypeScriptSenior } from "./TypeScriptSenior"

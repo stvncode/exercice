@@ -1,9 +1,9 @@
-import { reactRouterDomExercises } from "@/lib/questions/react-router-dom/exercices"
+import { reactExercises } from "@/lib/questions/react/exercices"
 import { useState } from "react"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"
 
-export const ReactRouterDomExercises = () => {
+export const FramerExercises = () => {
   const [showSolution, setShowSolution] = useState<Record<number, boolean>>({})
 
   const toggleSolution = (id: number) => {
@@ -12,7 +12,7 @@ export const ReactRouterDomExercises = () => {
 
   return (
     <div className="p-8 space-y-12">
-      {reactRouterDomExercises.map((exercise) => (
+      {reactExercises.map((exercise) => (
         <div key={exercise.id} className="border-b pb-6">
           <h2 className="text-2xl font-bold mb-4">{exercise.title}</h2>
           <p className="text-gray-600 mb-4">{exercise.objective}</p>

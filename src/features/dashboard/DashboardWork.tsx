@@ -79,7 +79,7 @@ export const DashboardWork = () => {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-h-80 overflow-auto">
       {coursesProgress.map(({ name, questionsCompleted, streak }) => (
         <div className="flex items-center" key={name}>
           <Avatar>

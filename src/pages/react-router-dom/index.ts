@@ -1,5 +1,5 @@
 export { ReactRouterDom } from "./ReactRouterDom"
-export { ReactRouterDomExercices } from "./ReactRouterDomExercises"
+export { ReactRouterDomExercises } from "./ReactRouterDomExercises"
 export { ReactRouterDomIntermediate } from "./ReactRouterDomIntermediate"
 export { ReactRouterDomJunior } from "./ReactRouterDomJunior"
 export { ReactRouterDomSenior } from "./ReactRouterDomSenior"

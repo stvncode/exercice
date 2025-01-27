@@ -1,5 +1,6 @@
 - Check Exercices and Questions
-- Router
-- Files
 - Settings
 - Inbox
+
+- Fix height on dashboard work
+- Add usefull links (docs, book etc)

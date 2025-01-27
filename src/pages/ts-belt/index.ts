@@ -1,0 +1,5 @@
+export { TSBelt } from "./TSBelt"
+export { TSBeltExercises } from "./TSBeltExercises"
+export { TSBeltIntermediate } from "./TSBeltIntermediate"
+export { TSBeltJunior } from "./TSBeltJunior"
+export { TSBeltSenior } from "./TSBeltSenior"
