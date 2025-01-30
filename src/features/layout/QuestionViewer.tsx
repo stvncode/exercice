@@ -1,4 +1,5 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage"
+import { useLearning } from "@/store/globalStore"
 import { CourseStore } from "@/store/questionStore"
 import { Button, Progress } from "chronoxis"
 import { motion } from "framer-motion"
@@ -29,6 +30,7 @@ export const QuestionViewer = ({
   level,
   coursePath,
 }: QuestionViewerProps) => {
+  const { autoAdvance } = useLearning()
   const { updateAnswer, getTodayProgress, getStreak } = courseStore()
   const todayProgress = getTodayProgress(level)
 
@@ -41,19 +43,6 @@ export const QuestionViewer = ({
   const [showExplanation, setShowExplanation] = useState(false)
   const [finish, setFinish] = useState(false)
 
-  const handleAnswer = (questionId: number, answerIndex: number) => {
-    const isCorrect = answerIndex === questions[currentQuestion].correctAnswer
-    updateAnswer(level, questionId, answerIndex, isCorrect)
-    setShowExplanation(true)
-  }
-
-  const isCorrect = (questionId: number) =>
-    todayProgress?.answers[questionId]?.isCorrect
-
-  const completionProgress = todayProgress
-    ? (Object.keys(todayProgress.answers).length / questions.length) * 100
-    : 0
-
   const handleNext = () => {
     if (currentQuestion >= questions.length - 1) {
       setFinish(true)
@@ -64,6 +53,21 @@ export const QuestionViewer = ({
       setShowExplanation(false)
     }
   }
+
+  const handleAnswer = (questionId: number, answerIndex: number) => {
+    const isCorrect = answerIndex === questions[currentQuestion].correctAnswer
+    updateAnswer(level, questionId, answerIndex, isCorrect)
+
+    if (autoAdvance) handleNext()
+    else setShowExplanation(true)
+  }
+
+  const isCorrect = (questionId: number) =>
+    todayProgress?.answers[questionId]?.isCorrect
+
+  const completionProgress = todayProgress
+    ? (Object.keys(todayProgress.answers).length / questions.length) * 100
+    : 0
 
   const streak = getStreak()
 
@@ -145,7 +149,7 @@ export const QuestionViewer = ({
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-4 rounded-lg border bg-gray-50 space-y-2"
+            className="p-4 rounded-lg border bg-gray-50 dark:text-background space-y-2"
           >
             <div className="flex items-center space-x-2">
               {isCorrect(currentQuestion) ? (

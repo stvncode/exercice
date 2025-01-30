@@ -55,10 +55,6 @@ export function SidebarRight({
   const questions =
     questionMap[`${coursePath.replace(/-/g, "_")}_${pathParts[2]}`]
 
-  console.log("questions", questions)
-  console.log("courseStore", courseStore)
-  console.log()
-
   return (
     <Sidebar
       collapsible="none"

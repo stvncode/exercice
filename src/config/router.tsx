@@ -1,13 +1,13 @@
 import { App } from "@/App"
 import {
   Dashboard,
+  FinalTest,
   Framer,
   FramerExercises,
   FramerIntermediate,
   FramerJunior,
   FramerSenior,
   Home,
-  Inbox,
   Playwright,
   PlaywrightExercises,
   PlaywrightIntermediate,
@@ -82,8 +82,8 @@ const baseRoutes: RouteObject[] = [
     element: <Dashboard />,
   },
   {
-    path: "/inbox",
-    element: <Inbox />,
+    path: "/final",
+    element: <FinalTest />,
   },
   {
     path: "/react",

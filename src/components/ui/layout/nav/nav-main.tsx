@@ -1,4 +1,4 @@
-import { Home, Inbox, LayoutDashboard, Search } from "lucide-react"
+import { BookOpenCheck, Home, LayoutDashboard, Search } from "lucide-react"
 
 import {
   Flex,
@@ -61,14 +61,14 @@ export const NavMain = () => {
           </SidebarMenuButton>
         </SidebarMenuItem>
         <SidebarMenuItem>
-          <SidebarMenuButton asChild isActive={pathname === "/inbox"}>
+          <SidebarMenuButton asChild isActive={pathname === "/final"}>
             <Flex
               align="center"
               className="gap-2 cursor-pointer"
-              onClick={() => navigate("/inbox")}
+              onClick={() => navigate("/final")}
             >
-              <Inbox />
-              <span>Inbox</span>
+              <BookOpenCheck />
+              <span>Final Test</span>
             </Flex>
           </SidebarMenuButton>
         </SidebarMenuItem>

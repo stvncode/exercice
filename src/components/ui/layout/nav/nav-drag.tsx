@@ -89,7 +89,7 @@ export const NavDrag = () => {
       <DraggableSelectors />
       <DragOverlay>
         {activeId ? (
-          <div className="flex items-center gap-2 p-2 bg-white shadow-lg rounded-md">
+          <div className="flex items-center gap-2 p-2 bg-background shadow-lg rounded-md">
             {activeId}
           </div>
         ) : null}

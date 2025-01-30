@@ -1,4 +1,5 @@
 import { CourseView } from "@/features/layout/CourseView"
+import { reactRouterDomLinks } from "@/lib/links/react-router-dom"
 
 export const ReactRouterDom = () => (
   <CourseView
@@ -6,5 +7,6 @@ export const ReactRouterDom = () => (
     icon={
       <img src="/react-router-dom.svg" alt="react-router-dom" className="w-8" />
     }
+    links={reactRouterDomLinks}
   />
 )

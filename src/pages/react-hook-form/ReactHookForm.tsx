@@ -1,4 +1,5 @@
 import { CourseView } from "@/features/layout/CourseView"
+import { reactHookFormLinks } from "@/lib/links/react-hook-form"
 
 export const ReactHookForm = () => (
   <CourseView
@@ -6,5 +7,6 @@ export const ReactHookForm = () => (
     icon={
       <img src="/react-hook-form.svg" alt="react-hook-form" className="w-8" />
     }
+    links={reactHookFormLinks}
   />
 )

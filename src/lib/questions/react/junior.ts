@@ -163,4 +163,214 @@ export const reactJuniorQuestions = [
     explanation:
       "Without a dependency array, `useEffect` runs after every render. Pass an empty array to make it run only once on mount.",
   },
+  {
+    id: 11,
+    title: "What is the purpose of `useMemo`?",
+    code: null,
+    options: [
+      "To memoize functions",
+      "To memoize values to avoid expensive recalculations",
+      "To memoize components",
+      "To memoize state updates",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "`useMemo` is used to memoize values, preventing expensive recalculations on every render.",
+  },
+  {
+    id: 12,
+    title: "What is the difference between `useCallback` and `useMemo`?",
+    code: null,
+    options: [
+      "useCallback memoizes functions, useMemo memoizes values",
+      "useCallback memoizes values, useMemo memoizes functions",
+      "They are identical in functionality",
+      "useCallback is for state, useMemo is for effects",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "`useCallback` is used to memoize functions, while `useMemo` is used to memoize values.",
+  },
+  {
+    id: 13,
+    title: "What is the purpose of `React.Fragment`?",
+    code: null,
+    options: [
+      "To group multiple elements without adding extra nodes to the DOM",
+      "To create reusable components",
+      "To improve performance",
+      "To enforce type checking",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "`React.Fragment` allows you to group multiple elements without adding extra nodes to the DOM.",
+  },
+  {
+    id: 14,
+    title: "What is the purpose of `React.PureComponent`?",
+    code: null,
+    options: [
+      "To optimize functional components",
+      "To optimize class components by preventing unnecessary re-renders",
+      "To enforce immutability",
+      "To replace `React.Component`",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "`React.PureComponent` is used to optimize class components by preventing unnecessary re-renders when props and state haven't changed.",
+  },
+  {
+    id: 15,
+    title: "What is the purpose of `React.memo`?",
+    code: null,
+    options: [
+      "To memoize class components",
+      "To memoize functional components to prevent unnecessary re-renders",
+      "To memoize state updates",
+      "To memoize effects",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "`React.memo` is used to memoize functional components, preventing unnecessary re-renders when props haven't changed.",
+  },
+  {
+    id: 16,
+    title: "What is the purpose of `useRef`?",
+    code: null,
+    options: [
+      "To create a reference to a DOM element or persist values across renders",
+      "To manage state in functional components",
+      "To perform side effects",
+      "To memoize values",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "`useRef` is used to create a reference to a DOM element or to persist values across renders without triggering re-renders.",
+  },
+  {
+    id: 17,
+    title: "What is the purpose of `useContext`?",
+    code: null,
+    options: [
+      "To manage global state",
+      "To share state between components without prop drilling",
+      "To replace Redux",
+      "To manage local state",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "`useContext` is used to share state between components without prop drilling.",
+  },
+  {
+    id: 18,
+    title: "What is the purpose of `useReducer`?",
+    code: null,
+    options: [
+      "To manage global state",
+      "To manage complex state logic with multiple actions",
+      "To replace `useState`",
+      "To perform side effects",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "`useReducer` is used to manage complex state logic with multiple actions.",
+  },
+  {
+    id: 19,
+    title: "What is the purpose of `useLayoutEffect`?",
+    code: null,
+    options: [
+      "To perform side effects after the DOM has been updated",
+      "To perform side effects before the DOM has been updated",
+      "To replace `useEffect`",
+      "To memoize values",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "`useLayoutEffect` is used to perform side effects before the DOM has been updated.",
+  },
+  {
+    id: 20,
+    title: "What is the purpose of `useImperativeHandle`?",
+    code: null,
+    options: [
+      "To customize the instance value exposed to parent components",
+      "To manage state in functional components",
+      "To perform side effects",
+      "To memoize values",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "`useImperativeHandle` is used to customize the instance value exposed to parent components.",
+  },
+  {
+    id: 21,
+    title: "What is the purpose of `useDebugValue`?",
+    code: null,
+    options: [
+      "To debug custom hooks in React DevTools",
+      "To debug functional components",
+      "To debug class components",
+      "To debug state updates",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "`useDebugValue` is used to debug custom hooks in React DevTools.",
+  },
+  {
+    id: 22,
+    title: "What is the purpose of `useTransition`?",
+    code: null,
+    options: [
+      "To manage state transitions",
+      "To manage concurrent rendering",
+      "To manage side effects",
+      "To manage state updates",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "`useTransition` is used to manage concurrent rendering in React.",
+  },
+  {
+    id: 23,
+    title: "What is the purpose of `useDeferredValue`?",
+    code: null,
+    options: [
+      "To defer state updates",
+      "To defer rendering of components",
+      "To defer side effects",
+      "To defer state transitions",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "`useDeferredValue` is used to defer rendering of components in React.",
+  },
+  {
+    id: 24,
+    title: "What is the purpose of `useId`?",
+    code: null,
+    options: [
+      "To generate unique IDs for components",
+      "To generate unique IDs for state updates",
+      "To generate unique IDs for side effects",
+      "To generate unique IDs for state transitions",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "`useId` is used to generate unique IDs for components in React.",
+  },
+  {
+    id: 25,
+    title: "What is the purpose of `useSyncExternalStore`?",
+    code: null,
+    options: [
+      "To sync external stores with React state",
+      "To sync external stores with React effects",
+      "To sync external stores with React transitions",
+      "To sync external stores with React updates",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "`useSyncExternalStore` is used to sync external stores with React state.",
+  },
 ]

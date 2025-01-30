@@ -1,6 +1,7 @@
 import { useTheme } from "@/components/theme/theme.provider"
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
+  BasicSpinner,
   Button,
   Form,
   FormControl,
@@ -18,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "chronoxis"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
@@ -30,13 +32,15 @@ const appearanceFormSchema = z.object({
 
 type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
 
-const defaultValues: Partial<AppearanceFormValues> = {
-  theme: "light",
-  font: "geist",
-}
-
 export const Appearance = () => {
-  const { setTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
+
+  const [loading, setLoading] = useState(false)
+
+  const defaultValues: Partial<AppearanceFormValues> = {
+    theme: theme === "system" ? "light" : theme,
+    font: "geist",
+  }
 
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
@@ -44,7 +48,8 @@ export const Appearance = () => {
   })
 
   function onSubmit(data: AppearanceFormValues) {
-    console.log(data)
+    setLoading(true)
+    setTimeout(() => setLoading(false), 200)
     setTheme(data.theme)
   }
 
@@ -99,18 +104,18 @@ export const Appearance = () => {
                       <RadioGroupItem value="light" className="sr-only" />
                     </FormControl>
                     <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent">
-                      <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
-                        <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
-                          <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
-                          <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                      <div className="space-y-2 rounded-sm bg-[#ecedef] dark:bg-[#cbcbcb] p-2">
+                        <div className="space-y-2 rounded-md bg-background p-2 shadow-sm">
+                          <div className="h-2 w-[80px] rounded-lg bg-[#ecedef] dark:bg-[#cbcbcb]" />
+                          <div className="h-2 w-[100px] rounded-lg bg-[#ecedef] dark:bg-[#cbcbcb]" />
                         </div>
-                        <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
-                          <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
-                          <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                        <div className="flex items-center space-x-2 rounded-md bg-background p-2 shadow-sm">
+                          <div className="h-4 w-4 rounded-full bg-[#ecedef] dark:bg-[#cbcbcb]" />
+                          <div className="h-2 w-[100px] rounded-lg bg-[#ecedef] dark:bg-[#cbcbcb]" />
                         </div>
-                        <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
-                          <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
-                          <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                        <div className="flex items-center space-x-2 rounded-md bg-background p-2 shadow-sm">
+                          <div className="h-4 w-4 rounded-full bg-[#ecedef] dark:bg-[#cbcbcb]" />
+                          <div className="h-2 w-[100px] rounded-lg bg-[#ecedef] dark:bg-[#cbcbcb]" />
                         </div>
                       </div>
                     </div>
@@ -150,8 +155,8 @@ export const Appearance = () => {
           )}
         />
 
-        <Button variant="opposite" type="submit">
-          Update preferences
+        <Button variant="opposite" type="submit" className="w-40">
+          {loading ? <BasicSpinner /> : "Update appearance"}
         </Button>
       </form>
     </Form>

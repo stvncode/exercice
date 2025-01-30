@@ -6,11 +6,11 @@ import { Layout } from "./features/layout/Layout"
 import { useAccount } from "./store/globalStore"
 
 export const App = () => {
-  const { username } = useAccount()
+  const { login } = useAccount()
 
   return (
     <SidebarProvider defaultOpen={true}>
-      {match(Boolean(username))
+      {match(login)
         .with(true, () => <Layout />)
         .otherwise(() => (
           <Login />

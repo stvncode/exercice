@@ -41,7 +41,7 @@ export const Home = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
             >
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 Master React ecosystem through hands-on exercises and real-world
                 examples. From basics to advanced patterns, explore components,
                 hooks, state management, and more.
@@ -53,7 +53,9 @@ export const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h2 className="text-2xl font-semibold mb-8">Course Curriculum</h2>
+              <h2 className="text-2xl font-semibold dark:text-background mb-8">
+                Course Curriculum
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div className="space-y-4">
                   <h3 className="font-medium text-blue-600 text-lg">
@@ -118,7 +120,7 @@ export const Home = () => {
               transition={{ delay: 0.4 }}
             >
               <h3 className="text-xl font-medium">Ready to start?</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 Begin your journey with React fundamentals and progress through
                 advanced concepts at your own pace.
               </p>

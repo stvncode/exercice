@@ -7,6 +7,13 @@ export const zustandExercises = [
     codeStarter: `
 import create from 'zustand'
 
+// Step 1: Initialize the Zustand store with a 'count' state
+// Step 2: Add 'increment' and 'decrement' actions
+// Step 3: Use the store in a React component
+    `,
+    solution: `
+import create from 'zustand'
+
 const useStore = create((set) => ({
   count: 0,
   increment: () => set((state) => ({ count: state.count + 1 })),
@@ -25,7 +32,6 @@ export default function Counter() {
   )
 }
     `,
-    solution: null,
   },
   {
     id: 2,
@@ -33,6 +39,13 @@ export default function Counter() {
     objective:
       "Modify the Zustand store to persist the counter state to `localStorage` and load it when the component mounts.",
     codeStarter: `
+import create from 'zustand'
+
+// Step 1: Load initial state from localStorage
+// Step 2: Update localStorage when state changes
+// Step 3: Create actions for incrementing and decrementing the counter
+    `,
+    solution: `
 import create from 'zustand'
 
 const useStore = create((set, get) => ({
@@ -61,7 +74,6 @@ export default function Counter() {
   )
 }
     `,
-    solution: null,
   },
   {
     id: 3,
@@ -69,6 +81,13 @@ export default function Counter() {
     objective:
       "Create a Zustand store that fetches data from an API and stores the result in the store. Display the data in a component.",
     codeStarter: `
+import create from 'zustand'
+
+// Step 1: Initialize store with 'data' and 'isLoading' state
+// Step 2: Create an async 'fetchData' action
+// Step 3: Use the store in a React component to fetch and display data
+    `,
+    solution: `
 import create from 'zustand'
 
 const useStore = create((set) => ({
@@ -101,7 +120,6 @@ export default function DataFetcher() {
   )
 }
     `,
-    solution: null,
   },
   {
     id: 4,
@@ -109,6 +127,13 @@ export default function DataFetcher() {
     objective:
       "Create a Zustand store with multiple actions that manipulate different parts of the state (e.g., user data and app settings).",
     codeStarter: `
+import create from 'zustand'
+
+// Step 1: Add 'user' and 'settings' states
+// Step 2: Create 'setUser' and 'toggleTheme' actions
+// Step 3: Use the store in a component to display and modify state
+    `,
+    solution: `
 import create from 'zustand'
 
 const useStore = create((set) => ({
@@ -133,7 +158,6 @@ export default function Profile() {
   )
 }
     `,
-    solution: null,
   },
   {
     id: 5,
@@ -141,6 +165,12 @@ export default function Profile() {
     objective:
       "Create a Zustand store and use a component to subscribe to state changes and rerender.",
     codeStarter: `
+import create from 'zustand'
+
+// Step 1: Set up a store with 'count' state and an 'increment' action
+// Step 2: Use Zustand's subscription mechanism to update UI on state changes
+    `,
+    solution: `
 import create from 'zustand'
 
 const useStore = create((set) => ({
@@ -159,7 +189,6 @@ export default function Counter() {
   )
 }
     `,
-    solution: null,
   },
   {
     id: 6,
@@ -169,16 +198,23 @@ export default function Counter() {
     codeStarter: `
 import create from 'zustand'
 
+// Step 1: Add 'history' and 'currentState' to the store
+// Step 2: Create 'addHistory' and 'undo' actions
+// Step 3: Use the store in a component to demonstrate undo functionality
+    `,
+    solution: `
+import create from 'zustand'
+
 const useStore = create((set) => ({
   history: [],
   currentState: 0,
-  addHistory: (state) => set((state) => ({
+  addHistory: (newState) => set((state) => ({
     history: [...state.history, state.currentState],
-    currentState: state,
+    currentState: newState,
   })),
   undo: () => set((state) => {
-    const lastHistory = state.history.pop()
-    return { history: state.history, currentState: lastHistory }
+    const lastHistory = state.history.pop() || 0;
+    return { history: state.history, currentState: lastHistory };
   }),
 }))
 
@@ -194,7 +230,6 @@ export default function Counter() {
   )
 }
     `,
-    solution: null,
   },
   {
     id: 7,
@@ -202,6 +237,13 @@ export default function Counter() {
     objective:
       "Implement a Zustand store with multiple fields and persist each field to `localStorage` separately.",
     codeStarter: `
+import create from 'zustand'
+
+// Step 1: Set up a store with 'name' and 'age' fields
+// Step 2: Persist each field to localStorage when updated
+// Step 3: Load initial values from localStorage
+    `,
+    solution: `
 import create from 'zustand'
 
 const useStore = create((set) => ({
@@ -234,7 +276,6 @@ export default function UserForm() {
   )
 }
     `,
-    solution: null,
   },
   {
     id: 8,
@@ -242,6 +283,13 @@ export default function UserForm() {
     objective:
       "Create a Zustand store to control the visibility of a modal and manage its content.",
     codeStarter: `
+import create from 'zustand'
+
+// Step 1: Add 'isModalOpen' and 'modalContent' state
+// Step 2: Create 'openModal' and 'closeModal' actions
+// Step 3: Use the store in a component to control a modal
+    `,
+    solution: `
 import create from 'zustand'
 
 const useStore = create((set) => ({
@@ -267,7 +315,6 @@ export default function ModalComponent() {
   )
 }
     `,
-    solution: null,
   },
   {
     id: 9,
@@ -277,13 +324,25 @@ export default function ModalComponent() {
     codeStarter: `
 import create from 'zustand'
 
+// Step 1: Add 'currentPage', 'pageSize', and 'totalItems' state
+// Step 2: Implement 'goToNextPage' and 'goToPrevPage' actions
+// Step 3: Use the store to manage pagination in a component
+    `,
+    solution: `
+import create from 'zustand'
+
 const useStore = create((set) => ({
   currentPage: 1,
   pageSize: 10,
   totalItems: 100,
-  goToNextPage: () => set((state) => ({ currentPage: state.currentPage + 1 })),
-  goToPrevPage: () => set((state) => ({ currentPage: state.currentPage - 1 })),
-  setPageSize: (size) => set({ pageSize: size }),
+  goToNextPage: () => set((state) => ({
+    currentPage: state.currentPage < Math.ceil(state.totalItems / state.pageSize)
+      ? state.currentPage + 1
+      : state.currentPage,
+  })),
+  goToPrevPage: () => set((state) => ({
+    currentPage: state.currentPage > 1 ? state.currentPage - 1 : state.currentPage,
+  })),
 }))
 
 export default function Pagination() {
@@ -298,7 +357,6 @@ export default function Pagination() {
   )
 }
     `,
-    solution: null,
   },
   {
     id: 10,
@@ -306,6 +364,13 @@ export default function Pagination() {
     objective:
       "Create a Zustand store that manages user authentication, including login, logout, and checking if the user is authenticated.",
     codeStarter: `
+import create from 'zustand'
+
+// Step 1: Add 'isAuthenticated' and 'user' state
+// Step 2: Implement 'login' and 'logout' actions
+// Step 3: Use the store to manage authentication in a component
+    `,
+    solution: `
 import create from 'zustand'
 
 const useStore = create((set) => ({
@@ -332,6 +397,5 @@ export default function AuthComponent() {
   )
 }
     `,
-    solution: null,
   },
 ]

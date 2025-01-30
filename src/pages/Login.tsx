@@ -104,7 +104,7 @@ export const Login = () => {
           form.setValue("avatarUrl", uploadedUrl)
         }
       }
-      setAccount({ ...data })
+      setAccount({ ...data, login: true })
       navigate("/")
     } catch (error) {
       console.error("Error during form submission:", error)

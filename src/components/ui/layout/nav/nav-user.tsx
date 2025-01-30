@@ -7,6 +7,7 @@ import {
 } from "lucide-react"
 
 import { useGlobalStore } from "@/store/globalStore"
+import { useSettings } from "@/store/settingStore"
 import {
   Avatar,
   AvatarFallback,
@@ -23,11 +24,10 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "chronoxis"
-import { useNavigate } from "react-router-dom"
 
 export const NavUser = () => {
   const { isMobile } = useSidebar()
-  const navigate = useNavigate()
+  const { toggleOpen } = useSettings()
 
   const {
     logout,
@@ -81,11 +81,11 @@ export const NavUser = () => {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem disabled>
+              <DropdownMenuItem onClick={toggleOpen}>
                 <BadgeCheck />
-                Account
+                Profile
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => navigate("/inbox")}>
+              <DropdownMenuItem disabled>
                 <Bell />
                 Notifications
               </DropdownMenuItem>

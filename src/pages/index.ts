@@ -1,7 +1,7 @@
 export { Dashboard } from "./Dashboard"
+export { FinalTest } from "./FinalTest"
 export * from "./framer"
 export { Home } from "./Home"
-export { Inbox } from "./Inbox"
 export { Login } from "./Login"
 export * from "./playwright"
 export * from "./react"

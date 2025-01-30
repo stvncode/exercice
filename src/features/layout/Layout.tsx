@@ -25,9 +25,9 @@ export const Layout = () => {
       { name: "Home", path: "/" },
       { name: "Dashboard", path: "/dashboard" },
     ])
-    .with("/inbox", () => [
+    .with("/final", () => [
       { name: "Home", path: "/" },
-      { name: "Inbox", path: "/inbox" },
+      { name: "Final Test", path: "/final" },
     ])
     .otherwise(() => {
       const [category, level] = pathname.split("/").filter(Boolean)

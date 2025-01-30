@@ -1,6 +1,7 @@
 import { MessageCircleQuestion, Settings2 } from "lucide-react"
 import React, { useState } from "react"
 
+import { useSettings } from "@/store/settingStore"
 import {
   Flex,
   SidebarGroup,
@@ -17,7 +18,7 @@ export function NavSecondary({
   ...props
 }: React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
   const [openHelp, setOpenHelp] = useState(false)
-  const [openSettings, setOpenSettings] = useState(false)
+  const { isOpen, toggleOpen } = useSettings()
 
   return (
     <>
@@ -29,7 +30,7 @@ export function NavSecondary({
                 <Flex
                   align="center"
                   className="gap-2 cursor-pointer"
-                  onClick={() => setOpenSettings(true)}
+                  onClick={toggleOpen}
                 >
                   <Settings2 />
                   <span>Settings</span>
@@ -59,7 +60,7 @@ export function NavSecondary({
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>
-      <SettingsModal openState={[openSettings, setOpenSettings]} />
+      <SettingsModal openState={[isOpen, toggleOpen]} />
       <HelpModal openState={[openHelp, setOpenHelp]} />
     </>
   )

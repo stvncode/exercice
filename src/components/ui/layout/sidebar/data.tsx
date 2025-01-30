@@ -79,7 +79,6 @@ export const initialFavorites = [
   "React Hook Form",
   "Shadcn UI",
   "React Router Dom",
-  "Vitest",
   "React Query",
   "Tailwind CSS",
   "Typescript",
@@ -90,5 +89,6 @@ export const initialOthers = [
   "Playwright",
   "Framer",
   "TS Belt",
+  "Vitest",
   "Zustand",
 ]

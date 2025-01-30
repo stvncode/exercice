@@ -1,20 +1,30 @@
-import { SetState } from "@/types/react"
-
 import {
   Bell,
-  Check,
+  Blocks,
+  Captions,
+  Gauge,
   Globe,
-  Home,
   Keyboard,
+  LineChart,
   Link,
-  Lock,
-  Menu,
-  MessageCircle,
   Paintbrush,
-  Video,
+  SignpostBig,
+  Timer,
 } from "lucide-react"
 
-import { Appearance } from "@/features/settings"
+import {
+  Accessibility as AccessibilityComponent,
+  AlternativeTechs,
+  Appearance,
+  Difficulty,
+  DocLinks,
+  KeyboardShortcuts,
+  Language,
+  Learning,
+  Profile,
+  Progress,
+  StudyTimer,
+} from "@/features/settings"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -38,35 +48,56 @@ import {
 } from "chronoxis"
 import { useEffect, useState } from "react"
 import { match } from "ts-pattern"
+import { SettingsItems, SettingsSidebarItems } from "./types"
 
-const data = {
+const data: SettingsSidebarItems = {
   nav: [
-    { name: "Notifications", icon: Bell, tab: "notifications" },
-    { name: "Messages & media", icon: MessageCircle, tab: "messages" },
-    { name: "Chat settings", icon: Lock, tab: "chat" },
+    { name: "Profile", icon: Bell, tab: "profile" },
     { name: "Language", icon: Globe, tab: "language" },
-    { name: "Data & storage", icon: Video, tab: "data" },
     { name: "Appearance", icon: Paintbrush, tab: "appearance" },
-    { name: "Keyboard shortcuts", icon: Keyboard, tab: "keyboard" },
-    { name: "Links", icon: Link, tab: "links" },
-    { name: "Home", icon: Home, tab: "home" },
-    { name: "Menu", icon: Menu, tab: "menu" },
-    { name: "Check", icon: Check, tab: "check" },
+    { name: "Keyboard shortcuts", icon: Keyboard, tab: "shortcuts" },
+    { name: "Doc Links", icon: Link, tab: "links" },
+    { name: "Alternative Techs", icon: SignpostBig, tab: "alternative" },
+    {
+      name: "Learning Preferences",
+      icon: Blocks,
+      tab: "learning",
+      disabled: false,
+    },
+    { name: "Study Timer", icon: Timer, tab: "timer", disabled: true },
+    {
+      name: "Accessibility",
+      icon: Captions,
+      tab: "accessibility",
+      disabled: true,
+    },
+    {
+      name: "Difficulty Level",
+      icon: Gauge,
+      tab: "difficulty",
+      disabled: true,
+    },
+    {
+      name: "Progress Tracking",
+      icon: LineChart,
+      tab: "progress",
+      disabled: true,
+    },
   ],
 }
 
 export const SettingsModal = ({
-  openState: [open, setOpen],
+  openState: [open, toggleOpen],
 }: {
-  openState: [boolean, SetState<boolean>]
+  openState: [boolean, () => void]
 }) => {
-  const [tab, setTab] = useState("notifications")
+  const [tab, setTab] = useState<SettingsItems>("profile")
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "s" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
-        setOpen((open) => !open)
+        toggleOpen()
       }
     }
     document.addEventListener("keydown", down)
@@ -75,7 +106,7 @@ export const SettingsModal = ({
   }, [])
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={toggleOpen}>
       <DialogContent className="overflow-hidden p-0 md:max-h-[600px] md:max-w-[800px] lg:max-w-[900px]">
         <DialogTitle className="sr-only">Settings</DialogTitle>
         <DialogDescription className="sr-only">
@@ -90,17 +121,36 @@ export const SettingsModal = ({
                     {data.nav.map((item) => (
                       <SidebarMenuItem key={item.name}>
                         <SidebarMenuButton
+                          disabled={item.disabled}
                           asChild
                           isActive={item.tab === tab}
-                          className="cursor-pointer"
+                          className={`${
+                            item.disabled
+                              ? "cursor-not-allowed hover:bg-transparent text-gray-400"
+                              : "cursor-pointer"
+                          }`}
                         >
                           <Flex
                             align="center"
                             className="gap-2"
-                            onClick={() => setTab(item.tab)}
+                            onClick={() => !item.disabled && setTab(item.tab)}
                           >
-                            <item.icon />
-                            <span>{item.name}</span>
+                            <item.icon
+                              className={`${
+                                item.disabled
+                                  ? "hover:bg-transparent text-gray-400"
+                                  : "text:seconddary-foreground hover:text-secondary-foreground"
+                              }`}
+                            />
+                            <span
+                              className={`${
+                                item.disabled
+                                  ? "hover:bg-transparent text-gray-400"
+                                  : "text:seconddary-foreground hover:text-secondary-foreground"
+                              }`}
+                            >
+                              {item.name}
+                            </span>
                           </Flex>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -131,20 +181,18 @@ export const SettingsModal = ({
             </header>
             <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-4 pt-0">
               {match(tab)
-                .with("notifications", () => (
-                  <div>
-                    <h1>Notifications</h1>
-                  </div>
-                ))
-                .with("messages", () => (
-                  <div>
-                    <h1>Messages</h1>
-                  </div>
-                ))
+                .with("profile", () => <Profile />)
                 .with("appearance", () => <Appearance />)
-                .otherwise(() => (
-                  <div>Not found</div>
-                ))}
+                .with("shortcuts", () => <KeyboardShortcuts />)
+                .with("language", () => <Language />)
+                .with("links", () => <DocLinks />)
+                .with("alternative", () => <AlternativeTechs />)
+                .with("timer", () => <StudyTimer />)
+                .with("accessibility", () => <AccessibilityComponent />)
+                .with("learning", () => <Learning />)
+                .with("difficulty", () => <Difficulty />)
+                .with("progress", () => <Progress />)
+                .exhaustive()}
             </div>
           </main>
         </SidebarProvider>

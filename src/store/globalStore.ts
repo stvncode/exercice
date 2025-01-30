@@ -2,6 +2,7 @@ import {
   initialFavorites,
   initialOthers,
 } from "@/components/ui/layout/sidebar/data"
+import { SyntaxStylesheetValue } from "@/lib/syntaxStylesheet"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 
@@ -9,11 +10,19 @@ interface Account {
   username: string
   email: string
   avatarUrl: string
+  login: boolean
+}
+
+interface LearningType {
+  editorTheme: SyntaxStylesheetValue
+  autoAdvance: boolean
 }
 
 interface GlobalState {
   // Account
   account: Account
+  // Learning
+  learning: LearningType
   // Sidebar
   favorites: string[]
   others: string[]
@@ -30,6 +39,8 @@ interface GlobalStateFunction extends GlobalState {
   moveToFavorite: (fromIndex: number) => void
   setFavorites: (favorites: string[]) => void
   setOthers: (others: string[]) => void
+  // Learning
+  setLearning: (theme: SyntaxStylesheetValue, autoAdvance: boolean) => void
 }
 
 export const initialState: GlobalState = {
@@ -37,6 +48,11 @@ export const initialState: GlobalState = {
     username: "",
     email: "",
     avatarUrl: "",
+    login: false,
+  },
+  learning: {
+    editorTheme: "vscDarkPlus",
+    autoAdvance: false,
   },
   favorites: initialFavorites,
   others: initialOthers,
@@ -48,7 +64,8 @@ export const useGlobalStore = create<GlobalStateFunction>()(
       ...initialState,
 
       setAccount: (account: Account) => set({ account }),
-      logout: () => set({ account: initialState.account }),
+      logout: () =>
+        set((state) => ({ account: { ...state.account, login: false } })),
       moveFavorite: (from, to) =>
         set((state) => {
           const newFavorites = [...state.favorites]
@@ -86,6 +103,8 @@ export const useGlobalStore = create<GlobalStateFunction>()(
         }),
       setFavorites: (favorites) => set({ favorites }),
       setOthers: (others) => set({ others }),
+      setLearning: (editorTheme, autoAdvance) =>
+        set({ learning: { editorTheme, autoAdvance } }),
     }),
     {
       name: "learning-store",
@@ -96,3 +115,4 @@ export const useGlobalStore = create<GlobalStateFunction>()(
 export const useAccount = () => useGlobalStore((state) => state.account)
 export const useFavorites = () => useGlobalStore((state) => state.favorites)
 export const useOthers = () => useGlobalStore((state) => state.others)
+export const useLearning = () => useGlobalStore((state) => state.learning)
