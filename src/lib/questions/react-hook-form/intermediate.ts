@@ -46,12 +46,12 @@ export const reactHookFormIntermediateQuestions = [
     title: "How do you handle nested form values in React Hook Form?",
     code: null,
     options: [
-      "Use dot notation in `register`",
       "Use an array for nested values",
       "Use the `useNestedForm` hook",
       "React Hook Form doesn't support nested values",
+      "Use dot notation in `register`",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "React Hook Form supports nested values by using dot notation in the `register` method.",
   },
@@ -60,12 +60,12 @@ export const reactHookFormIntermediateQuestions = [
     title: "What is the purpose of `shouldUnregister` in React Hook Form?",
     code: null,
     options: [
-      "Determines if fields are removed from the form state when unmounted",
       "Keeps fields mounted even when unmounted from the DOM",
       "Improves performance by caching form fields",
+      "Determines if fields are removed from the form state when unmounted",
       "Handles conditional rendering of components",
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
       "The `shouldUnregister` option determines if inputs should be removed from the form state when they are unmounted.",
   },
@@ -74,12 +74,12 @@ export const reactHookFormIntermediateQuestions = [
     title: "How do you handle multiple forms in a single component?",
     code: null,
     options: [
-      "Use `useForm` for each form instance",
       "Use a single `useForm` instance for all forms",
+      "Use `useForm` for each form instance",
       "Pass form data to child components",
       "React Hook Form doesn't support multiple forms",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "Each form should have its own `useForm` instance to manage its state independently.",
   },
@@ -88,12 +88,12 @@ export const reactHookFormIntermediateQuestions = [
     title: "How do you handle dynamic fields with React Hook Form?",
     code: null,
     options: [
-      "Map over dynamic fields and register them individually",
       "Use the `useDynamicFields` hook",
+      "Map over dynamic fields and register them individually",
       "Dynamic fields are not supported in React Hook Form",
       "Attach dynamic fields to a parent form",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "Dynamic fields can be handled by mapping over the field data and using `register` for each field.",
   },
@@ -102,12 +102,12 @@ export const reactHookFormIntermediateQuestions = [
     title: "What is `defaultValues` in React Hook Form?",
     code: null,
     options: [
-      "Sets the initial values of form fields",
       "Applies validation rules globally",
       "Defines the default behavior of form submission",
       "Specifies default error messages",
+      "Sets the initial values of form fields",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "`defaultValues` initializes the form fields with specified values.",
   },

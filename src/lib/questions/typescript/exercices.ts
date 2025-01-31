@@ -1,204 +1,592 @@
 export const typescriptExercises = [
   {
     id: 1,
-    title: "Create a function that adds two numbers",
+    title: "Given the data, define the interface User and use it accordingly.",
     objective:
-      "Write a function that takes two numbers as arguments and returns their sum. Use TypeScript's type annotations.",
-    codeStarter: `
-  function add(a, b) {
-    // Add the numbers a and b
-    return a + b;
-  }
-  `,
-    solution: `
-  function add(a: number, b: number): number {
-    return a + b;
-  }
-  `,
+      "Define an interface `User` for the given data and use it to type the `users` array and the `logPerson` function.",
+    codeStarter: `export type User = unknown;
+
+export const users: unknown[] = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    }
+];
+
+export function logPerson(user: unknown) {
+    console.log(\` - \${user.name}, \${user.age}\`);
+}
+
+console.log('Users:');
+users.forEach(logPerson);`,
+    solution: `export interface User {
+    name: string;
+    age: number;
+    occupation: string;
+}
+    export const users: User[] = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    }
+];
+
+export function logPerson(user: User) {
+    console.log(\` - \${user.name}, \${user.age}\`);
+}
+
+`,
   },
   {
     id: 2,
-    title: "Create a function to check if a number is even or odd",
+    title: "Type Person is missing",
     objective:
-      "Write a function that checks if a given number is even or odd and returns a string 'even' or 'odd'. Use TypeScript types.",
+      "Please define it and use it in persons array and logPerson function in order to fix all the TS errors.",
     codeStarter: `
-  function isEvenOrOdd(num) {
-    if (num % 2 === 0) {
-      return "even";
-    } else {
-      return "odd";
-    }
-  }
-  `,
+interface User {
+    name: string;
+    age: number;
+    occupation: string;
+}
+
+interface Admin {
+    name: string;
+    age: number;
+    role: string;
+}
+
+export type Person = unknown;
+
+export const persons: User[] /* <- Person[] */ = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Jane Doe',
+        age: 32,
+        role: 'Administrator'
+    },
+];
+
+export function logPerson(user: User) {
+    console.log(\` - \${user.name}, \${user.age}\`);
+}
+
+persons.forEach(logPerson);`,
     solution: `
-  function isEvenOrOdd(num: number): string {
-    if (num % 2 === 0) {
-      return "even";
-    } else {
-      return "odd";
+interface User {
+    name: string;
+    age: number;
+    occupation: string;
+}
+
+interface Admin {
+    name: string;
+    age: number;
+    role: string;
+}
+
+export type Person = User | Admin;
+
+export const persons: Person[] = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Jane Doe',
+        age: 32,
+        role: 'Administrator'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    },
+    {
+        name: 'Bruce Willis',
+        age: 64,
+        role: 'World saver'
     }
-  }
-  `,
+];
+
+export function logPerson(person: Person) {
+    console.log(\` - \${person.name}, \${person.age}\`);
+}
+
+persons.forEach(logPerson);`,
   },
   {
     id: 3,
-    title: "Create a function to calculate the factorial of a number",
+    title: "Fix type errors in logPerson function.",
     objective:
-      "Write a function that calculates the factorial of a given number using recursion. Ensure proper TypeScript type annotations.",
+      "LogPerson function should accept both User and Admin and should output relevant information according to the input: occupation for User and role for Admin.",
     codeStarter: `
-  function factorial(n) {
-    if (n === 0) {
-      return 1;
-    } else {
-      return n * factorial(n - 1);
+interface User {
+    name: string;
+    age: number;
+    occupation: string;
+}
+
+interface Admin {
+    name: string;
+    age: number;
+    role: string;
+}
+
+export type Person = User | Admin;
+
+export const persons: Person[] = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Jane Doe',
+        age: 32,
+        role: 'Administrator'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    },
+    {
+        name: 'Bruce Willis',
+        age: 64,
+        role: 'World saver'
     }
-  }
-  `,
-    solution: `
-  function factorial(n: number): number {
-    if (n === 0) {
-      return 1;
+];
+
+export function logPerson(person: Person) {
+    let additionalInformation: string;
+    if (person.role) {
+        additionalInformation = person.role;
     } else {
-      return n * factorial(n - 1);
+        additionalInformation = person.occupation;
     }
-  }
-  `,
+    console.log(\` - \${person.name}, \${person.age}, \${additionalInformation}\`);
+}
+
+persons.forEach(logPerson);`,
+    solution: `interface User {
+    name: string;
+    age: number;
+    occupation: string;
+}
+
+interface Admin {
+    name: string;
+    age: number;
+    role: string;
+}
+
+export type Person = User | Admin;
+
+export const persons: Person[] = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Jane Doe',
+        age: 32,
+        role: 'Administrator'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    },
+    {
+        name: 'Bruce Willis',
+        age: 64,
+        role: 'World saver'
+    }
+];
+
+export function logPerson(person: Person) {
+    let additionalInformation: string;
+    if ('role' in person) {
+        additionalInformation = person.role;
+    } else {
+        additionalInformation = person.occupation;
+    }
+    console.log(\` - \${person.name}, \${person.age}, \${additionalInformation}\`);
+}
+
+persons.forEach(logPerson);`,
   },
   {
     id: 4,
-    title: "Create a function that checks if a string is a palindrome",
+    title:
+      "Fix typing for the filterPersons so that it can filter users and return User[] when personType='user' and return Admin[] when personType='admin'.",
     objective:
-      "Write a function that checks whether a given string is a palindrome (same forwards and backwards) and returns a boolean.",
-    codeStarter: `
-  function isPalindrome(str) {
-    return str === str.split('').reverse().join('');
-  }
-  `,
+      "Also filterPersons should accept partial User/Admin type according to the personType.`criteria` argument should behave according to the `personType` argument value. `type` field is not allowed in the `criteria` field.",
+    codeStarter: `interface User {
+    type: 'user';
+    name: string;
+    age: number;
+    occupation: string;
+}
+
+interface Admin {
+    type: 'admin';
+    name: string;
+    age: number;
+    role: string;
+}
+
+export type Person = User | Admin;
+
+export const persons: Person[] = [
+    { type: 'user', name: 'Max Mustermann', age: 25, occupation: 'Chimney sweep' },
+    { type: 'admin', name: 'Jane Doe', age: 32, role: 'Administrator' },
+    { type: 'user', name: 'Kate Müller', age: 23, occupation: 'Astronaut' },
+    { type: 'admin', name: 'Bruce Willis', age: 64, role: 'World saver' },
+    { type: 'user', name: 'Wilson', age: 23, occupation: 'Ball' },
+    { type: 'admin', name: 'Agent Smith', age: 23, role: 'Anti-virus engineer' }
+];
+
+export function logPerson(person: Person) {
+    console.log(
+        \` - \${person.name}, \${person.age}, \${person.type === 'admin' ? person.role : person.occupation}\`
+    );
+}
+
+export function filterPersons(persons: Person[], personType: string, criteria: unknown): unknown[] {
+    return persons
+        .filter((person) => person.type === personType)
+        .filter((person) => {
+            let criteriaKeys = Object.keys(criteria) as (keyof Person)[];
+            return criteriaKeys.every((fieldName) => {
+                return person[fieldName] === criteria[fieldName];
+            });
+        });
+}
+
+export const usersOfAge23 = filterPersons(persons, 'user', { age: 23 });
+export const adminsOfAge23 = filterPersons(persons, 'admin', { age: 23 });
+
+console.log('Users of age 23:');
+usersOfAge23.forEach(logPerson);
+
+console.log();
+
+console.log('Admins of age 23:');
+adminsOfAge23.forEach(logPerson);`,
     solution: `
-  function isPalindrome(str: string): boolean {
-    return str === str.split('').reverse().join('');
-  }
-  `,
+ interface User {
+    type: 'user';
+    name: string;
+    age: number;
+    occupation: string;
+}
+
+interface Admin {
+    type: 'admin';
+    name: string;
+    age: number;
+    role: string;
+}
+
+export type Person = User | Admin;
+
+export const persons: Person[] = [
+    { type: 'user', name: 'Max Mustermann', age: 25, occupation: 'Chimney sweep' },
+    { type: 'admin', name: 'Jane Doe', age: 32, role: 'Administrator' },
+    { type: 'user', name: 'Kate Müller', age: 23, occupation: 'Astronaut' },
+    { type: 'admin', name: 'Bruce Willis', age: 64, role: 'World saver' },
+    { type: 'user', name: 'Wilson', age: 23, occupation: 'Ball' },
+    { type: 'admin', name: 'Agent Smith', age: 23, role: 'Anti-virus engineer' }
+];
+
+export function logPerson(person: Person) {
+    console.log(
+        \` - \${person.name}, \${person.age}, \${person.type === 'admin' ? person.role : person.occupation}\`
+    );
+}
+
+const getObjectKeys = <T>(obj: T) => Object.keys(obj) as (keyof T)[];
+
+export function filterPersons(persons: Person[], personType: User['type'], criteria: Partial<Omit<User, 'type'>>): User[];
+export function filterPersons(persons: Person[], personType: Admin['type'], criteria: Partial<Omit<Admin, 'type'>>): Admin[];
+export function filterPersons(persons: Person[], personType: Person['type'], criteria: Partial<Person>): Person[] {
+    return persons
+        .filter((person) => person.type === personType)
+        .filter((person) => {
+            let criteriaKeys = getObjectKeys(criteria);
+            return criteriaKeys.every((fieldName) => {
+                return person[fieldName] === criteria[fieldName];
+            });
+        });
+}
+
+export const usersOfAge23 = filterPersons(persons, 'user', { age: 23 });
+export const adminsOfAge23 = filterPersons(persons, 'admin', { age: 23 });
+
+console.log('Users of age 23:');
+usersOfAge23.forEach(logPerson);
+
+console.log();
+
+console.log('Admins of age 23:');
+adminsOfAge23.forEach(logPerson);
+`,
   },
   {
     id: 5,
-    title: "Create an interface for a User object",
+    title:
+      "Define type PowerUser which should have all fields from both User and Admin (except for type)",
     objective:
-      "Create a TypeScript interface for a User object with properties `id`, `name`, `email`, and `age`. Then create a function that accepts a User object and logs the name and email.",
-    codeStarter: `
-  function logUserDetails(user) {
-    console.log(user.name, user.email);
-  }
-  `,
-    solution: `
-  interface User {
-    id: number;
+      "And also have type 'powerUser' without duplicating all the fields in the code",
+    codeStarter: `interface User {
+    type: 'user';
     name: string;
-    email: string;
     age: number;
-  }
+    occupation: string;
+}
 
-  function logUserDetails(user: User): void {
-    console.log(user.name, user.email);
-  }
-  `,
+interface Admin {
+    type: 'admin';
+    name: string;
+    age: number;
+    role: string;
+}
+
+type PowerUser = unknown;
+
+export type Person = User | Admin | PowerUser;
+
+export const persons: Person[] = [
+    { type: 'user', name: 'Max Mustermann', age: 25, occupation: 'Chimney sweep' },
+    { type: 'admin', name: 'Jane Doe', age: 32, role: 'Administrator' },
+    { type: 'user', name: 'Kate Müller', age: 23, occupation: 'Astronaut' },
+    { type: 'admin', name: 'Bruce Willis', age: 64, role: 'World saver' },
+    {
+        type: 'powerUser',
+        name: 'Nikki Stone',
+        age: 45,
+        role: 'Moderator',
+        occupation: 'Cat groomer'
+    }
+];
+
+function isAdmin(person: Person): person is Admin {
+    return person.type === 'admin';
+}
+
+function isUser(person: Person): person is User {
+    return person.type === 'user';
+}
+
+function isPowerUser(person: Person): person is PowerUser {
+    return person.type === 'powerUser';
+}
+
+export function logPerson(person: Person) {
+    let additionalInformation: string = '';
+    if (isAdmin(person)) {
+        additionalInformation = person.role;
+    }
+    if (isUser(person)) {
+        additionalInformation = person.occupation;
+    }
+    if (isPowerUser(person)) {
+        additionalInformation = \`\${person.role}, \${person.occupation}\`;
+    }
+    console.log(\`\${person.name}, \${person.age}, \${additionalInformation}\`);
+}
+
+console.log('Admins:');
+persons.filter(isAdmin).forEach(logPerson);
+
+console.log();
+
+console.log('Users:');
+persons.filter(isUser).forEach(logPerson);
+
+console.log();
+
+console.log('Power users:');
+persons.filter(isPowerUser).forEach(logPerson);`,
+    solution: `interface User {
+    type: 'user';
+    name: string;
+    age: number;
+    occupation: string;
+}
+
+interface Admin {
+    type: 'admin';
+    name: string;
+    age: number;
+    role: string;
+}
+
+type PowerUser = Omit<User, 'type'> & Omit<Admin, 'type'> & {
+    type: 'powerUser'
+};
+
+export type Person = User | Admin | PowerUser;
+
+export const persons: Person[] = [
+    { type: 'user', name: 'Max Mustermann', age: 25, occupation: 'Chimney sweep' },
+    { type: 'admin', name: 'Jane Doe', age: 32, role: 'Administrator' },
+    { type: 'user', name: 'Kate Müller', age: 23, occupation: 'Astronaut' },
+    { type: 'admin', name: 'Bruce Willis', age: 64, role: 'World saver' },
+    {
+        type: 'powerUser',
+        name: 'Nikki Stone',
+        age: 45,
+        role: 'Moderator',
+        occupation: 'Cat groomer'
+    }
+];
+
+function isAdmin(person: Person): person is Admin {
+    return person.type === 'admin';
+}
+
+function isUser(person: Person): person is User {
+    return person.type === 'user';
+}
+
+function isPowerUser(person: Person): person is PowerUser {
+    return person.type === 'powerUser';
+}
+
+export function logPerson(person: Person) {
+    let additionalInformation: string = '';
+    if (isAdmin(person)) {
+        additionalInformation = person.role;
+    }
+    if (isUser(person)) {
+        additionalInformation = person.occupation;
+    }
+    if (isPowerUser(person)) {
+        additionalInformation = \`\${person.role}, \${person.occupation}\`;
+    }
+    console.log(\`\${person.name}, \${person.age}, \${additionalInformation}\`);
+}
+
+console.log('Admins:');
+persons.filter(isAdmin).forEach(logPerson);
+
+console.log();
+
+console.log('Users:');
+persons.filter(isUser).forEach(logPerson);
+
+console.log();
+
+console.log('Power users:');
+persons.filter(isPowerUser).forEach(logPerson);
+`,
   },
   {
     id: 6,
-    title: "Create a function that returns the longest string in an array",
+    title: "Utility fonction",
     objective:
-      "Write a function that takes an array of strings and returns the longest string. Use TypeScript to enforce the correct types.",
-    codeStarter: `
-  function findLongestString(arr) {
-    return arr.reduce((a, b) => a.length > b.length ? a : b);
-  }
-  `,
-    solution: `
-  function findLongestString(arr: string[]): string {
-    return arr.reduce((a, b) => a.length > b.length ? a : b);
-  }
+      "From a define union type, i want you to find free way to obtain only one type",
+    codeStarter: `type Shape =
+  | { kind: "circle"; radius: number }
+  | { kind: "square"; x: number }
+  | { kind: "triangle"; x: number; y: number };`,
+    solution: `type Shape =
+  | { kind: "circle"; radius: number }
+  | { kind: "square"; x: number }
+  | { kind: "triangle"; x: number; y: number };
+
+  First: type T1 = Exclude<Shape, { kind: "circle" }>
+  Second: type T2 = Extract<Shape, { kind: "circle" }>
+  Third: type T3 = Pick<Shape, Extract<keyof Shape, "kind">>\`,
   `,
   },
   {
     id: 7,
-    title: "Create a function that takes a number and returns its square",
+    title: "Recreate the Pick utility type",
     objective:
-      "Write a function that accepts a number as an argument and returns its square.",
+      "Write a utility type `MyPick` that selects the specified keys from the input type.",
     codeStarter: `
-  function square(num) {
-    return num * num;
-  }
+  type User = {
+    id: number;
+    name: string;
+    age: number;
+    occupation: string;
+  };
+
+  type MyPick = unknown;
   `,
     solution: `
-  function square(num: number): number {
-    return num * num;
-  }
+  type User = {
+    id: number;
+    name: string;
+    age: number;
+    occupation: string;
+  };
+
+  type MyPick<T, K extends keyof T> = {
+    [P in K]: T[P];
+  };
   `,
   },
   {
     id: 8,
-    title: "Create a union type for two possible values",
-    objective:
-      "Write a TypeScript function that takes a parameter that can either be a string or a number and returns a message based on the type of the argument.",
-    codeStarter: `
-  function getType(value) {
-    if (typeof value === "string") {
-      return "This is a string";
-    }
-    return "This is a number";
-  }
+    title:
+      "Write and use the pluck function in TypeScript, using the index type query and indexed access operators",
+    objective: null,
+    codeStarter: `interface Car {
+  manufacturer: string;
+  model: string;
+  year: number;
+}
+ 
+let taxi: Car = {
+  manufacturer: "Toyota",
+  model: "Camry",
+  year: 2014,
+};
+
+function pluck(o, propertyNames) {
+  return propertyNames.map((n) => o[n]);
+}
+
+let makeAndModel: string[] = pluck(taxi, ["manufacturer", "model"]);
   `,
-    solution: `
-  function getType(value: string | number): string {
-    if (typeof value === "string") {
-      return "This is a string";
-    }
-    return "This is a number";
-  }
-  `,
+    solution: `function pluck<T, K extends keyof T>(o: T, propertyNames: K[]): T[K][] {
+  return propertyNames.map((n) => o[n]);
+}`,
   },
   {
     id: 9,
-    title: "Create a function to calculate the sum of an array of numbers",
-    objective:
-      "Write a function that calculates the sum of an array of numbers and returns the result.",
-    codeStarter: `
-  function sum(arr) {
-    return arr.reduce((acc, num) => acc + num, 0);
-  }
-  `,
-    solution: `
-  function sum(arr: number[]): number {
-    return arr.reduce((acc, num) => acc + num, 0);
-  }
-  `,
+    title: "Create a required prop type ",
+    objective: "Create a type that makes all properties in T required.",
+    codeStarter: `type RequiredProps = unknown;`,
+    solution: `type RequiredProps<T extends object, K extends keyof T = keyof T> = Omit<T, K> & Required<Pick<T, K>>;`,
   },
   {
     id: 10,
-    title: "Create a class that implements an interface",
-    objective:
-      "Create an interface called `Shape` with properties `width` and `height`. Then, create a class `Rectangle` that implements this interface and calculates the area.",
-    codeStarter: `
-  class Rectangle {
-    constructor(public width, public height) {}
-    area() {
-      return this.width * this.height;
-    }
-  }
-  `,
-    solution: `
-  interface Shape {
-    width: number;
-    height: number;
-  }
-
-  class Rectangle implements Shape {
-    constructor(public width: number, public height: number) {}
-
-    area(): number {
-      return this.width * this.height;
-    }
-  }
-  `,
+    title: "Create a isUnion type",
+    objective: null,
+    codeStarter: `type IsUnion<T> = unknown;`,
+    solution: `type IsUnion<T, U extends T = T> = T extends unknown ? ([U] extends [T] ? false : true) : false;`,
   },
 ]

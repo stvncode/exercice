@@ -10,7 +10,6 @@ export const framerExercises = [
   export default function SimpleAnimation() {
     return (
       <motion.div
-        animate={{ x: 100 }} // Move to 100px to the right
         transition={{ duration: 2 }}
         style={{ width: '100px', height: '100px', backgroundColor: 'blue' }}
       />
@@ -42,7 +41,6 @@ export const framerExercises = [
     return (
       <motion.button
         style={{ padding: '10px 20px', fontSize: '16px' }}
-        whileHover={{ scale: 1.2 }} // Scale up when hovered
       >
         Hover Me!
       </motion.button>
@@ -75,8 +73,6 @@ export const framerExercises = [
   export default function FadeInEffect() {
     return (
       <motion.div
-        initial={{ opacity: 0 }} // Start with invisible
-        animate={{ opacity: 1 }}  // Fade in to fully visible
         transition={{ duration: 2 }}
         style={{ width: '200px', height: '200px', backgroundColor: 'green' }}
       />
@@ -110,8 +106,6 @@ export const framerExercises = [
     return (
       <motion.div
         style={{ height: '300px', backgroundColor: 'orange' }}
-        whileInView={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
         transition={{ duration: 1 }}
       >
         Scroll to see me!
@@ -146,7 +140,6 @@ export const framerExercises = [
   export default function BounceEffect() {
     return (
       <motion.div
-        animate={{ y: [0, -50, 0, -50, 0] }} // Bounce animation
         transition={{ repeat: Infinity, repeatType: 'loop', duration: 1.5 }}
         style={{ width: '100px', height: '100px', backgroundColor: 'red' }}
       />
@@ -177,25 +170,13 @@ export const framerExercises = [
   export default function StaggeredAnimation() {
     return (
       <div style={{ display: 'flex', gap: '20px' }}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+        <motion.div>
           Item 1
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
+        <motion.div>
           Item 2
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
-        >
+        <motion.div>
           Item 3
         </motion.div>
       </div>
@@ -244,8 +225,6 @@ export const framerExercises = [
   export default function RotateAnimation() {
     return (
       <motion.div
-        animate={{ rotate: 360 }} // Rotate infinitely
-        transition={{ repeat: Infinity, repeatType: 'loop', duration: 2 }}
         style={{ width: '100px', height: '100px', backgroundColor: 'purple' }}
       />
     );
@@ -276,8 +255,6 @@ export const framerExercises = [
   export default function SlideInEffect() {
     return (
       <motion.div
-        initial={{ x: -200 }} // Start from the left
-        animate={{ x: 0 }}     // Move to the center
         transition={{ duration: 2 }}
         style={{ width: '200px', height: '200px', backgroundColor: 'pink' }}
       />
@@ -310,7 +287,6 @@ export const framerExercises = [
   export default function FadeOutEffect() {
     return (
       <motion.div
-        animate={{ opacity: 0 }} // Fade out
         transition={{ duration: 2 }}
         style={{ width: '200px', height: '200px', backgroundColor: 'yellow' }}
       >
@@ -349,11 +325,6 @@ export const framerExercises = [
         <motion.path
           d="M10 10 H 90 V 90 H 10 Z"
           fill="transparent"
-          stroke="black"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2 }}
         />
       </motion.svg>
     );

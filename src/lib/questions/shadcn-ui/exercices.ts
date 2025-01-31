@@ -11,7 +11,6 @@ export const shadcnUIExercises = [
     return (
       <Button
         size="lg"
-        variant="primary"
         // Customize styles here
       >
         Click me
@@ -26,7 +25,6 @@ export const shadcnUIExercises = [
     return (
       <Button
         size="lg"
-        variant="primary"
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
         Click me
@@ -37,41 +35,43 @@ export const shadcnUIExercises = [
   },
   {
     id: 2,
-    title: "Create a Modal with Custom Content",
+    title: "Create a Dialog with Custom Content",
     objective:
       "Use ShadCN UI to create a modal that displays custom content when triggered.",
     codeStarter: `
-  import { Modal, Button } from "shadcn-ui";
+  import { Dialog, Button } from "shadcn-ui";
   
   export default function CustomModal() {
     return (
       <div>
         <Button onClick={() => {}}>
-          Open Modal
+          Open Dialog
         </Button>
-        <Modal>
-          {/* Modal content goes here */}
-        </Modal>
+        <Dialog>
+          {/* Dialog content goes here */}
+        </Dialog>
       </div>
     );
   }
   `,
     solution: `
-  import { Modal, Button, useModal } from "shadcn-ui";
+  import { Dialog, Button } from "shadcn-ui";
   
   export default function CustomModal() {
-    const { isOpen, open, close } = useModal();
+const [open, setIsOpen] = useState(false)
     
     return (
       <div>
-        <Button onClick={open}>Open Modal</Button>
-        <Modal isOpen={isOpen} onClose={close}>
-          <div className="p-4">
-            <h2 className="text-xl">Custom Modal</h2>
-            <p>This is a modal with custom content.</p>
-            <Button onClick={close}>Close</Button>
-          </div>
-        </Modal>
+        <Dialog isOpen={isOpen} onOpenChange={setIsOpen}>
+          <DialogTrigger asChild>
+          <Button>Open Dialog</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <h2>Dialog Title</h2>
+            <p>This is the modal content.</p>
+            <Button onClick={() => setIsOpen(false)}>Close</Button>
+          </DialogContent>
+        </Dialog>
       </div>
     );
   }
@@ -99,7 +99,10 @@ export const shadcnUIExercises = [
   export default function CustomTooltip() {
     return (
       <Tooltip content="This is a tooltip" position="top">
-        <span className="underline text-blue-500 cursor-pointer">Hover over me</span>
+        <TooltipTrigger className="underline text-blue-500 cursor-pointer">Hover over me</TooltipTrigger>
+        <TooltipContent className="bg-gray-800 text-white p-2 rounded">
+          This is a tooltip
+        </TooltipContent>
       </Tooltip>
     );
   }
@@ -111,30 +114,30 @@ export const shadcnUIExercises = [
     objective:
       "Create a dropdown menu that appears when clicking a button using ShadCN UI.",
     codeStarter: `
-  import { Dropdown, Button } from "shadcn-ui";
+  import { DropdownMenu, Button } from "shadcn-ui";
   
   export default function DropdownMenu() {
     return (
-      <Dropdown>
-        <Button>Open Dropdown</Button>
-        {/* Add dropdown items here */}
-      </Dropdown>
+      <DropdownMenu>
+      </DropdownMenu>
     );
   }
   `,
     solution: `
-  import { Dropdown, Button, DropdownMenu, DropdownItem } from "shadcn-ui";
+  import { DropdownMenu, Button, DropdownMenu, DropdownItem } from "shadcn-ui";
   
   export default function DropdownMenu() {
     return (
-      <Dropdown>
-        <Button>Open Dropdown</Button>
-        <DropdownMenu>
-          <DropdownItem onClick={() => alert('Option 1')}>Option 1</DropdownItem>
-          <DropdownItem onClick={() => alert('Option 2')}>Option 2</DropdownItem>
-          <DropdownItem onClick={() => alert('Option 3')}>Option 3</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+      <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button>Open DropdownMenu</Button>
+      </DropdownMenuTrigger>
+        <DropdownMenuConten>
+          <DropdownMenuItem onClick={() => alert('Option 1')}>Option 1</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => alert('Option 2')}>Option 2</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => alert('Option 3')}>Option 3</DropdownItem>
+        </DropdownMenuConten>
+      </DropdownMenu>
     );
   }
   `,
@@ -156,7 +159,7 @@ export const shadcnUIExercises = [
   }
   `,
     solution: `
-  import { Card, CardHeader, CardBody, CardFooter } from "shadcn-ui";
+  import { Card, CardHeader, CardContent, CardFooter } from "shadcn-ui";
   
   export default function CardComponent() {
     return (
@@ -164,10 +167,10 @@ export const shadcnUIExercises = [
         <CardHeader>
           <img src="https://via.placeholder.com/150" alt="Image" />
         </CardHeader>
-        <CardBody>
+        <CardContent>
           <h2 className="text-lg font-semibold">Card Title</h2>
           <p>This is a description of the card content.</p>
-        </CardBody>
+        </CardContent>
         <CardFooter>
           <Button>Learn More</Button>
         </CardFooter>
@@ -191,100 +194,27 @@ export const shadcnUIExercises = [
   }
   `,
     solution: `
-  import { Switch, useSwitch } from "shadcn-ui";
+  import { Switch } from "shadcn-ui";
   
   export default function CustomSwitch() {
-    const { isChecked, toggle } = useSwitch();
+const [isChecked, setIsChecked] = useState(false);
     
     return (
       <div>
-        <Switch checked={isChecked} onChange={toggle} />
+        <Switch checked={isChecked} onCheckChanged={setIsChecked} />
         <p>{isChecked ? "The switch is ON" : "The switch is OFF"}</p>
       </div>
     );
   }
   `,
   },
+
   {
     id: 7,
-    title: "Create a Pagination Component",
-    objective:
-      "Build a pagination component using ShadCN UI that allows navigation between pages.",
-    codeStarter: `
-  import { Pagination } from "shadcn-ui";
-  
-  export default function PaginationComponent() {
-    return (
-      <Pagination
-        currentPage={1}
-        totalPages={5}
-        onPageChange={(page) => {}}
-      />
-    );
-  }
-  `,
-    solution: `
-  import { Pagination } from "shadcn-ui";
-  
-  export default function PaginationComponent() {
-    const handlePageChange = (page) => {
-      console.log("Current page:", page);
-    };
-    
-    return (
-      <Pagination
-        currentPage={1}
-        totalPages={5}
-        onPageChange={handlePageChange}
-      />
-    );
-  }
-  `,
-  },
-  {
-    id: 8,
-    title: "Create a Progress Bar Component",
-    objective:
-      "Build a progress bar that shows the progress of a task using ShadCN UI.",
-    codeStarter: `
-  import { ProgressBar } from "shadcn-ui";
-  
-  export default function ProgressBarComponent() {
-    return (
-      <ProgressBar value={50} />
-    );
-  }
-  `,
-    solution: `
-  import { ProgressBar } from "shadcn-ui";
-  
-  export default function ProgressBarComponent() {
-    return (
-      <div>
-        <ProgressBar value={75} />
-        <p>Progress: 75%</p>
-      </div>
-    );
-  }
-  `,
-  },
-  {
-    id: 9,
     title: "Create a Form with Input Validation",
     objective:
       "Build a form with input validation using ShadCN UI and display validation messages.",
-    codeStarter: `
-  import { Form, Input, Button } from "shadcn-ui";
-  
-  export default function ValidatedForm() {
-    return (
-      <Form>
-        <Input label="Name" required />
-        <Button>Submit</Button>
-      </Form>
-    );
-  }
-  `,
+    codeStarter: null,
     solution: `
   import { Form, Input, Button, useForm } from "shadcn-ui";
   
@@ -304,37 +234,6 @@ export const shadcnUIExercises = [
         />
         <Button>Submit</Button>
       </Form>
-    );
-  }
-  `,
-  },
-  {
-    id: 10,
-    title: "Create a Snackbar Notification",
-    objective:
-      "Create a snackbar notification using ShadCN UI that displays a message on the screen.",
-    codeStarter: `
-  import { Snackbar } from "shadcn-ui";
-  
-  export default function SnackbarComponent() {
-    return (
-      <Snackbar message="This is a notification" />
-    );
-  }
-  `,
-    solution: `
-  import { Snackbar, useSnackbar } from "shadcn-ui";
-  
-  export default function SnackbarComponent() {
-    const { show } = useSnackbar();
-    
-    return (
-      <div>
-        <button onClick={() => show("This is a snackbar message!")}>
-          Show Snackbar
-        </button>
-        <Snackbar />
-      </div>
     );
   }
   `,

@@ -1,18 +1,13 @@
 export const tsBeltSeniorQuestions = [
   {
     id: 1,
-    title:
-      "How can you safely combine multiple `Result` values into a single `Result`?",
-    code: null,
-    options: [
-      "Using `alt()`",
-      "Using `combine()`",
-      "Using `flatMap()`",
-      "Using `fold()`",
-    ],
+    title: "What will return this code?",
+    code: `
+    pipe(['hello', 'wo', 'rld'], A.filter(value => value.length < 4, A.tail)`,
+    options: ["['wo']", "Some(['rld'])", "['hello']", "Some(['hello world'])"],
     correctAnswer: 1,
     explanation:
-      "The `combine()` method can be used to combine multiple `Result` values, handling both the `Ok` and `Err` cases safely and returning a new `Result`.",
+      "First you filter values that have length less than 4, so 'hello' is filtered out. Then you take the tail of the array, which will remove the first element and return an Option with the rest.",
   },
   {
     id: 2,
@@ -30,71 +25,85 @@ export const tsBeltSeniorQuestions = [
   },
   {
     id: 3,
-    title: "What is the purpose of the `Option.filter()` method?",
-    code: null,
+    title: "What will return this code?",
+    code: `const test = pipe(O.fromNullable(null), O.getWithDefault('test'))
+    const test1 = pipe(
+    O.fromNullable(test),
+    O.filter((t) => t === 'test'),
+    O.match(
+      (t) => <div>{t}</div>,
+      () => <div>Other Answer</div>,
+    ),
+  )`,
     options: [
-      "To apply a condition to filter the value inside the `Option`",
-      "To transform the value inside the `Option` based on a condition",
-      "To check if the value is a valid `Option`",
-      "To flatten the `Option` into another `Option`",
+      "<div>Other Answer<</div>",
+      "This will throw an error",
+      "<div>test</div>",
+      "test",
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
-      "`Option.filter()` is used to filter the value inside the `Option` based on a predicate. If the condition is met, it returns `some(value)`; otherwise, it returns `none`.",
+      "First, the const test will be 'test' since the value is null. Then, the value will be filtered out, and the match will return the value inside the Option.",
   },
   {
     id: 4,
-    title:
-      "Which of the following ts-belt methods allows you to execute side effects for `Option` or `Result` without modifying the value?",
-    code: null,
-    options: ["map()", "flatMap()", "forEach()", "getWithDefault()"],
-    correctAnswer: 2,
-    explanation:
-      "The `forEach()` method allows you to execute side effects on the value inside an `Option` or `Result` without modifying the value itself.",
+    title: "What will return this code?",
+    code: `function() {
+  const value = pipe(
+    ['hello', 'world', '+ts', '+belt'],
+    A.filter(S.startsWith('+')),
+    A.join('-'),
+    S.removeAll('+'),
+  )
+
+  return value
+}`,
+    options: ["'ts-belt'", "'ts-belt-'", "'ts-belt-world'", "'ts-belt-world-'"],
+    correctAnswer: 0,
+    explanation: "",
   },
   {
     id: 5,
-    title:
-      "How do you transform a `Result` value into an `Option` while keeping the error value intact?",
-    code: null,
-    options: [
-      "Using `toOption()`",
-      "Using `mapErr()`",
-      "Using `flatten()`",
-      "Using `getWithDefault()`",
-    ],
-    correctAnswer: 0,
+    title: "What will return this code?",
+    code: `G.isArray([1, 2, 3])`,
+    options: ["false", "true", "undefined", "An error is thrown"],
+    correctAnswer: 1,
     explanation:
-      "`toOption()` converts a `Result` into an `Option`. If it's `Ok(value)`, it becomes `some(value)`, and if it's `Err(error)`, it becomes `none`.",
+      "The `G.isArray()` function checks if the provided value is an array and returns `true` if it is.",
   },
   {
     id: 6,
-    title:
-      "How do you handle a fallback value when using `Option` with a custom error message?",
-    code: null,
+    title: "What will return this code?",
+    code: `const addTwo = F.after(1, N.add(2))
+    addTwo(8)
+    addTwo(16)`,
     options: [
-      "Using `getWithDefault()` with a default value",
-      "Using `unwrapOrElse()`",
-      "Using `alt()`",
-      "Using `mapErr()`",
-    ],
-    correctAnswer: 1,
-    explanation:
-      "`unwrapOrElse()` allows you to provide a function to generate a fallback value when the `Option` is `none`. It can be used to generate custom error messages or default values.",
-  },
-  {
-    id: 7,
-    title: "What does `Result.flatten()` do in ts-belt?",
-    code: null,
-    options: [
-      "Flattens nested `Result` types into a single `Result`",
-      "Returns a new `Result` with the same value",
-      "Unwraps the `Result` and returns the value",
-      "Combines `Result` with `Option`",
+      "None for the first and Some(18) for the second",
+      "Some(10) for the first and Some(18) for the second",
+      "Some(10) for the first and None for the second",
+      "None for the first and None for the second",
     ],
     correctAnswer: 0,
     explanation:
-      "`Result.flatten()` is used to flatten nested `Result` types (i.e., `Result<Result<T, E>, E>`) into a single `Result<T, E>`.",
+      "The `F.after()` function returns a function that will only execute after the specified number of calls. The first call will return `none`, and the second call will return `Some(18)`.",
+  },
+  {
+    id: 7,
+    title: "What will return this code?",
+    code: `function() {
+  const clean = flow(S.removeAll('X'), S.toLowerCase)
+  const value = pipe(
+    ['HellXXXo', 'wOrXXXLd'],
+    A.map(clean),
+    A.join(' ')
+  )
+
+  return value
+}`,
+    options: ["HellXXXo wOrXXXLd", "hello wOrXXXLd", "hello", "hello world"],
+    correctAnswer: 3,
+    explanation:
+      "First, the `clean` function is created to remove all 'X' characters and convert the string to lowercase. Then, the `map()` function is used to apply the `clean` function to each element in the array. Finally, the `join()` function is used to concatenate the array elements into a single string.",
   },
   {
     id: 8,
@@ -128,19 +137,15 @@ export const tsBeltSeniorQuestions = [
   {
     id: 10,
     title:
-      "What will happen if you call `getWithDefault()` on an `Option` containing `undefined`?",
-    code: `
-  import { Option } from '@mobility/ts-belt';
-  const result = Option.some(undefined).getWithDefault('default');
-  `,
+      "How can i get an array of same values from two arrays using ts-belt?",
+    code: null,
     options: [
-      "It will return `undefined`",
-      "It will return the fallback value (`'default'`)",
-      "It will throw an error",
-      "It will return `none`",
+      "A.intersection",
+      "A.union",
+      "A.difference",
+      "A.symmetricDifference",
     ],
-    correctAnswer: 1,
-    explanation:
-      "Calling `getWithDefault()` on an `Option.some(undefined)` will return the fallback value since `undefined` is considered a value, but `Option` is designed to allow a fallback in case of a missing value.",
+    correctAnswer: 0,
+    explanation: "A.intersection will return an array of same values",
   },
 ]

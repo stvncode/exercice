@@ -1,513 +1,284 @@
-export const reactIntermediateQuestions = [
+import { Question } from "@/features/layout/QuestionViewer"
+
+export const reactIntermediateQuestions: Question[] = [
   {
     id: 1,
-    title: "How can you optimize performance in a large React application?",
-    code: null,
+    title: "What is the purpose of useMemo and when should it be used?",
     options: [
-      "Use React.memo, useMemo, and useCallback to prevent unnecessary re-renders",
-      "Use Redux for all state management",
-      "Avoid using hooks entirely",
-      "Use class components instead of functional components",
+      "To memoize expensive computations and prevent unnecessary recalculations",
+      "To memoize any value",
+      "To memoize components",
+      "To optimize all functions",
     ],
     correctAnswer: 0,
     explanation:
-      "React.memo, useMemo, and useCallback are tools to optimize performance by preventing unnecessary re-renders and recalculations.",
+      "useMemo is used to memoize expensive computations, preventing them from being re-run on every render unless their dependencies change.",
+    code: null,
   },
   {
     id: 2,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetchData().then((response) => setData(response));
-  }, []);
-
-  return <List data={data} />;
-}`,
+    title: "How does useCallback differ from useMemo?",
     options: [
-      "The effect will run on every render, causing performance issues",
-      "The effect will only run once, but it doesn't handle errors",
-      "The effect doesn't clean up after itself",
-      "The effect should use useCallback",
+      "useMemo is for functions, useCallback is for values",
+      "useCallback is for functions, useMemo is for values",
+      "useCallback is faster",
+      "They are the same",
     ],
     correctAnswer: 1,
     explanation:
-      "The code doesn't handle errors from the API call. You should add a try-catch block or use .catch() to handle errors.",
+      "useCallback memoizes function definitions while useMemo memoizes computed values.",
+    code: null,
   },
   {
     id: 3,
-    title: "What is the output of this code, and why?",
-    code: `function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log("Effect ran");
-    return () => console.log("Cleanup ran");
-  }, [count]);
-
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <p>{count}</p>
-    </div>
-  );
-}`,
+    title: "What is the React Suspense component used for?",
     options: [
-      "Effect ran, Cleanup ran, Effect ran",
-      "Effect ran, Cleanup ran",
-      "Effect ran",
-      "Nothing, because the effect doesn't run",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "The effect runs on mount and every time `count` changes. The cleanup runs before the effect runs again.",
-  },
-  {
-    id: 4,
-    title: "What is wrong with this code, and how would you fix it?",
-    code: `function App() {
-  const [user, setUser] = useState({ name: "John", age: 30 });
-
-  const updateName = () => {
-    user.name = "Jane";
-    setUser(user);
-  };
-
-  return (
-    <div>
-      <p>{user.name}</p>
-      <button onClick={updateName}>Update Name</button>
-    </div>
-  );
-}`,
-    options: [
-      "The state update won't trigger a re-render because the object is mutated directly",
-      "The state update will work, but it's not a best practice",
-      "The state update will throw an error",
-      "The state update will trigger a re-render, but it's inefficient",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "React state should be treated as immutable. Use `setUser({ ...user, name: 'Jane' })` to fix this.",
-  },
-  {
-    id: 5,
-    title:
-      "What is the purpose of the `key` prop in a list, and what happens if you don't use it?",
-    code: null,
-    options: [
-      "It improves performance and helps React identify which items have changed",
-      "It binds data to the list items",
-      "It prevents re-renders of the list",
-      "It is optional and has no effect on rendering",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "The `key` prop helps React identify which items have changed, been added, or been removed. Without it, React may re-render the entire list inefficiently.",
-  },
-  {
-    id: 6,
-    title: "What is the difference between `useEffect` and `useLayoutEffect`?",
-    code: null,
-    options: [
-      "useEffect runs after the DOM is painted, while useLayoutEffect runs before",
-      "useEffect is for side effects, while useLayoutEffect is for layout calculations",
-      "useEffect is asynchronous, while useLayoutEffect is synchronous",
-      "All of the above",
+      "Animation transitions",
+      "Error handling only",
+      "Loading states only",
+      "Handling both lazy loading of components and data fetching with fallback UI",
     ],
     correctAnswer: 3,
     explanation:
-      "useEffect runs after the DOM is painted, while useLayoutEffect runs before. useEffect is asynchronous, while useLayoutEffect is synchronous.",
-  },
-  {
-    id: 7,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [count, setCount] = useState(0);
-
-  const increment = () => {
-    setCount(count + 1);
-    setCount(count + 1);
-  };
-
-  return (
-    <div>
-      <p>{count}</p>
-      <button onClick={increment}>Increment</button>
-    </div>
-  );
-}`,
-    options: [
-      "The state updates are batched, so `count` only increments once",
-      "The state updates are asynchronous, so `count` increments twice",
-      "The state updates are synchronous, so `count` increments twice",
-      "The state updates are batched, but `count` increments twice",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "React batches state updates, so `count` only increments once. Use the functional form of `setCount` to fix this: `setCount(prev => prev + 1)`.",
-  },
-  {
-    id: 8,
-    title:
-      "What is the purpose of `React.forwardRef`, and when would you use it?",
+      "Suspense allows components to wait for something (code/data) while showing a fallback UI.",
     code: null,
+  },
+  {
+    id: 4,
+    title: "What are render props in React?",
     options: [
-      "To forward refs to child components, especially for reusable components",
-      "To create a reference to a DOM element",
-      "To memoize refs",
-      "To replace `useRef`",
+      "A technique for sharing code between components using a prop whose value is a function",
+      "Regular props that render UI",
+      "Props that are only used in render methods",
+      "A deprecated pattern",
     ],
     correctAnswer: 0,
     explanation:
-      "`React.forwardRef` is used to forward refs to child components, especially when creating reusable components like input fields or modals.",
-  },
-  {
-    id: 9,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetchData().then((response) => setData(response));
-  });
-
-  return <div>{data ? data.name : "Loading..."}</div>;
-}`,
-    options: [
-      "The effect runs on every render, causing an infinite loop",
-      "The effect doesn't handle errors",
-      "The effect doesn't clean up after itself",
-      "The effect should use useCallback",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "The effect runs on every render because it has no dependency array. Add an empty dependency array (`[]`) to fix this.",
-  },
-  {
-    id: 10,
-    title:
-      "What is the purpose of `useReducer`, and when would you use it over `useState`?",
+      "Render props is a technique where a component receives a function prop that returns React elements.",
     code: null,
-    options: [
-      "To manage complex state logic with multiple actions",
-      "To replace Redux",
-      "To manage global state",
-      "To manage local state",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "`useReducer` is used to manage complex state logic with multiple actions, while `useState` is better for simple state management.",
   },
   {
-    id: 11,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [count, setCount] = useState(0);
-
-  const increment = useCallback(() => {
-    setCount(count + 1);
-  }, []);
-
-  return (
-    <div>
-      <p>{count}</p>
-      <button onClick={increment}>Increment</button>
-    </div>
-  );
-}`,
+    id: 5,
+    title: "What is the purpose of useLayoutEffect?",
     options: [
-      "The `increment` function doesn't update `count` correctly because `count` is stale",
-      "The `increment` function should use `useMemo` instead of `useCallback`",
-      "The `increment` function should be defined outside the component",
-      "The `increment` function should use `useEffect`",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "The `increment` function uses a stale `count` value because the dependency array is empty. Add `count` to the dependency array to fix this.",
-  },
-  {
-    id: 12,
-    title: "What is the purpose of `React.memo`, and when would you use it?",
-    code: null,
-    options: [
-      "To prevent unnecessary re-renders of functional components",
-      "To memoize class components",
-      "To memoize state updates",
-      "To memoize effects",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "`React.memo` is used to prevent unnecessary re-renders of functional components when their props haven't changed.",
-  },
-  {
-    id: 13,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount(count + 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return <p>{count}</p>;
-}`,
-    options: [
-      "The `count` value is stale because the effect dependency array is empty",
-      "The interval isn't cleared properly",
-      "The effect should use `useCallback`",
-      "The effect should use `useMemo`",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "The `count` value is stale because the effect dependency array is empty. Use the functional form of `setCount` to fix this: `setCount(prev => prev + 1)`.",
-  },
-  {
-    id: 14,
-    title:
-      "What is the purpose of `useImperativeHandle`, and when would you use it?",
-    code: null,
-    options: [
-      "To customize the instance value exposed to parent components",
-      "To manage state in functional components",
-      "To perform side effects",
-      "To memoize values",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "`useImperativeHandle` is used to customize the instance value exposed to parent components, especially when using `forwardRef`.",
-  },
-  {
-    id: 15,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetchData().then((response) => setData(response));
-  }, []);
-
-  return <div>{data.name}</div>;
-}`,
-    options: [
-      "The code will throw an error if `data` is null",
-      "The effect doesn't handle errors",
-      "The effect doesn't clean up after itself",
-      "The effect should use `useCallback`",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "The code will throw an error if `data` is null. Add a conditional check: `{data ? data.name : 'Loading...'}`.",
-  },
-  {
-    id: 16,
-    title: "What is the purpose of `useContext`, and when would you use it?",
-    code: null,
-    options: [
-      "To share state between components without prop drilling",
-      "To manage global state",
-      "To replace Redux",
-      "To manage local state",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "`useContext` is used to share state between components without prop drilling.",
-  },
-  {
-    id: 17,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [count, setCount] = useState(0);
-
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  return (
-    <div>
-      <p>{count}</p>
-      <button onClick={increment}>Increment</button>
-    </div>
-  );
-}`,
-    options: [
-      "The state update is asynchronous, so `count` may not update immediately",
-      "The state update is batched, so `count` may not update immediately",
-      "The state update is synchronous, so `count` updates immediately",
-      "The state update is batched, but `count` updates immediately",
+      "For optimizing performance",
+      "For handling layout calculations before browser paint",
+      "It's the same as useEffect",
+      "For handling side effects",
     ],
     correctAnswer: 1,
     explanation:
-      "React batches state updates, so `count` may not update immediately. Use the functional form of `setCount` to fix this: `setCount(prev => prev + 1)`.",
+      "useLayoutEffect fires synchronously after DOM mutations but before browser paint.",
+    code: null,
+  },
+  {
+    id: 6,
+    title: "How does React handle reconciliation?",
+    options: [
+      "By reloading the page",
+      "By comparing virtual DOM trees and updating only what's necessary",
+      "By updating all components",
+      "By directly manipulating the DOM",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "React uses diffing to compare virtual DOM with previous state for minimal updates.",
+    code: null,
+  },
+  {
+    id: 7,
+    title: "What is the purpose of React.memo?",
+    options: [
+      "To memoize DOM elements",
+      "To prevent re-renders of functional components when props haven't changed",
+      "To memoize values",
+      "To optimize state updates",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "React.memo prevents re-rendering when props remain unchanged.",
+    code: null,
+  },
+  {
+    id: 8,
+    title: "How do React portals work?",
+    options: [
+      "They manage state",
+      "They render children into a DOM node outside the parent hierarchy",
+      "They create new components",
+      "They optimize rendering",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "Portals render children into a DOM node outside the parent hierarchy.",
+    code: null,
+  },
+  {
+    id: 9,
+    title: "What is the purpose of useImperativeHandle?",
+    options: [
+      "To customize the instance value exposed to parent components when using ref",
+      "To handle imperative code",
+      "To optimize performance",
+      "To handle side effects",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "useImperativeHandle customizes the instance value exposed through refs.",
+    code: null,
+  },
+  {
+    id: 10,
+    title: "How does debouncing differ from throttling in React?",
+    options: [
+      "Throttling is more efficient",
+      "Debouncing delays execution until pause, throttling limits execution frequency",
+      "They are the same thing",
+      "Debouncing is deprecated",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "Debouncing delays execution until pause, throttling ensures maximum frequency.",
+    code: null,
+  },
+  {
+    id: 11,
+    title: "What is the purpose of ErrorBoundary components?",
+    options: [
+      "To optimize error handling",
+      "To handle network errors",
+      "To catch JavaScript errors in child components and display fallback UI",
+      "To prevent errors",
+    ],
+    correctAnswer: 2,
+    explanation:
+      "Error Boundaries catch JavaScript errors in child components and show fallback UI.",
+    code: null,
+  },
+  {
+    id: 12,
+    title: "How do you implement code-splitting in React?",
+    options: [
+      "Using webpack only",
+      "Using React.lazy() and Suspense",
+      "Splitting code manually",
+      "Using external libraries",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "Code-splitting uses React.lazy() for component imports and Suspense for loading states.",
+    code: null,
+  },
+  {
+    id: 13,
+    title: "What is the difference between controlled and uncontrolled refs?",
+    options: [
+      "Controlled refs are managed by React, uncontrolled refs access DOM directly",
+      "There is no difference",
+      "Uncontrolled refs are deprecated",
+      "Controlled refs are faster",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "Controlled refs use React's state system, uncontrolled refs directly access DOM.",
+    code: null,
+  },
+  {
+    id: 14,
+    title: "How does the useReducer hook compare to useState?",
+    options: [
+      "useState is more powerful",
+      "useReducer is for complex state logic and state updates that depend on multiple values",
+      "They are the same",
+      "useReducer is deprecated",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "useReducer handles complex state logic and multi-value dependent updates.",
+    code: null,
+  },
+  {
+    id: 15,
+    title: "What's the purpose of React.createRef?",
+    options: [
+      "To create references to DOM elements and class components",
+      "To create new components",
+      "To clone elements",
+      "To optimize rendering",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "React.createRef creates references to access DOM elements and class components.",
+    code: null,
+  },
+  {
+    id: 16,
+    title: "How do you handle side effects in custom hooks?",
+    options: [
+      "Side effects aren't allowed in custom hooks",
+      "Using setState only",
+      "Using useEffect and proper cleanup",
+      "Using global variables",
+    ],
+    correctAnswer: 2,
+    explanation:
+      "Custom hooks handle side effects using useEffect with proper cleanup.",
+    code: null,
+  },
+  {
+    id: 17,
+    title: "What is the purpose of key in React's reconciliation?",
+    options: [
+      "To help React track items in lists",
+      "For styling",
+      "It's optional",
+      "For performance only",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "Keys help React identify and track items in lists during reconciliation.",
+    code: null,
   },
   {
     id: 18,
-    title: "What is the purpose of `useMemo`, and when would you use it?",
-    code: null,
+    title: "How do you optimize context usage?",
     options: [
-      "To memoize values to avoid expensive recalculations",
-      "To memoize functions",
-      "To memoize components",
-      "To memoize state updates",
+      "Context is already optimized",
+      "Split context into smaller pieces and use React.memo",
+      "Don't use context",
+      "Use global state instead",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
-      "`useMemo` is used to memoize values to avoid expensive recalculations on every render.",
+      "Optimize context by splitting into smaller contexts and using React.memo.",
+    code: null,
   },
   {
     id: 19,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log("Effect ran");
-  }, [count]);
-
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <p>{count}</p>
-    </div>
-  );
-}`,
+    title: "What are synthetic events in React?",
     options: [
-      "The effect runs on every render, causing performance issues",
-      "The effect runs only once, but it doesn't handle errors",
-      "The effect doesn't clean up after itself",
-      "The effect should use `useCallback`",
+      "Native browser events",
+      "React's cross-browser wrapper around native events",
+      "Regular JavaScript events",
+      "Deprecated events",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
-      "The effect runs on every render because `count` is in the dependency array. Use `useMemo` or `useCallback` to fix this.",
+      "Synthetic events are React's cross-browser wrapper around native browser events.",
+    code: null,
   },
   {
     id: 20,
-    title: "What is the purpose of `useCallback`, and when would you use it?",
+    title: "How does React batch state updates?",
+    options: [
+      "It automatically batches multiple state updates in event handlers and hooks",
+      "Manual batching is required",
+      "It doesn't batch updates",
+      "Batching is deprecated",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "React automatically batches multiple state updates in event handlers and hooks.",
     code: null,
-    options: [
-      "To memoize functions to prevent unnecessary re-renders",
-      "To memoize values",
-      "To memoize components",
-      "To memoize state updates",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "`useCallback` is used to memoize functions to prevent unnecessary re-renders.",
-  },
-  {
-    id: 21,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log("Effect ran");
-  }, []);
-
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <p>{count}</p>
-    </div>
-  );
-}`,
-    options: [
-      "The effect runs only once, but it doesn't handle errors",
-      "The effect runs on every render, causing performance issues",
-      "The effect doesn't clean up after itself",
-      "The effect should use `useCallback`",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "The effect runs only once, but it doesn't handle errors. Add a try-catch block or use .catch() to fix this.",
-  },
-  {
-    id: 22,
-    title: "What is the purpose of `useRef`, and when would you use it?",
-    code: null,
-    options: [
-      "To create a reference to a DOM element or persist values across renders",
-      "To manage state in functional components",
-      "To perform side effects",
-      "To memoize values",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "`useRef` is used to create a reference to a DOM element or to persist values across renders without triggering re-renders.",
-  },
-  {
-    id: 23,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log("Effect ran");
-  }, [count]);
-
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <p>{count}</p>
-    </div>
-  );
-}`,
-    options: [
-      "The effect runs on every render, causing performance issues",
-      "The effect runs only once, but it doesn't handle errors",
-      "The effect doesn't clean up after itself",
-      "The effect should use `useCallback`",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "The effect runs on every render because `count` is in the dependency array. Use `useMemo` or `useCallback` to fix this.",
-  },
-  {
-    id: 24,
-    title:
-      "What is the purpose of `useLayoutEffect`, and when would you use it?",
-    code: null,
-    options: [
-      "To perform side effects before the DOM is painted",
-      "To perform side effects after the DOM is painted",
-      "To replace `useEffect`",
-      "To memoize values",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "`useLayoutEffect` is used to perform side effects before the DOM is painted.",
-  },
-  {
-    id: 25,
-    title: "What is the problem with this code, and how would you fix it?",
-    code: `function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log("Effect ran");
-  }, [count]);
-
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <p>{count}</p>
-    </div>
-  );
-}`,
-    options: [
-      "The effect runs on every `count` change, causing unnecessary re-renders",
-      "The effect should use `useMemo` instead of `useEffect`",
-      "The effect doesn't clean up after itself",
-      "The effect is missing a dependency",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "The effect runs every time `count` changes, which may cause unnecessary side effects. If the effect doesn't need to react to `count`, remove `count` from the dependency array. If it does, ensure the effect is optimized.",
   },
 ]

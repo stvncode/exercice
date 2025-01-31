@@ -62,12 +62,12 @@ export const reactHookFormSeniorQuestions = [
     title: "How do you handle file uploads in React Hook Form?",
     code: null,
     options: [
-      "Using `register` with validation rules for the file input",
       "Using the `Controller` component",
+      "Using `register` with validation rules for the file input",
       "Handling files manually without React Hook Form",
       "React Hook Form doesn't support file uploads",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "File uploads can be handled using `register` with validation rules, such as size or file type restrictions.",
   },
@@ -76,12 +76,12 @@ export const reactHookFormSeniorQuestions = [
     title: "What is the purpose of the `mode` option in `useForm`?",
     code: null,
     options: [
-      "To control when validation is triggered (e.g., `onBlur`, `onChange`)",
       "To define the lifecycle of the form",
       "To determine how errors are handled",
+      "To control when validation is triggered (e.g., `onBlur`, `onChange`)",
       "To specify the default submission mode",
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
       "The `mode` option defines when validation is triggered, such as on blur, change, or submission.",
   },
@@ -104,12 +104,12 @@ export const reactHookFormSeniorQuestions = [
     title: "How do you submit a form programmatically?",
     code: null,
     options: [
-      "Call `handleSubmit` directly with the submission callback",
       "Trigger an event on the form element",
+      "Call `handleSubmit` directly with the submission callback",
       "Use `setValue` to simulate submission",
       "Submit the form using a hidden button",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
       "`handleSubmit` can be called programmatically to validate and submit the form without user interaction.",
   },
@@ -118,12 +118,12 @@ export const reactHookFormSeniorQuestions = [
     title: "What is the benefit of `useFieldArray`?",
     code: null,
     options: [
-      "Manages dynamic arrays of fields efficiently",
       "Handles validation for nested objects",
       "Optimizes performance for large forms",
       "Integrates with schema validation libraries",
+      "Manages dynamic arrays of fields efficiently",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "`useFieldArray` simplifies working with dynamic arrays of inputs, such as adding or removing items in a list.",
   },
@@ -132,12 +132,12 @@ export const reactHookFormSeniorQuestions = [
     title: "How can you debounce validation with React Hook Form?",
     code: null,
     options: [
-      "Use a custom debounce function with `trigger`",
       "Use the `useDebounce` hook",
       "Add a delay parameter to `register`",
       "React Hook Form doesn't support debounced validation",
+      "Use a custom debounce function with `trigger`",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "Debounced validation can be achieved by wrapping the `trigger` function in a custom debounce utility.",
   },

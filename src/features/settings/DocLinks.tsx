@@ -28,15 +28,20 @@ export const DocLinks = () => {
     zustandLinks.docs.url,
   ]
   return (
-    <Flex direction="column" className="space-y-2">
-      {links.map((link) => (
-        <a href={link} target="_blank" rel="noopener noreferrer" key={link}>
-          -{" "}
-          <span className="hover:underline text-gray-400 hover:text-gray-400">
-            {link}
-          </span>
-        </a>
-      ))}
-    </Flex>
+    <>
+      <div className="space-y-1">
+        <p className="text-sm text-muted-foreground">
+          A list of every docs for the libraries used in this project.
+        </p>
+      </div>
+      <Flex direction="column" className="space-y-2">
+        {links.map((link) => (
+          <a href={link} target="_blank" rel="noopener noreferrer" key={link}>
+            <span className="text-xs">-</span>
+            <span className="hover:underline text-xs"> {link}</span>
+          </a>
+        ))}
+      </Flex>
+    </>
   )
 }

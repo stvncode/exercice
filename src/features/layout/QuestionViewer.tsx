@@ -134,6 +134,9 @@ export const QuestionViewer = ({
                   ? todayProgress.answers[currentQuestion].isCorrect
                     ? "success"
                     : "destructive"
+                  : showExplanation &&
+                    index === questions[currentQuestion].correctAnswer
+                  ? "success"
                   : "outline"
               }
               className="justify-start text-left h- min-h-20 p-4"

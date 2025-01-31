@@ -48,16 +48,14 @@ import create from 'zustand'
     solution: `
 import create from 'zustand'
 
-const useStore = create((set, get) => ({
-  count: JSON.parse(localStorage.getItem('count') || '0'),
+const useStore = create(persist((set, get) => ({
+  count: 1,
   increment: () => {
     const newCount = get().count + 1
-    localStorage.setItem('count', JSON.stringify(newCount))
     set({ count: newCount })
   },
   decrement: () => {
     const newCount = get().count - 1
-    localStorage.setItem('count', JSON.stringify(newCount))
     set({ count: newCount })
   },
 }))
@@ -93,7 +91,7 @@ import create from 'zustand'
 const useStore = create((set) => ({
   data: [],
   isLoading: false,
-  fetchData: async () => {
+  fetch: async () => {
     set({ isLoading: true })
     const response = await fetch('https://jsonplaceholder.typicode.com/posts')
     const data = await response.json()

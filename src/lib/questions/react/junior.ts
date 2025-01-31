@@ -1,376 +1,285 @@
-export const reactJuniorQuestions = [
+import { Question } from "@/features/layout/QuestionViewer"
+
+export const reactJuniorQuestions: Question[] = [
   {
     id: 1,
-    title: "What is the main purpose of React.StrictMode?",
-    code: null,
+    title: "What is the correct way to render a list of items in React?",
     options: [
-      "To enforce type checking at runtime",
-      "To identify potential problems in an application during development",
-      "To improve application performance in production",
-      "To enforce React best practices in production",
+      "Using a for loop inside JSX",
+      "Using Array.map() with a unique key prop",
+      "Using Array.forEach()",
+      "Using a while loop inside JSX",
     ],
+    code: null,
     correctAnswer: 1,
     explanation:
-      "StrictMode is a development-only feature that helps identify potential problems like unsafe lifecycles, legacy API usage, and other development-time issues.",
+      "Array.map() with unique keys is the React-recommended way to render lists. Keys help React identify which items have changed, been added, or been removed, optimizing the rendering process.",
   },
   {
     id: 2,
-    title: "Which hook should you use to perform side effects in a component?",
-    code: `// Which option is correct for making an API call?
-  
-  A) useEffect(() => { fetchData() }, [])
-  B) useState(() => { fetchData() })
-  C) useMemo(() => { fetchData() }, [])
-  D) useCallback(() => { fetchData() }, [])`,
-    options: ["Option A", "Option B", "Option C", "Option D"],
-    correctAnswer: 0,
+    title: "What's the difference between state and props?",
+    options: [
+      "There is no difference",
+      "Props are immutable and controlled by parent components, state is mutable and controlled by the component itself",
+      "State is immutable, props are mutable",
+      "Props are only for class components, state is only for functional components",
+    ],
+    code: null,
+    correctAnswer: 1,
     explanation:
-      "useEffect is designed for handling side effects like API calls, subscriptions, or manual DOM manipulations.",
+      "Props are read-only and passed from parent components, while state is internal to a component and can be updated using setState or the state updater function from useState.",
   },
   {
     id: 3,
-    title: "What's wrong with this code?",
-    code: `const [count, setCount] = useState(0)
-  
-  const increment = () => {
-    setCount(count + 1)
-    setCount(count + 1)
-  }`,
+    title: "What happens when you call setState?",
     options: [
-      "Nothing, it works as expected",
-      "It will increment by 2",
-      "State updates are batched, so count only increases by 1",
-      "useState cannot be used with numbers",
+      "The component immediately updates",
+      "The state updates synchronously",
+      "React schedules a render update and will batch multiple setState calls",
+      "The DOM updates directly",
     ],
+    code: null,
     correctAnswer: 2,
     explanation:
-      "Due to React's state batching, both setCount calls use the same count value. To increment twice, use the functional update form: setCount(prev => prev + 1)",
+      "setState is asynchronous - React will batch multiple setState calls for performance and schedule a render update, rather than performing immediate updates.",
   },
   {
     id: 4,
-    title: "What does the `key` prop help React achieve?",
-    code: null,
+    title: "What is the purpose of useEffect?",
     options: [
-      "Improves rendering speed of components",
-      "Identifies which items in a list have changed",
-      "Binds data to a component",
-      "Tracks component state across re-renders",
+      "To create side effects in components",
+      "To handle synchronous operations only",
+      "To replace componentDidMount in class components",
+      "To perform side effects in response to component lifecycle events or dependency changes",
     ],
-    correctAnswer: 1,
+    code: null,
+    correctAnswer: 3,
     explanation:
-      "The `key` prop is used by React to identify which items in a list have changed, been added, or removed, enabling efficient updates.",
+      "useEffect is used for handling side effects in response to component mounting, updating, or unmounting, as well as when specific dependencies change.",
   },
   {
     id: 5,
-    title: "What will this code log?",
-    code: `const [count, setCount] = useState(0);
-
-    useEffect(() => {
-      console.log(count);
-    }, []);
-
-    setCount(1);`,
+    title: "Why should you not call hooks inside conditions?",
     options: [
-      "0, then 1",
-      "1 only",
-      "0 only",
-      "Nothing, because useEffect has an empty dependency array",
+      "It's allowed but not recommended",
+      "Hooks must be called in the same order every render to maintain state correctly",
+      "It makes the code harder to read",
+      "React doesn't support conditional hooks",
     ],
-    correctAnswer: 2,
+    code: null,
+    correctAnswer: 1,
     explanation:
-      "The `useEffect` only runs once on mount because of the empty dependency array, so it logs 0. Subsequent state updates do not trigger it.",
+      "React relies on the order of hook calls to maintain state correctly between renders. Conditional hook calls can break this order and cause bugs.",
   },
   {
     id: 6,
-    title: "What is the difference between `useState` and `useReducer`?",
-    code: null,
+    title: "What is the virtual DOM?",
     options: [
-      "useState is for global state, useReducer is for local state",
-      "useState is for simple state, useReducer is for complex state logic",
-      "useReducer replaces Redux",
-      "They both are identical in usage",
+      "A direct copy of the real DOM",
+      "A lightweight copy of the real DOM used for performance optimization",
+      "The actual browser DOM",
+      "A database for storing DOM elements",
     ],
+    code: null,
     correctAnswer: 1,
     explanation:
-      "`useState` is suitable for simple state transitions, while `useReducer` is more suited for complex state logic with multiple actions.",
+      "The virtual DOM is a lightweight JavaScript representation of the actual DOM, used by React to optimize rendering performance through diffing.",
   },
   {
     id: 7,
-    title: "Why should you avoid updating state directly in React?",
-    code: `const [count, setCount] = useState(0);
-
-    // What happens if we do this?
-    count = 5;`,
+    title: "What is the correct way to handle form submission in React?",
     options: [
-      "React will throw an error",
-      "The state won't update and the component won't re-render",
-      "The state will update, but React will warn about bad practices",
-      "The state will update and the component will re-render",
+      "Let the form handle submission naturally",
+      "Use preventDefault() and handle the submission with JavaScript",
+      "Disable the submit button",
+      "Remove the form tag entirely",
     ],
+    code: null,
     correctAnswer: 1,
     explanation:
-      "State in React is immutable. Directly mutating it won't trigger a re-render. Use the `setState` or `setCount` function instead.",
+      "To handle form submissions in React, you should prevent the default form submission behavior and handle it with JavaScript to maintain control over the form data and submission process.",
   },
   {
     id: 8,
-    title:
-      "What will happen if you call `setState` inside `useEffect` without dependencies?",
-    code: `useEffect(() => {
-      setState(1);
-    });`,
+    title: "What is the purpose of React.Fragment?",
     options: [
-      "The component will crash",
-      "The component will re-render infinitely",
-      "The state will update once",
-      "React will warn about missing dependencies",
+      "To create HTML fragments",
+      "To group multiple elements without adding extra nodes to the DOM",
+      "To split components into smaller pieces",
+      "To improve performance",
     ],
+    code: null,
     correctAnswer: 1,
     explanation:
-      "Without a dependency array, `useEffect` runs after every render, which causes `setState` to trigger another render, resulting in an infinite loop.",
+      "React.Fragment allows you to group multiple children elements without adding extra nodes to the DOM, helping maintain clean HTML structure.",
   },
   {
     id: 9,
-    title: "What is the output of the following code?",
-    code: `function App() {
-      const [state] = useState({ name: "React" });
-
-      state.name = "Vue";
-      console.log(state.name);
-    }`,
+    title:
+      "What is the difference between controlled and uncontrolled components?",
     options: [
-      `"React"`,
-      `"Vue"`,
-      "React will throw an error",
-      "React warns about state immutability",
+      "There is no difference",
+      "Controlled components have their state managed by React, uncontrolled components maintain their own state",
+      "Uncontrolled components are deprecated",
+      "Controlled components are faster",
     ],
+    code: null,
     correctAnswer: 1,
     explanation:
-      "React won't stop you from mutating objects stored in state, but it won't track those changes. Always treat state as immutable.",
+      "Controlled components have their form data controlled by React state, while uncontrolled components maintain their own state internally using the DOM.",
   },
   {
     id: 10,
-    title: "What happens if you forget to pass a dependency to `useEffect`?",
-    code: `useEffect(() => {
-      console.log("Effect runs");
-    });`,
+    title: "When does React re-render a component?",
     options: [
-      "The effect runs only once",
-      "The effect runs after every render",
-      "The effect never runs",
-      "React throws an error",
+      "Only when props change",
+      "Only when state changes",
+      "When props change, state changes, or parent component re-renders",
+      "Only when forced with forceUpdate()",
     ],
-    correctAnswer: 1,
+    code: null,
+    correctAnswer: 2,
     explanation:
-      "Without a dependency array, `useEffect` runs after every render. Pass an empty array to make it run only once on mount.",
+      "React re-renders a component when its props change, its state changes, or when its parent component re-renders.",
   },
   {
     id: 11,
-    title: "What is the purpose of `useMemo`?",
-    code: null,
+    title: "What is prop drilling and why is it considered a problem?",
     options: [
-      "To memoize functions",
-      "To memoize values to avoid expensive recalculations",
-      "To memoize components",
-      "To memoize state updates",
+      "A feature for passing props deeply",
+      "A performance optimization technique",
+      "Passing props through multiple levels of components that don't need them",
+      "A way to drill into component internals",
     ],
-    correctAnswer: 1,
+    code: null,
+    correctAnswer: 2,
     explanation:
-      "`useMemo` is used to memoize values, preventing expensive recalculations on every render.",
+      "Prop drilling occurs when props are passed through multiple components that don't need them, making code harder to maintain and understand.",
   },
   {
     id: 12,
-    title: "What is the difference between `useCallback` and `useMemo`?",
-    code: null,
+    title: "What is the purpose of the key prop in lists?",
     options: [
-      "useCallback memoizes functions, useMemo memoizes values",
-      "useCallback memoizes values, useMemo memoizes functions",
-      "They are identical in functionality",
-      "useCallback is for state, useMemo is for effects",
+      "It's optional and only for debugging",
+      "To style list items differently",
+      "To help React identify which items have changed, been added, or removed",
+      "To make lists faster",
     ],
-    correctAnswer: 0,
+    code: null,
+    correctAnswer: 2,
     explanation:
-      "`useCallback` is used to memoize functions, while `useMemo` is used to memoize values.",
+      "Keys help React identify which items in a list have changed, been added, or removed, enabling efficient updates and re-rendering.",
   },
   {
     id: 13,
-    title: "What is the purpose of `React.Fragment`?",
-    code: null,
+    title: "What is the difference between useState and useRef?",
     options: [
-      "To group multiple elements without adding extra nodes to the DOM",
-      "To create reusable components",
-      "To improve performance",
-      "To enforce type checking",
+      "They are the same thing",
+      "useState causes re-renders when updated, useRef doesn't",
+      "useRef is deprecated",
+      "useState is only for strings",
     ],
-    correctAnswer: 0,
+    code: null,
+    correctAnswer: 1,
     explanation:
-      "`React.Fragment` allows you to group multiple elements without adding extra nodes to the DOM.",
+      "useState triggers a re-render when its value changes, while useRef maintains a mutable value that doesn't cause re-renders when it changes.",
   },
   {
     id: 14,
-    title: "What is the purpose of `React.PureComponent`?",
-    code: null,
+    title: "How do you pass data from child to parent component?",
     options: [
-      "To optimize functional components",
-      "To optimize class components by preventing unnecessary re-renders",
-      "To enforce immutability",
-      "To replace `React.Component`",
+      "Using state",
+      "It's not possible",
+      "By passing a callback function as a prop from parent to child",
+      "Using global variables",
     ],
-    correctAnswer: 1,
+    code: null,
+    correctAnswer: 2,
     explanation:
-      "`React.PureComponent` is used to optimize class components by preventing unnecessary re-renders when props and state haven't changed.",
+      "To pass data from child to parent, you pass a callback function as a prop from the parent to the child, which the child can call with the data.",
   },
   {
     id: 15,
-    title: "What is the purpose of `React.memo`?",
-    code: null,
+    title: "What is the purpose of React.StrictMode?",
     options: [
-      "To memoize class components",
-      "To memoize functional components to prevent unnecessary re-renders",
-      "To memoize state updates",
-      "To memoize effects",
+      "To enforce strict typing",
+      "To identify potential problems in an application",
+      "To improve performance",
+      "To prevent runtime errors",
     ],
+    code: null,
     correctAnswer: 1,
     explanation:
-      "`React.memo` is used to memoize functional components, preventing unnecessary re-renders when props haven't changed.",
+      "StrictMode helps identify potential problems in an application by enabling additional checks and warnings during development.",
   },
   {
     id: 16,
-    title: "What is the purpose of `useRef`?",
-    code: null,
+    title: "What is the default behavior of form submission in React?",
     options: [
-      "To create a reference to a DOM element or persist values across renders",
-      "To manage state in functional components",
-      "To perform side effects",
-      "To memoize values",
+      "Nothing happens",
+      "The page refreshes",
+      "The form data is automatically sent to a server",
+      "React prevents the default behavior",
     ],
-    correctAnswer: 0,
+    code: null,
+    correctAnswer: 1,
     explanation:
-      "`useRef` is used to create a reference to a DOM element or to persist values across renders without triggering re-renders.",
+      "By default, form submission causes a page refresh. This is why we typically use preventDefault() in form submission handlers.",
   },
   {
     id: 17,
-    title: "What is the purpose of `useContext`?",
-    code: null,
+    title: "What is the correct way to update state based on previous state?",
     options: [
-      "To manage global state",
-      "To share state between components without prop drilling",
-      "To replace Redux",
-      "To manage local state",
+      "Directly modify the state variable",
+      "Use the setter function with a callback that receives previous state",
+      "Create a new variable and set it",
+      "Use global variables",
     ],
+    code: null,
     correctAnswer: 1,
     explanation:
-      "`useContext` is used to share state between components without prop drilling.",
+      "When updating state based on its previous value, you should use the setter function with a callback to ensure you're working with the most current state value.",
   },
   {
     id: 18,
-    title: "What is the purpose of `useReducer`?",
-    code: null,
+    title: "What is the purpose of useEffect's cleanup function?",
     options: [
-      "To manage global state",
-      "To manage complex state logic with multiple actions",
-      "To replace `useState`",
-      "To perform side effects",
+      "To clean up memory",
+      "To prevent memory leaks and cancel subscriptions",
+      "To improve performance",
+      "To reset state",
     ],
+    code: null,
     correctAnswer: 1,
     explanation:
-      "`useReducer` is used to manage complex state logic with multiple actions.",
+      "The cleanup function in useEffect is used to clean up side effects, prevent memory leaks, and cancel subscriptions when a component unmounts or dependencies change.",
   },
   {
     id: 19,
-    title: "What is the purpose of `useLayoutEffect`?",
-    code: null,
+    title: "What happens if you don't provide a dependency array to useEffect?",
     options: [
-      "To perform side effects after the DOM has been updated",
-      "To perform side effects before the DOM has been updated",
-      "To replace `useEffect`",
-      "To memoize values",
+      "The effect never runs",
+      "The effect runs only once",
+      "The effect runs after every render",
+      "React throws an error",
     ],
-    correctAnswer: 1,
+    code: null,
+    correctAnswer: 2,
     explanation:
-      "`useLayoutEffect` is used to perform side effects before the DOM has been updated.",
+      "If no dependency array is provided, the effect will run after every render of the component.",
   },
   {
     id: 20,
-    title: "What is the purpose of `useImperativeHandle`?",
-    code: null,
+    title: "What is the purpose of the children prop?",
     options: [
-      "To customize the instance value exposed to parent components",
-      "To manage state in functional components",
-      "To perform side effects",
-      "To memoize values",
+      "To create child components",
+      "To pass data between siblings",
+      "To render content between component opening and closing tags",
+      "To improve performance",
     ],
-    correctAnswer: 0,
-    explanation:
-      "`useImperativeHandle` is used to customize the instance value exposed to parent components.",
-  },
-  {
-    id: 21,
-    title: "What is the purpose of `useDebugValue`?",
     code: null,
-    options: [
-      "To debug custom hooks in React DevTools",
-      "To debug functional components",
-      "To debug class components",
-      "To debug state updates",
-    ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
-      "`useDebugValue` is used to debug custom hooks in React DevTools.",
-  },
-  {
-    id: 22,
-    title: "What is the purpose of `useTransition`?",
-    code: null,
-    options: [
-      "To manage state transitions",
-      "To manage concurrent rendering",
-      "To manage side effects",
-      "To manage state updates",
-    ],
-    correctAnswer: 1,
-    explanation:
-      "`useTransition` is used to manage concurrent rendering in React.",
-  },
-  {
-    id: 23,
-    title: "What is the purpose of `useDeferredValue`?",
-    code: null,
-    options: [
-      "To defer state updates",
-      "To defer rendering of components",
-      "To defer side effects",
-      "To defer state transitions",
-    ],
-    correctAnswer: 1,
-    explanation:
-      "`useDeferredValue` is used to defer rendering of components in React.",
-  },
-  {
-    id: 24,
-    title: "What is the purpose of `useId`?",
-    code: null,
-    options: [
-      "To generate unique IDs for components",
-      "To generate unique IDs for state updates",
-      "To generate unique IDs for side effects",
-      "To generate unique IDs for state transitions",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "`useId` is used to generate unique IDs for components in React.",
-  },
-  {
-    id: 25,
-    title: "What is the purpose of `useSyncExternalStore`?",
-    code: null,
-    options: [
-      "To sync external stores with React state",
-      "To sync external stores with React effects",
-      "To sync external stores with React transitions",
-      "To sync external stores with React updates",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "`useSyncExternalStore` is used to sync external stores with React state.",
+      "The children prop allows components to render content that is placed between their opening and closing tags, enabling component composition.",
   },
 ]

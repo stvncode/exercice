@@ -110,7 +110,9 @@ export const AlternativeTechs = () => (
           <div className="flex items-center space-x-2">
             <span className="text-sm font-medium">TS Belt</span>
           </div>
-          <span className="text-sm text-muted-foreground">fp-ts, Ramda</span>
+          <span className="text-sm text-muted-foreground">
+            Fp-ts, Ramda, Effect-TS
+          </span>
         </div>
 
         {/* Testing Framework */}

@@ -2,8 +2,7 @@ export const reactQueryExercises = [
   {
     id: 1,
     title: "Basic data fetching",
-    objective:
-      "Implement a basic React Query hook to fetch and display a list of items.",
+    objective: "Use the useQuery hook to fetch and display a list of items.",
     codeStarter: `
 import { useQuery } from '@tanstack/react-query'
 

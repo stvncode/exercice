@@ -77,9 +77,7 @@ export const sidebarItems: SidebarItem[] = [
 export const initialFavorites = [
   "React",
   "React Hook Form",
-  "Shadcn UI",
   "React Router Dom",
-  "React Query",
   "Tailwind CSS",
   "Typescript",
 ]
@@ -88,6 +86,8 @@ export const initialOthers = [
   "Zod",
   "Playwright",
   "Framer",
+  "React Query",
+  "Shadcn UI",
   "TS Belt",
   "Vitest",
   "Zustand",

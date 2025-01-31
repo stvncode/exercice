@@ -4,12 +4,12 @@ export const reactHookFormJuniorQuestions = [
     title: "What is React Hook Form primarily used for?",
     code: null,
     options: [
-      "Managing global state",
       "Building forms and handling validations",
       "Rendering UI components",
       "Performing animations",
+      "Managing global state",
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation:
       "React Hook Form is a library designed for building forms in React applications with easy validation and minimal performance impact.",
   },
@@ -18,12 +18,12 @@ export const reactHookFormJuniorQuestions = [
     title: "How do you register an input with React Hook Form?",
     code: null,
     options: [
-      "Using the `register` function",
       "With the `useFormContext` hook",
       "Using `useController`",
       "By manually binding the input",
+      "Using the `register` function",
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "React Hook Form uses the `register` function to bind inputs to the form state.",
   },
@@ -47,11 +47,11 @@ export const reactHookFormJuniorQuestions = [
     code: null,
     options: [
       "Managing the lifecycle of the form",
-      "Tracking the validation status, submission, and touched fields",
       "Rendering the UI components",
+      "Tracking the validation status, submission, and touched fields",
       "Handling API calls from the form",
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation:
       "`formState` is an object that tracks the validation, submission status, and other states of the form.",
   },

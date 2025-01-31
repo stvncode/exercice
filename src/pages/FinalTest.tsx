@@ -105,20 +105,6 @@ export const FinalTest = () => (
               <p className="ml-8">- Implement E2E tests with Playwright</p>
             </div>
           </section>
-
-          <section className="space-y-4">
-            <h3 className="text-xl font-semibold">Evaluation Criteria</h3>
-            <div className="space-y-2 ml-4">
-              <p className="ml-8">
-                - Proper implementation of required libraries or alternatives
-              </p>
-              <p className="ml-8">- Code organization and architecture</p>
-              <p className="ml-8">- TypeScript usage and type safety</p>
-              <p className="ml-8">- UI/UX design</p>
-              <p className="ml-8">- Performance and optimization</p>
-              <p className="ml-8">- Error handling and form validation</p>
-            </div>
-          </section>
         </div>
         <Flex
           align="center"

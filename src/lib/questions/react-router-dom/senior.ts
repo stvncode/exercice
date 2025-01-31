@@ -4,10 +4,10 @@ export const reactRouterDomSeniorQuestions = [
     title: "How can you handle route-based code splitting?",
     code: null,
     options: [
-      "A) Using React.lazy with <Route>",
-      "B) Wrapping routes in Suspense",
-      "C) Dynamically importing route components",
-      "D) All of the above",
+      "Using React.lazy with <Route>",
+      "Wrapping routes in Suspense",
+      "Dynamically importing route components",
+      "All of the above",
     ],
     correctAnswer: 3,
     explanation:
@@ -16,13 +16,13 @@ export const reactRouterDomSeniorQuestions = [
   {
     id: 2,
     title: "How do you implement protected routes?",
-    code: `// What should be done for route protection?
-  
-    A) Wrap routes in a higher-order component.
-    B) Use a state to check authentication.
-    C) Conditionally render <Navigate> for unauthorized access.
-    D) All of the above`,
-    options: ["Option A", "Option B", "Option C", "Option D"],
+    code: null,
+    options: [
+      "Wrap routes in a higher-order component",
+      "Use a state to check authentication",
+      "Conditionally render <Navigate> for unauthorized access",
+      "All of the above",
+    ],
     correctAnswer: 3,
     explanation:
       "Protected routes are implemented by checking authentication and rendering <Navigate> for unauthorized users.",
@@ -32,10 +32,10 @@ export const reactRouterDomSeniorQuestions = [
     title: "How do you configure a basename in <BrowserRouter>?",
     code: null,
     options: [
-      "A) Add a 'basename' prop to <BrowserRouter>",
-      "B) Use the 'path' attribute",
-      "C) Configure the 'state' property",
-      "D) Set 'basename' in the root <Route>",
+      "Add a 'basename' prop to <BrowserRouter>",
+      "Use the 'path' attribute",
+      "Configure the 'state' property",
+      "Set 'basename' in the root <Route>",
     ],
     correctAnswer: 0,
     explanation:
@@ -46,10 +46,10 @@ export const reactRouterDomSeniorQuestions = [
     title: "How do you handle 404 pages in nested routes?",
     code: null,
     options: [
-      "A) Use <Route path='*'> in the parent route",
-      "B) Define a 404 route in each level",
-      "C) Wrap the nested routes in <Switch>",
-      "D) Use <Redirect>",
+      "Use <Route path='*'> in the parent route",
+      "Define a 404 route in each level",
+      "Wrap the nested routes in <Switch>",
+      "Use <Redirect>",
     ],
     correctAnswer: 0,
     explanation:
@@ -58,13 +58,13 @@ export const reactRouterDomSeniorQuestions = [
   {
     id: 5,
     title: "How do you handle route transitions with animations?",
-    code: `// What is required for animated transitions?
-  
-    A) React Transition Group
-    B) Wrapping routes in <CSSTransition>
-    C) Using <Switch> with animations
-    D) Both A and B`,
-    options: ["Option A", "Option B", "Option C", "Option D"],
+    code: null,
+    options: [
+      "React Transition Group",
+      "Wrapping routes in <CSSTransition>",
+      "Using <Switch> with animations",
+      "Both A and B",
+    ],
     correctAnswer: 3,
     explanation:
       "React Transition Group enables route transitions by wrapping routes in <CSSTransition> or <Transition> components.",
@@ -74,10 +74,10 @@ export const reactRouterDomSeniorQuestions = [
     title: "What does the 'caseSensitive' option in <Route> do?",
     code: null,
     options: [
-      "A) Matches paths case-sensitively",
-      "B) Ignores path matching",
-      "C) Only works for dynamic routes",
-      "D) None of the above",
+      "Matches paths case-sensitively",
+      "Ignores path matching",
+      "Only works for dynamic routes",
+      "None of the above",
     ],
     correctAnswer: 0,
     explanation:
@@ -88,10 +88,10 @@ export const reactRouterDomSeniorQuestions = [
     title: "How do you optimize route loading in large apps?",
     code: null,
     options: [
-      "A) Use React.lazy for components",
-      "B) Split routes into separate files",
-      "C) Use dynamic imports",
-      "D) All of the above",
+      "Use React.lazy for components",
+      "Split routes into separate files",
+      "Use dynamic imports",
+      "All of the above",
     ],
     correctAnswer: 3,
     explanation:
@@ -102,10 +102,10 @@ export const reactRouterDomSeniorQuestions = [
     title: "What is the purpose of useRoutes?",
     code: null,
     options: [
-      "A) Define routes declaratively",
-      "B) Replace <Route> components",
-      "C) Simplify route configuration",
-      "D) All of the above",
+      "Define routes declaratively",
+      "Replace <Route> components",
+      "Simplify route configuration",
+      "All of the above",
     ],
     correctAnswer: 3,
     explanation:
@@ -116,10 +116,10 @@ export const reactRouterDomSeniorQuestions = [
     title: "How do you implement route guards for roles?",
     code: null,
     options: [
-      "A) Check roles in a custom hook",
-      "B) Conditionally render <Navigate>",
-      "C) Use a higher-order component",
-      "D) All of the above",
+      "Check roles in a custom hook",
+      "Conditionally render <Navigate>",
+      "Use a higher-order component",
+      "All of the above",
     ],
     correctAnswer: 3,
     explanation:
@@ -130,10 +130,10 @@ export const reactRouterDomSeniorQuestions = [
     title: "How do you handle query parameters?",
     code: null,
     options: [
-      "A) Use the useSearchParams hook",
-      "B) Parse them from useLocation",
-      "C) Pass them via the 'state' property",
-      "D) Both A and B",
+      "Use the useSearchParams hook",
+      "Parse them from useLocation",
+      "Pass them via the 'state' property",
+      "Both A and B",
     ],
     correctAnswer: 3,
     explanation:

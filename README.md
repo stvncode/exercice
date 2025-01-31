@@ -1,3 +1,3 @@
-- Check Exercices and Questions
+This is an educative app to help you learn core things related to react, enjoy :)
 
-- Intermediate question senior
+There is no api, everything is done via local store.

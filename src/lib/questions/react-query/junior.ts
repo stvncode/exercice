@@ -34,7 +34,7 @@ export const reactQueryJuniorQuestions = [
     ],
     correctAnswer: 0,
     explanation:
-      "`useQuery` returns an object containing loading, error, and data properties, allowing easy access to the query's state.",
+      "`useQuery` returns an object containing isLoading, error, and data properties, allowing easy access to the query's state.",
   },
   {
     id: 4,

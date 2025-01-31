@@ -53,7 +53,7 @@ export const framerJuniorQuestions = [
 
     export default function App() {
       return (
-        <motion.button whileHover={{ scale: 1.2 }}>
+        <motion.button>
           Hover me
         </motion.button>
       );

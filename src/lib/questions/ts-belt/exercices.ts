@@ -123,33 +123,28 @@ export const tsBeltExercises = [
   },
   {
     id: 5,
-    title: "Use `fromNullable` to safely wrap nullable values in Option",
-    objective:
-      "Use `fromNullable` to safely convert a nullable value into an `Option`.",
+    title: "From an array of numbers, get the sum of the even numbers",
+    objective: null,
     codeStarter: `
-  import { Option, fromNullable } from '@mobility/ts-belt';
-  
-  const nullableName: string | null = null;
-  const nameOption: Option<string> = fromNullable(nullableName);
+  const numbers = [1, 2, 3, 4, 5, 6];
   `,
-    solution: `
-  import { Option, fromNullable } from '@mobility/ts-belt';
-  
-  const nullableName: string | null = null;
-  const nameOption: Option<string> = fromNullable(nullableName);
-  // nameOption will be 'none'
+    solution: `function() {
+  const numbers = [1, 2, 3, 4, 5, 6];
+  const sum = pipe(
+    numbers,
+    A.filter(n => n % 2 === 0),
+    A.sum,
+  )
   `,
   },
   {
     id: 6,
-    title: "Use `mapErr` to map errors in Result",
+    title: "Transform the error value in a `Result`",
     objective: "Use `mapErr` to transform the error part of a `Result`.",
     codeStarter: `
-  import { Result, Ok, Err } from '@mobility/ts-belt';
+  import { Err } from '@mobility/ts-belt';
   
   const result = Err('Initial error');
-  
-  const transformedResult = result.mapErr((err) => err.toUpperCase());
   `,
     solution: `
   import { Result, Ok, Err } from '@mobility/ts-belt';
@@ -162,64 +157,62 @@ export const tsBeltExercises = [
   },
   {
     id: 7,
-    title: "Use `getWithDefault` to provide a fallback value in Option",
+    title:
+      "Use `chain` to chain operations with Option to get a value superior at 30",
     objective:
-      "Use `getWithDefault` to provide a default value when the `Option` is `none`.",
+      "Use `chain` to chain multiple operations that return an `Option`.",
     codeStarter: `
-  import { Option, none } from '@mobility/ts-belt';
-  
-  const fallback = 'No username';
-  const username = none;
-  const result = username.getWithDefault(fallback);
-  `,
+  import { Option, some, none } from '@mobility/ts-belt';
+    const defaultValue: number | null = null
+    `,
     solution: `
-  import { Option, none } from '@mobility/ts-belt';
-  
-  const fallback = 'No username';
-  const username = none;
-  const result = username.getWithDefault(fallback);
-  // result is 'No username'
+  import { Option, pipe, some, none } from '@mobility/ts-belt';
+  const defaultValue: number | null = null
+  const result = pipe(defaultValue, O.fromNullable, O.chain(value => value > 30 ? O.some(value) : O.none))
   `,
   },
   {
     id: 8,
-    title: "Use `filter` with Option to conditionally transform a value",
-    objective:
-      "Use `filter` to transform the value within an `Option` if it satisfies a condition.",
-    codeStarter: `
-  import { Option, some, none } from '@mobility/ts-belt';
-  
-  const numberOption = some(10);
-  
-  const filtered = numberOption.filter((x) => x > 5);
-  `,
-    solution: `
-  import { Option, some, none } from '@mobility/ts-belt';
-  
-  const numberOption = some(10);
-  
-  const filtered = numberOption.filter((x) => x > 5);
-  // filtered is some(10)
-  `,
+    title:
+      "From this array, you need to get back the string 'ts-belt' using ts-belt functions",
+    objective: null,
+    codeStarter: `const xs = ['hello', 'world', 'ts', 'belt']`,
+    solution: `function() {
+  const xs = ['hello', 'world', 'ts', 'belt']
+  const value = pipe(
+    O.fromNullable(xs), // → Some(['hello', 'world', 'ts', 'belt'])
+    O.flatMap(A.dropExactly(2)), // → Some(['ts', 'belt'])
+    O.map(A.join('-')), // → Some('ts-belt')
+    O.getWithDefault('default value'), // returns \`default value\` if \`None\`
+  )
+
+  return value
+}`,
   },
   {
     id: 9,
-    title: "Use `toString` with Option to get a string representation",
-    objective:
-      "Use the `toString` method to get a string representation of an `Option`.",
+    title:
+      "From this object, you need to get the result of 100 divided by the value",
+    objective: null,
     codeStarter: `
-  import { Option, some } from '@mobility/ts-belt';
-  
-  const value = some('Hello');
-  const strValue = value.toString();
+  const obj = {
+    value: 0,
+  }
   `,
-    solution: `
-  import { Option, some } from '@mobility/ts-belt';
-  
-  const value = some('Hello');
-  const strValue = value.toString();
-  // strValue is 'some("Hello")'
-  `,
+    solution: `function() {
+  const obj = {
+    value: 0,
+  }
+  const value = pipe(
+    R.fromNullable(obj.value, 'value cannot be nullable!'),
+    R.flatMap(value => {
+      return value === 0 ? R.Error('never divide by zero!') : R.Ok(100 / value)
+    }),
+    R.match(value => \`100 / \${obj.value} = \${value}\`, err => err),
+  )
+
+  return value
+}`,
   },
   {
     id: 10,

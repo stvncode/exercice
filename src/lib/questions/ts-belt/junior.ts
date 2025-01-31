@@ -96,8 +96,7 @@ export const tsBeltJuniorQuestions = [
   },
   {
     id: 9,
-    title:
-      "What will the following code return? `Option.none.filter(x => x > 5)`",
+    title: "What will the following code return?",
     code: `
   import { Option, none } from '@mobility/ts-belt';
   const result = none.filter(x => x > 5);

@@ -6,8 +6,8 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 interface ExercisesViewerProps {
   id: number
   title: string
-  objective: string
-  codeStarter: string
+  objective: string | null
+  codeStarter: string | null
   solution: string
 }
 
@@ -31,13 +31,15 @@ export const ExercisesViewer = ({
           <h2 className="text-2xl font-bold mb-4">{exercise.title}</h2>
           <p className="text-gray-600 mb-4">{exercise.objective}</p>
 
-          <SyntaxHighlighter
-            language="javascript"
-            style={editorStyle(editorTheme)}
-            className="rounded-lg"
-          >
-            {exercise.codeStarter.trim()}
-          </SyntaxHighlighter>
+          {exercise.codeStarter && (
+            <SyntaxHighlighter
+              language="javascript"
+              style={editorStyle(editorTheme)}
+              className="rounded-lg"
+            >
+              {exercise.codeStarter.trim()}
+            </SyntaxHighlighter>
+          )}
 
           <button
             className="text-blue-600 underline mt-4"
