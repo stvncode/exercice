@@ -118,7 +118,7 @@ export const Login = () => {
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
           <div className="flex w-32 items-center justify-center rounded-md">
-            <img src="/logo.svg" alt="logo" />
+            <img src="/thales-logo.svg" alt="thales logo" />
           </div>
         </div>
         <div className="flex flex-1 items-center justify-center">

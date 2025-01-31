@@ -29,8 +29,8 @@ export const SidebarLeft = ({
     <Sidebar className="border-r-0" {...props}>
       <SidebarHeader>
         <img
-          src="/logo.svg"
-          alt="logo"
+          src="/thales-logo.svg"
+          alt="thales logo main"
           className="scale-75 cursor-pointer mb-2"
           onClick={() => navigate("/")}
         />
