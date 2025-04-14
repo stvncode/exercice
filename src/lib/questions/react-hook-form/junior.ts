@@ -9,7 +9,7 @@ export const reactHookFormJuniorQuestions = [
       "Performing animations",
       "Managing global state",
     ],
-    correctAnswer: 3,
+    correctAnswer: 0,
     explanation:
       "React Hook Form is a library designed for building forms in React applications with easy validation and minimal performance impact.",
   },
