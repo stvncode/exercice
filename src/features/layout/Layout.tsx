@@ -1,5 +1,6 @@
 import { SidebarLeft } from "@/components/ui/layout/sidebar/sidebar-left"
 import { SidebarRight } from "@/components/ui/layout/sidebar/sidebar-right"
+import { Analytics } from "@vercel/analytics/react"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -73,6 +74,7 @@ export const Layout = () => {
           </div>
         </header>
         <Outlet />
+        <Analytics />
       </SidebarInset>
       <SidebarRight />
     </>

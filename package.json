@@ -18,6 +18,7 @@
     "@mobily/ts-belt": "^3.13.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "@vercel/analytics": "^1.5.0",
     "chronoxis": "^0.1.32",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.0.3",
